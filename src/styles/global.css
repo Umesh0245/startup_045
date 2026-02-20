@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #4F46E5;
+  --color-accent-light: #818CF8;
+  --color-accent-dark: #3730A3;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-main: 'Inter', sans-serif;
+}
+
+/* Reset / Base overrides */
+@layer base {
+  body {
+    @apply font-[family-name:--font-main] bg-gray-50 text-gray-900 antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-[family-name:--font-display] font-bold tracking-tight text-gray-900;
+  }
+}
+
+/* Custom Components */
+@layer components {
+  .btn {
+    @apply relative inline-flex items-center justify-center px-10 py-4 font-semibold rounded-full transition-all duration-300 overflow-hidden cursor-pointer select-none;
+  }
+
+  .btn-primary {
+    @apply bg-gray-900 text-white hover:bg-indigo-600 hover:shadow-lg hover:-translate-y-0.5 border border-transparent;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-gray-900 border border-gray-200 hover:border-indigo-600 hover:text-indigo-600 hover:shadow-md hover:-translate-y-0.5;
+  }
+
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-xl border-b border-gray-100;
+  }
+
+  .container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+}

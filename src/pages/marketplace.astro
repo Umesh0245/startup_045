@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar';
+import { ShoppingBag, ArrowUpRight, Zap, Box, Key, Sliders } from 'lucide-react';
+
+const products = [
+    {
+        title: "Nebula UI Kit",
+        price: "$49",
+        category: "Design System",
+        image: "https://images.unsplash.com/photo-1558655146-d09347e0d7a8?q=80&w=2070&auto=format&fit=crop"
+    },
+    {
+        title: "Quantum Dashboard",
+        price: "$79",
+        category: "React Template",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+    },
+    {
+        title: "Flux Icons",
+        price: "$29",
+        category: "Icon Set",
+        image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop"
+    },
+    {
+        title: "Orbit Wireframe",
+        price: "$39",
+        category: "Figma Kit",
+        image: "https://images.unsplash.com/photo-1586717791821-3f44a5638d0f?q=80&w=2070&auto=format&fit=crop"
+    }
+];
+---
+
+<Layout title="Marketplace | Syntax Souls Studio">
+    <Navbar client:load />
+    
+    <main class="pt-32 pb-24 px-4 container mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-20 space-y-6">
+            <span class="text-indigo-600 font-bold tracking-wider text-sm uppercase bg-indigo-50 px-4 py-1.5 rounded-full inline-block">
+                Digital Assets
+            </span>
+            <h1 class="text-5xl md:text-7xl font-display font-bold text-gray-900 tracking-tight">
+                Creator's <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Inventory</span>
+            </h1>
+            <p class="text-xl text-gray-500 leading-relaxed max-w-2xl mx-auto">
+                Premium resources, templates, and UI kits crafted by our studio to accelerate your workflow.
+            </p>
+        </div>
+
+        {/* Feature Grid */}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+            <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-indigo-200 transition-colors">
+                <Box className="w-10 h-10 text-indigo-600 mb-4" />
+                <h3 class="text-xl font-bold mb-2">Ready-to-use Components</h3>
+                <p class="text-gray-500">Copy-paste accessible components directly into your project.</p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-indigo-200 transition-colors">
+                <Key className="w-10 h-10 text-purple-600 mb-4" />
+                <h3 class="text-xl font-bold mb-2">Lifetime Access</h3>
+                <p class="text-gray-500">Pay once, use forever. Free updates for all future versions.</p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-indigo-200 transition-colors">
+                <Sliders className="w-10 h-10 text-pink-600 mb-4" />
+                <h3 class="text-xl font-bold mb-2">Fully Customizable</h3>
+                <p class="text-gray-500">Built with standard CSS/Tailwind for easy theming.</p>
+            </div>
+        </div>
+
+        {/* Products Grid */}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            {products.map((product) => (
+                <div class="group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-2xl aspect-[16/10] mb-6 bg-gray-100 shadow-sm group-hover:shadow-xl transition-all duration-500">
+                        <img 
+                            src={product.image} 
+                            alt={product.title} 
+                            class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                        />
+                        <div class="absolute inset-0 bg-black/5 group-hover:bg-black/20 transition-colors duration-300"></div>
+                        <button class="absolute bottom-6 right-6 bg-white text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-2">
+                            Buy Now <ShoppingBag className="w-4 h-4" />
+                        </button>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">
+                                {product.title}
+                            </h3>
+                            <p class="text-gray-500 font-medium mt-1">{product.category}</p>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900 bg-gray-100 px-4 py-1 rounded-full">
+                            {product.price}
+                        </span>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </main>
+</Layout>
