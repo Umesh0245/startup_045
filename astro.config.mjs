@@ -7,8 +7,14 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
     integrations: [react()],
-
+    server: {
+        host: true
+    },
     vite: {
-        plugins: [tailwindcss()]
+        plugins: [tailwindcss()],
+        server: {
+            allowedHosts: ['huge-cows-marry.loca.lt'],
+            cors: true
+        }
     }
 });

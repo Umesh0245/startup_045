@@ -15,8 +15,8 @@ export default function Contact() {
                         </p>
 
                         <div className="space-y-4">
-                            <a href="mailto:hello@syntaxsouls.com" className="block text-2xl font-medium text-gray-900 hover:text-indigo-600 transition-colors">
-                                hello@syntaxsouls.com
+                            <a href="mailto:hello@syntaxstudio.com" className="block text-2xl font-medium text-gray-900 hover:text-indigo-600 transition-colors">
+                                hello@syntaxstudio.com
                             </a>
                             <p className="text-gray-500 text-lg">+1 (555) 123-4567</p>
                             <p className="text-gray-500 text-lg">San Francisco, CA</p>
@@ -74,7 +74,7 @@ export default function Contact() {
                 </div>
 
                 <div className="mt-24 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-                    <p>&copy; {new Date().getFullYear()} Syntax Souls. All rights reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} Syntax Studio. All rights reserved.</p>
                     <div className="flex gap-6">
                         <a href="#" className="hover:text-indigo-600 transition-colors">Privacy Policy</a>
                         <a href="#" className="hover:text-indigo-600 transition-colors">Terms of Service</a>
@@ -85,7 +85,7 @@ export default function Contact() {
     );
 };
 
-const SocialLink = ({ href, label }) => (
+const SocialLink = ({ href, label }: { href: string; label: string }) => (
     <a
         href={href}
         className="text-gray-500 hover:text-indigo-600 font-medium transition-colors border-b border-transparent hover:border-indigo-600 pb-0.5"

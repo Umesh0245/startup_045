@@ -33,7 +33,7 @@ export const SplashScreen = () => {
                         >
                             {/* Animated SVG Logomark - Light Theme Optimized */}
                             <div className="absolute inset-0 bg-indigo-500/20 blur-3xl rounded-full" />
-                            <svg viewBox="0 0 100 100" fill="none" className="w-full h-full relative z-10 drop-shadow-2xl">
+                            <svg viewBox="0 0 100 120" fill="none" className="w-full h-full relative z-10 drop-shadow-2xl">
                                 <defs>
                                     <linearGradient id="splashGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                                         <stop offset="0%" stopColor="#4F46E5" /> {/* Indigo 600 */}
@@ -71,7 +71,7 @@ export const SplashScreen = () => {
                                 transition={{ duration: 0.8, delay: 0.5, ease: [0.76, 0, 0.24, 1] }}
                                 className="text-4xl md:text-5xl font-display font-bold text-gray-900 tracking-tight text-center"
                             >
-                                SYNTAX SOULS
+                                SYNTAX STUDIO
                             </motion.h1>
                         </div>
 

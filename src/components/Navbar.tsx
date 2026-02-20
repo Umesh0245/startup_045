@@ -8,7 +8,7 @@ const navLinks = [
     { name: 'About', href: '/#about' },
     { name: 'Marketplace', href: '/marketplace' },
     { name: 'Blog', href: '/blog' },
-    { name: 'Stories', href: '/stories' },
+    { name: 'Our Story', href: '/our-story' },
 ];
 
 export default function Navbar() {
@@ -31,7 +31,7 @@ export default function Navbar() {
             <div className="container flex justify-between items-center px-4 md:px-6">
                 <a href="/" className="flex items-center gap-3 group z-50">
                     <div className="w-10 h-10 flex items-center justify-center">
-                        <svg viewBox="0 0 100 100" fill="none" className="w-full h-full text-indigo-600">
+                        <svg viewBox="0 0 100 120" fill="none" className="w-full h-full text-indigo-600">
                             <defs>
                                 <linearGradient id="navLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" stopColor="#4F46E5" />
@@ -51,10 +51,10 @@ export default function Navbar() {
                     </div>
                     <div className="flex flex-col leading-tight">
                         <span className="font-display font-bold text-xl tracking-tight text-gray-900 group-hover:text-indigo-600 transition-colors">
-                            SYNTAX SOULS
+                            SYNTAX STUDIO
                         </span>
                         <span className="text-xs font-mono font-medium tracking-widest text-gray-500 uppercase">
-                            STUDIO
+                            OFFICIAL
                         </span>
                     </div>
                 </a>

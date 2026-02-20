@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar';
+import Contact from '../components/Contact';
+import StorySection from '../components/StorySection';
+import '../styles/global.css';
+---
+
+<Layout title="Our Story | Syntax Studio">
+    <Navbar client:load />  
+    
+    <main class="pt-0">
+        <StorySection client:load />
+    </main>
+    
+    <Contact client:visible />
+</Layout>

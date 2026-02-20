@@ -1,84 +1,121 @@
-import React, { useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Torus, Float, Environment, SoftShadows } from '@react-three/drei';
+import { Text } from '@react-three/drei';
 import * as THREE from 'three';
 
-const GlassShape = ({ position, rotation, scale, color }) => {
-    const meshRef = useRef(null);
+const VIBRANT_PALETTE = [
+    { text: "const", color: "#FF007F" },       // Neon Pink
+    { text: "=>", color: "#00FFFF" },          // Cyan
+    { text: "{}", color: "#8A2BE2" },          // Blue Violet
+    { text: "deploy()", color: "#FFD700" },    // Gold
+    { text: "await", color: "#00FF00" },       // Lime Green
+    { text: "async", color: "#FF4500" },       // Orange Red
+    { text: "true", color: "#1E90FF" },        // Dodger Blue
+    { text: "commit", color: "#FF1493" },      // Deep Pink
+    { text: "push", color: "#39FF14" },        // Neon Green
+    { text: "build", color: "#00BFFF" },       // Deep Sky Blue
+    { text: "0x1A4", color: "#FF00FF" },       // Magenta
+    { text: "init", color: "#FFFF00" }         // Yellow
+];
 
-    useFrame((state) => {
-        if (meshRef.current) {
-            meshRef.current.rotation.x += 0.005;
-            meshRef.current.rotation.y += 0.005;
+const TinyCodeParticle = ({ text, color, initialPosition, speed, offset }: any) => {
+    const ref = useRef<THREE.Group>(null);
+
+    useFrame(({ clock }) => {
+        if (ref.current) {
+            const t = clock.getElapsedTime();
+            // Extremely tight floating bounds so they stay exactly where they spawned
+            ref.current.position.y = initialPosition[1] + Math.sin(t * speed + offset) * 0.3;
+            ref.current.position.x = initialPosition[0] + Math.cos(t * speed * 0.5 + offset) * 0.15;
         }
     });
 
     return (
-        <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
-            <Torus ref={meshRef} args={[1, 0.4, 32, 100]} position={position} rotation={rotation} scale={scale}>
-                <meshPhysicalMaterial
-                    color={color}
-                    transparent
-                    opacity={0.7} // Glassy
-                    roughness={0.1}
-                    metalness={0.1}
-                    transmission={0.5} // Key for glass
-                    thickness={2}
-                    clearcoat={1}
-                    clearcoatRoughness={0}
-                />
-            </Torus>
-        </Float>
+        <group ref={ref} position={initialPosition}>
+            {/* Very small font size (0.22), high intensity neon colors. Monospace font. */}
+            <Text
+                fontSize={0.22}
+                color={color}
+                font="https://cdn.jsdelivr.net/fontsource/fonts/jetbrains-mono@latest/latin-400-normal.woff"
+                anchorX="center"
+                anchorY="middle"
+                fillOpacity={0.9}
+                material-toneMapped={false}
+            >
+                {text}
+            </Text>
+        </group>
     );
 };
 
-const AbstractSphere = ({ position, color, scale }) => {
+const HighDensityScene = () => {
+    // Dynamically calculate and fill every single empty patch using a rejection algorithm
+    const nodes = useMemo(() => {
+        const particles = [];
+        let i = 0;
+        let attempts = 0;
+
+        // Loop randomly over screen until we successfully place 130 valid particles
+        while (particles.length < 130 && attempts < 3000) {
+            attempts++;
+            const template = VIBRANT_PALETTE[i % VIBRANT_PALETTE.length];
+
+            // Generate entirely across the vast screen space
+            const x = (Math.random() - 0.5) * 26; // Spans from -13 to +13
+            const y = (Math.random() - 0.5) * 14;     // Spans from -7 to +7
+            const z = -0.5 - Math.random() * 3;   // Z depth stays consistently close
+
+            // 🛑 SAFETY ALGORITHM: VETO ANY PLACEMENT ON TOP OF CORE UI TEXT
+
+            // 1. Protect Header / Logo Space (Top 15% of viewport)
+            if (y > 4.2) continue;
+
+            // 2. Protect Central Hero Title ("Building Digital Excellence...")
+            // The central column gets a wide berth to be absolutely sure.
+            if (Math.abs(x) < 7.5 && y > -1.0 && y < 4.2) continue;
+
+            // 3. Protect Subtext, Buttons, and "Available" badge
+            if (Math.abs(x) < 5.5 && y > -4.5 && y <= -1.0) continue;
+
+            // If coordinates pass all the safety checks, they are confirmed in an empty space!
+            particles.push({
+                id: i,
+                ...template,
+                position: [x, y, z],
+                speed: 0.1 + Math.random() * 0.35,
+                offset: Math.random() * 100
+            });
+            i++;
+        }
+        return particles;
+    }, []);
+
     return (
-        <Float speed={3} rotationIntensity={1} floatIntensity={2}>
-            <mesh position={position} scale={scale}>
-                <dodecahedronGeometry args={[1, 0]} />
-                <meshStandardMaterial color={color} roughness={0.2} metalness={0.5} />
-            </mesh>
-        </Float>
+        <group>
+            {nodes.map(node => (
+                <TinyCodeParticle
+                    key={node.id}
+                    text={node.text}
+                    color={node.color}
+                    initialPosition={node.position}
+                    speed={node.speed}
+                    offset={node.offset}
+                />
+            ))}
+        </group>
     );
-}
+};
 
 export default function ThreeCanvas() {
     return (
         <div style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100vh', // Only fill viewport initially, or use fixed for persistent bg
-            zIndex: -1, // Behind everything
-            pointerEvents: 'none',
-            background: '#FCFCFC' // Ensure bg matches CSS
+            position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
+            zIndex: -1, pointerEvents: 'none',
+            background: 'radial-gradient(circle at center, #ffffff 0%, #f4f6fc 100%)'
         }}>
-            <Canvas shadows camera={{ position: [0, 0, 10], fov: 40 }} gl={{ antialias: true, alpha: false }}>
-                <color attach="background" args={['#FCFCFC']} />
-
-                {/* Lighting for bright scene */}
-                <ambientLight intensity={1} />
-                <directionalLight
-                    position={[5, 10, 5]}
-                    intensity={2}
-                    castShadow
-                    shadow-mapSize={[1024, 1024]}
-                />
-
-                {/* Environment for reflections */}
-                <Environment preset="city" />
-
-                {/* Abstract Shapes */}
-                <GlassShape position={[-3, 2, 0]} rotation={[0.5, 0.5, 0]} scale={1.5} color="#4F46E5" />
-                <GlassShape position={[4, -2, -2]} rotation={[-0.5, 1, 0]} scale={2} color="#818CF8" />
-
-                <AbstractSphere position={[2, 3, -5]} color="#C4B5FD" scale={0.8} />
-                <AbstractSphere position={[-4, -3, -3]} color="#A5B4FC" scale={1.2} />
-
-                {/* Subtle fog for depth */}
-                <fog attach="fog" args={['#FCFCFC', 5, 25]} />
+            <Canvas camera={{ position: [0, 0, 10], fov: 50 }} dpr={[1, 2]} gl={{ antialias: true, alpha: true }}>
+                <ambientLight intensity={2} />
+                <HighDensityScene />
             </Canvas>
         </div>
     );
