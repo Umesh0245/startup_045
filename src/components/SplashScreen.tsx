@@ -5,11 +5,24 @@ export const SplashScreen = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        const hasSeenSplash = sessionStorage.getItem('hasSeenSplash');
+
+        if (hasSeenSplash) {
+            setIsLoading(false);
+            return;
+        }
+
         const timer = setTimeout(() => {
             setIsLoading(false);
+            sessionStorage.setItem('hasSeenSplash', 'true');
         }, 3500); // Slightly longer to appreciate the animation
+
         return () => clearTimeout(timer);
     }, []);
+
+    if (!isLoading && !sessionStorage.getItem('hasSeenSplash')) {
+        return null;
+    }
 
     return (
         <AnimatePresence mode="wait">
@@ -71,7 +84,7 @@ export const SplashScreen = () => {
                                 transition={{ duration: 0.8, delay: 0.5, ease: [0.76, 0, 0.24, 1] }}
                                 className="text-4xl md:text-5xl font-display font-bold text-gray-900 tracking-tight text-center"
                             >
-                                SYNTAX STUDIO
+                                SYNFORGE
                             </motion.h1>
                         </div>
 

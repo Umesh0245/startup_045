@@ -1,108 +1,98 @@
 import React, { useMemo, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Text } from '@react-three/drei';
 import * as THREE from 'three';
 
-const VIBRANT_PALETTE = [
-    { text: "const", color: "#FF007F" },       // Neon Pink
-    { text: "=>", color: "#00FFFF" },          // Cyan
-    { text: "{}", color: "#8A2BE2" },          // Blue Violet
-    { text: "deploy()", color: "#FFD700" },    // Gold
-    { text: "await", color: "#00FF00" },       // Lime Green
-    { text: "async", color: "#FF4500" },       // Orange Red
-    { text: "true", color: "#1E90FF" },        // Dodger Blue
-    { text: "commit", color: "#FF1493" },      // Deep Pink
-    { text: "push", color: "#39FF14" },        // Neon Green
-    { text: "build", color: "#00BFFF" },       // Deep Sky Blue
-    { text: "0x1A4", color: "#FF00FF" },       // Magenta
-    { text: "init", color: "#FFFF00" }         // Yellow
-];
+const ParticleDataWave = () => {
+    // 140x70 creates 9,800 dense, highly vibrant data points
+    const width = 140;
+    const depth = 70;
+    const count = width * depth;
+    const pointsRef = useRef<THREE.Points>(null);
 
-const TinyCodeParticle = ({ text, color, initialPosition, speed, offset }: any) => {
-    const ref = useRef<THREE.Group>(null);
+    const [positions, colors] = useMemo(() => {
+        const pos = new Float32Array(count * 3);
+        const col = new Float32Array(count * 3);
+
+        let i = 0;
+        for (let x = 0; x < width; x++) {
+            for (let z = 0; z < depth; z++) {
+                // Map the grid broadly to 3D space
+                const posX = (x - width / 2) * 0.35;
+                const posZ = (z - depth / 2) * 0.35;
+
+                pos[i * 3] = posX;
+                pos[i * 3 + 1] = 0; // Y is completely calculated on the fly in the animation frame
+                pos[i * 3 + 2] = posZ;
+
+                // Create a smooth, beautiful gradient/rainbow across the entirely of the wave (based on X position)
+                // We map the X index (0 to 140) to a Hue value (0 to 1) for a seamless fluid rainbow
+                const hue = x / width;
+
+                // Max saturation and ideal lightness for extreme vibrance in the rainbow pattern
+                const color = new THREE.Color().setHSL(hue, 1.0, 0.55);
+
+                col[i * 3] = color.r;
+                col[i * 3 + 1] = color.g;
+                col[i * 3 + 2] = color.b;
+
+                i++;
+            }
+        }
+
+        return [pos, col];
+    }, []);
 
     useFrame(({ clock }) => {
-        if (ref.current) {
-            const t = clock.getElapsedTime();
-            // Extremely tight floating bounds so they stay exactly where they spawned
-            ref.current.position.y = initialPosition[1] + Math.sin(t * speed + offset) * 0.3;
-            ref.current.position.x = initialPosition[0] + Math.cos(t * speed * 0.5 + offset) * 0.15;
+        if (!pointsRef.current) return;
+
+        // Extremely smooth, sophisticated time scaling.
+        const time = clock.getElapsedTime() * 0.3;
+        const posAttr = pointsRef.current.geometry.attributes.position;
+
+        for (let i = 0; i < count; i++) {
+            const x = posAttr.getX(i);
+            const z = posAttr.getZ(i);
+
+            // Elegant interference sine waves (Fluid, organic mathematical motion)
+            const wave1 = Math.sin(x * 0.3 + time) * 1.5;
+            const wave2 = Math.cos(z * 0.2 + time) * 1.5;
+            const wave3 = Math.sin((x + z) * 0.15 + time) * 1.0;
+
+            // Resting elegantly under the hero text.
+            const y = wave1 + wave2 + wave3 - 1.5;
+
+            posAttr.setY(i, y);
         }
+        posAttr.needsUpdate = true;
+
+        // Subtly pan the entire wave field
+        pointsRef.current.rotation.y = Math.sin(time * 0.1) * 0.05;
+        pointsRef.current.rotation.z = Math.cos(time * 0.1) * 0.03;
     });
 
     return (
-        <group ref={ref} position={initialPosition}>
-            {/* Very small font size (0.22), high intensity neon colors. Monospace font. */}
-            <Text
-                fontSize={0.22}
-                color={color}
-                font="https://cdn.jsdelivr.net/fontsource/fonts/jetbrains-mono@latest/latin-400-normal.woff"
-                anchorX="center"
-                anchorY="middle"
-                fillOpacity={0.9}
-                material-toneMapped={false}
-            >
-                {text}
-            </Text>
-        </group>
-    );
-};
-
-const HighDensityScene = () => {
-    // Dynamically calculate and fill every single empty patch using a rejection algorithm
-    const nodes = useMemo(() => {
-        const particles = [];
-        let i = 0;
-        let attempts = 0;
-
-        // Loop randomly over screen until we successfully place 130 valid particles
-        while (particles.length < 130 && attempts < 3000) {
-            attempts++;
-            const template = VIBRANT_PALETTE[i % VIBRANT_PALETTE.length];
-
-            // Generate entirely across the vast screen space
-            const x = (Math.random() - 0.5) * 26; // Spans from -13 to +13
-            const y = (Math.random() - 0.5) * 14;     // Spans from -7 to +7
-            const z = -0.5 - Math.random() * 3;   // Z depth stays consistently close
-
-            // 🛑 SAFETY ALGORITHM: VETO ANY PLACEMENT ON TOP OF CORE UI TEXT
-
-            // 1. Protect Header / Logo Space (Top 15% of viewport)
-            if (y > 4.2) continue;
-
-            // 2. Protect Central Hero Title ("Building Digital Excellence...")
-            // The central column gets a wide berth to be absolutely sure.
-            if (Math.abs(x) < 7.5 && y > -1.0 && y < 4.2) continue;
-
-            // 3. Protect Subtext, Buttons, and "Available" badge
-            if (Math.abs(x) < 5.5 && y > -4.5 && y <= -1.0) continue;
-
-            // If coordinates pass all the safety checks, they are confirmed in an empty space!
-            particles.push({
-                id: i,
-                ...template,
-                position: [x, y, z],
-                speed: 0.1 + Math.random() * 0.35,
-                offset: Math.random() * 100
-            });
-            i++;
-        }
-        return particles;
-    }, []);
-
-    return (
-        <group>
-            {nodes.map(node => (
-                <TinyCodeParticle
-                    key={node.id}
-                    text={node.text}
-                    color={node.color}
-                    initialPosition={node.position}
-                    speed={node.speed}
-                    offset={node.offset}
+        <points ref={pointsRef} position={[0, -1, -4]}>
+            <bufferGeometry>
+                <bufferAttribute
+                    attach="attributes-position"
+                    args={[positions, 3]}
                 />
-            ))}
-        </group>
+                <bufferAttribute
+                    attach="attributes-color"
+                    args={[colors, 3]}
+                />
+            </bufferGeometry>
+            {/* 
+              Increased size and maximum opacity for explosive vibrance while retaining the elegant shape
+            */}
+            <pointsMaterial
+                size={0.11}
+                vertexColors={true}
+                transparent={true}
+                opacity={1}
+                sizeAttenuation={true}
+            />
+        </points>
     );
 };
 
@@ -111,11 +101,11 @@ export default function ThreeCanvas() {
         <div style={{
             position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
             zIndex: -1, pointerEvents: 'none',
-            background: 'radial-gradient(circle at center, #ffffff 0%, #f4f6fc 100%)'
+            // Clean gradient background 
+            background: 'radial-gradient(ellipse at top, #ffffff 0%, #f4f6fc 100%)'
         }}>
-            <Canvas camera={{ position: [0, 0, 10], fov: 50 }} dpr={[1, 2]} gl={{ antialias: true, alpha: true }}>
-                <ambientLight intensity={2} />
-                <HighDensityScene />
+            <Canvas camera={{ position: [0, 4, 12], fov: 60 }} dpr={[1, 2]} gl={{ antialias: true, alpha: true }}>
+                <ParticleDataWave />
             </Canvas>
         </div>
     );

@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ServiceDetail from '../../components/ServiceDetail';
+import '../../styles/global.css';
+
+const data = {
+    title: "Enterprise Core Security.",
+    category: "Cyber Defense",
+    description: "Multi-layered vulnerability testing and rigorous protocol integrations intentionally designed to defend critical scale resources from catastrophic threat vectors.",
+    theme: "pink",
+    heroImage: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop",
+    methodologies: [
+        {
+            title: "Zero-Trust Architecture",
+            desc: "Implicitly assuming that every network interaction is hostile. No machine, API, or service is inherently trusted without active cryptographical validation at every step.",
+            image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2070&auto=format&fit=crop"
+        },
+        {
+            title: "AES-256 In-Transit Encryption",
+            desc: "All global traffic and internal pod communication is encrypted beyond military specifications. Complete TLS termination managed at hardened edge gateways.",
+            image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
+        },
+        {
+            title: "JWT / OAuth2 Strict Governance",
+            desc: "Decoupled authentication logic preventing state vulnerability. Fast-expiring tokens combined with strict role-based access control (RBAC).",
+            image: "https://images.unsplash.com/photo-1614064641913-6b22eb8e7ed9?q=80&w=2070&auto=format&fit=crop"
+        }
+    ],
+    techStack: ["OAuth2.0", "Auth0", "AWS KMS", "Cloudflare WAF", "JWT", "Bcrypt"]
+};
+
+---
+
+<Layout title="Core Security | SynForge">
+    <ServiceDetail client:load {...data} />
+</Layout>

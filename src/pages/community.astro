@@ -1,14 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Contact from '../components/Contact';
-import StorySection from '../components/StorySection';
+import CommunitySection from '../components/CommunitySection';
 import '../styles/global.css';
 ---
 
-<Layout title="Our Story | SynForge">
-    <main class="pt-0">
-        <StorySection client:load />
-    </main>
+<Layout title="The Team | SynForge">
+    <CommunitySection client:load />
     
     <Contact client:visible />
 </Layout>

@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ServiceDetail from '../../components/ServiceDetail';
+import '../../styles/global.css';
+
+const data = {
+    title: "UI/UX Engineering.",
+    category: "Product Design",
+    description: "Translating extreme business complexity into stunning, human-centered interfaces. Every click, transition, and micro-animation is mathematically engineered for delight.",
+    theme: "indigo",
+    heroImage: "https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=100&w=3840&auto=format&fit=crop",
+    methodologies: [
+        {
+            title: "Atomic Design Systems",
+            desc: "Constructing scalable, component-driven design libraries. We define foundational tokens—typography, spacing, color—that scale perfectly across millions of pages without breaking layout integrity.",
+            image: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?q=100&w=2500&auto=format&fit=crop"
+        },
+        {
+            title: "Cognitive Ease Architecture",
+            desc: "Ruthlessly removing user friction. We use eye-tracking and interaction analytics to position highly complex data flows seamlessly allowing users to master huge platforms without onboarding.",
+            image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=100&w=2500&auto=format&fit=crop"
+        },
+        {
+            title: "Performance Animations",
+            desc: "Instead of heavy videos, we build logic-driven framerate animations that run natively via WebGL and GPU layers, ensuring 60fps smoothness alongside premium aesthetics.",
+            image: "https://images.unsplash.com/photo-1550439062-609e1531270e?q=100&w=2500&auto=format&fit=crop"
+        }
+    ],
+    techStack: ["Figma", "Framer Motion", "React", "Three.js", "Tailwind CSS", "GSAP", "Storybook"]
+};
+---
+
+<Layout title="UI/UX Engineering | SynForge">
+    <ServiceDetail client:load {...data} />
+</Layout>

@@ -1,122 +1,163 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowUpRight, Cpu, Fingerprint, Sparkles, Code2, ArrowRight } from 'lucide-react';
 
 export default function AboutSection() {
+    const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+
     return (
-        <section id="about" className="py-24 px-4 bg-gray-50 border-b border-gray-100 overflow-hidden relative">
-            {/* Background decorations */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none opacity-50"></div>
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-pink-50 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none opacity-50"></div>
+        <section id="about" className="py-32 bg-white relative overflow-hidden border-t border-gray-100">
+            {/* Elegant light mode background glows */}
+            <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-50 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-pink-50 rounded-full blur-[100px] pointer-events-none" />
 
-            <div className="container mx-auto max-w-7xl relative z-10">
-                <div className="flex flex-col lg:flex-row gap-16 items-center">
+            {/* Subtle light grid */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000006_1px,transparent_1px),linear-gradient(to_bottom,#00000006_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
 
-                    {/* Left: Text Content */}
-                    <div className="flex-1 w-full text-center lg:text-left">
-                        <motion.span
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+            <div className="container px-4 md:px-6 mx-auto relative z-10 max-w-7xl">
+
+                <div className="flex flex-col lg:flex-row gap-20 items-center justify-between">
+
+                    {/* Left Typography & Content */}
+                    <div className="flex-1 w-full relative z-20">
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="inline-block py-1 px-3 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 font-semibold tracking-wider text-xs uppercase mb-6 shadow-sm"
+                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 tracking-widest text-[10px] font-bold uppercase mb-8 shadow-sm"
                         >
-                            About Syntax Studio
-                        </motion.span>
+                            <Sparkles className="w-3.5 h-3.5" /> Inside SynForge
+                        </motion.div>
 
                         <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-8 leading-[1.1]"
+                            transition={{ duration: 0.7, ease: "easeOut" }}
+                            className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-gray-900 leading-[1.05] tracking-tight mb-8"
                         >
-                            We build <br className="hidden lg:block" />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">digital ecosystems</span>
+                            Beyond <br className="hidden md:block" />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500">
+                                Ordinary Engineering.
+                            </span>
                         </motion.h2>
 
                         <motion.p
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="text-xl text-gray-600 leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0"
+                            transition={{ duration: 0.7, delay: 0.2 }}
+                            className="text-xl text-gray-600 leading-relaxed max-w-xl mb-12 font-light"
                         >
-                            Syntax Studio began with a simple mission: to bridge the gap between complex technology and beautiful design. We don't just build websites; we engineer scalable products that thrive.
+                            We are an elite collective of systems architects, creative developers, and product strategists. We reject generic templates to build high-performance, bespoke digital architectures.
                         </motion.p>
 
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.3 }}
-                            className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start mb-12"
-                        >
-                            <div className="flex items-center gap-3">
-                                <CheckCircle2 className="w-6 h-6 text-green-500" />
-                                <span className="font-medium text-gray-700">100% In-house Team</span>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <CheckCircle2 className="w-6 h-6 text-green-500" />
-                                <span className="font-medium text-gray-700">Global Clientele</span>
-                            </div>
-                        </motion.div>
+                        {/* Interactive Feature Cards */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+                            {[
+                                { icon: Cpu, title: "Deep Tech", desc: "Complex systems made simple.", color: "indigo" },
+                                { icon: Fingerprint, title: "Bespoke Design", desc: "Unique identity engineering.", color: "pink" }
+                            ].map((feature, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.3 + idx * 0.1 }}
+                                    onHoverStart={() => setHoveredCard(idx)}
+                                    onHoverEnd={() => setHoveredCard(null)}
+                                    className="p-6 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:border-indigo-100 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group cursor-pointer"
+                                >
+                                    <div className="relative z-10 flex flex-col gap-4">
+                                        <div className={`w-12 h-12 bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center text-gray-400 group-hover:bg-${feature.color}-50 group-hover:text-${feature.color}-500 transition-colors`}>
+                                            <feature.icon className="w-6 h-6" />
+                                        </div>
+                                        <div>
+                                            <h5 className="font-bold text-gray-900 mb-1">{feature.title}</h5>
+                                            <p className="text-sm text-gray-500 leading-relaxed">{feature.desc}</p>
+                                        </div>
+                                    </div>
+                                    <div className={`absolute -bottom-6 -right-6 w-24 h-24 bg-${feature.color}-50 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none`} />
+                                </motion.div>
+                            ))}
+                        </div>
 
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: 0.4 }}
+                            transition={{ delay: 0.5 }}
                         >
-                            <a href="/our-story" className="btn btn-primary inline-flex items-center gap-2">
-                                Read Our Story <ArrowRight className="w-4 h-4 ml-1" />
+                            <a href="/our-story" className="inline-flex items-center gap-3 bg-gray-900 border border-transparent hover:border-gray-900 hover:bg-white text-white hover:text-gray-900 px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 group">
+                                Uncover Our Philosophy
+                                <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                             </a>
                         </motion.div>
                     </div>
 
-                    {/* Right: Stats and Visuals */}
-                    <div className="flex-1 w-full max-w-lg lg:max-w-none mx-auto mt-16 md:mt-24 lg:mt-0">
+                    {/* Right: Immersive Premium Display */}
+                    <div className="flex-1 w-full relative h-[600px] flex items-center justify-center">
+                        {/* Parallax Image Structure */}
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.7, ease: "easeOut" }}
-                            className="relative"
+                            initial={{ opacity: 0, rotateZ: 5, scale: 0.9, y: 40 }}
+                            whileInView={{ opacity: 1, rotateZ: 2, scale: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 1, type: "spring", bounce: 0.4 }}
+                            className="absolute w-full max-w-lg aspect-[4/5] bg-gray-100 rounded-[2rem] overflow-hidden shadow-2xl z-10 border-8 border-white"
                         >
-                            {/* Main Image Container */}
-                            <div className="relative h-[400px] md:h-[500px] w-full rounded-[2rem] overflow-hidden shadow-2xl shadow-indigo-500/10 border border-white group">
-                                <div className="absolute inset-0 bg-indigo-900/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-                                <img
-                                    src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop"
-                                    alt="Syntax Studio Team"
-                                    className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700"
+                            <img
+                                src="https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=2070&auto=format&fit=crop"
+                                className="w-full h-full object-cover filter brightness-[1.1] hover:scale-105 transition-transform duration-1000"
+                                alt="Studio Office"
+                            />
+                        </motion.div>
+
+                        {/* Floating Metric Card */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 50, y: 50 }}
+                            whileInView={{ opacity: 1, x: 20, y: 80 }}
+                            whileHover={{ y: 70 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            className="absolute right-0 bottom-1/4 z-20 bg-white/80 backdrop-blur-xl border border-white p-6 rounded-2xl shadow-xl w-64"
+                        >
+                            <div className="flex items-center gap-4 mb-4">
+                                <div className="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600">
+                                    <Code2 className="w-6 h-6" />
+                                </div>
+                                <div>
+                                    <p className="text-gray-900 font-bold text-xl">1M+</p>
+                                    <p className="text-gray-500 text-xs tracking-wider uppercase font-bold">Lines Deployed</p>
+                                </div>
+                            </div>
+                            <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                                <motion.div
+                                    initial={{ width: 0 }}
+                                    whileInView={{ width: "85%" }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 1.5, delay: 0.6, ease: "easeOut" }}
+                                    className="h-full bg-indigo-500 rounded-full"
                                 />
                             </div>
+                        </motion.div>
 
-                            {/* Floating Stat Card 1 */}
-                            <motion.div
-                                initial={{ opacity: 0, x: -30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.5, duration: 0.6 }}
-                                className="absolute -bottom-6 -left-6 md:-bottom-8 md:-left-8 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-xl shadow-gray-200/50 border border-indigo-50 w-40 md:w-48 z-20"
-                            >
-                                <div className="text-3xl md:text-4xl font-display font-bold text-indigo-600 mb-1">150+</div>
-                                <div className="text-xs md:text-sm font-medium text-gray-500 uppercase tracking-wide">Projects Delivered</div>
-                            </motion.div>
-
-                            {/* Floating Stat Card 2 */}
-                            <motion.div
-                                initial={{ opacity: 0, y: -30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.7, duration: 0.6 }}
-                                className="absolute -top-6 -right-6 md:-top-8 md:-right-8 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-xl shadow-gray-200/50 border border-pink-50 w-40 md:w-48 z-20"
-                            >
-                                <div className="text-3xl md:text-4xl font-display font-bold text-pink-500 mb-1">99%</div>
-                                <div className="text-xs md:text-sm font-medium text-gray-500 uppercase tracking-wide">Client Retention</div>
-                            </motion.div>
+                        {/* Floating Status Tag */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -50, y: -50 }}
+                            whileInView={{ opacity: 1, x: -40, y: -60 }}
+                            whileHover={{ y: -70 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.5 }}
+                            className="absolute left-0 top-1/4 z-20 bg-gray-900 border border-gray-800 p-4 rounded-xl shadow-2xl flex items-center gap-3"
+                        >
+                            <span className="flex relative h-3 w-3">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                            </span>
+                            <span className="text-white text-xs font-mono uppercase tracking-widest font-bold">Systems Optimal</span>
                         </motion.div>
                     </div>
+
                 </div>
             </div>
         </section>

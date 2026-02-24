@@ -51,7 +51,7 @@ export default function Navbar() {
                     </div>
                     <div className="flex flex-col leading-tight">
                         <span className="font-display font-bold text-xl tracking-tight text-gray-900 group-hover:text-indigo-600 transition-colors">
-                            SYNTAX STUDIO
+                            SYNFORGE
                         </span>
                         <span className="text-xs font-mono font-medium tracking-widest text-gray-500 uppercase">
                             OFFICIAL

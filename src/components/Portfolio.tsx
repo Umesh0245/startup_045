@@ -7,25 +7,25 @@ const projects = [
         title: "Lumina Labs",
         category: "Fintech Scale",
         desc: "High-performance microservice architecture processing 1M+ secure transactions daily.",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=100&w=2500&auto=format&fit=crop"
     },
     {
         title: "Aura Health",
         category: "Cross-Platform",
         desc: "Seamless real-time data synchronization between React Native mobile clients and scalable web portals.",
-        image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=100&w=2500&auto=format&fit=crop"
     },
     {
         title: "Nexus Engine",
         category: "Enterprise SaaS",
         desc: "Award-winning SaaS design language implementing complex telemetry visualizations and lightning-fast workflows.",
-        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=100&w=2500&auto=format&fit=crop"
     },
     {
         title: "Echo Valley",
         category: "E-Commerce",
         desc: "Headless CMS integration with Shopify Plus, featuring 3D product configurators and predictive machine learning search.",
-        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=100&w=2500&auto=format&fit=crop"
     }
 ];
 

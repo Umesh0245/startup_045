@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ServiceDetail from '../../components/ServiceDetail';
+import '../../styles/global.css';
+
+const data = {
+    title: "DevOps & CI/CD.",
+    category: "Infrastructure Deployment",
+    description: "Designing extreme automated pipelines ensuring frictionless, infinitely repeatable, and highly stable code deployment cycles simultaneously globally.",
+    theme: "purple",
+    heroImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop",
+    methodologies: [
+        {
+            title: "Zero-Downtime Releases",
+            desc: "Blue-green deployment strategies ensuring no user ever sees maintenance mode. Live traffic is simply rerouted to the new cluster instantly.",
+            image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2070&auto=format&fit=crop"
+        },
+        {
+            title: "Infrastructure as Code (IaC)",
+            desc: "Every single cloud asset is written as immutable Terraform templates. When scaling to a new continent, we don't click buttons—we run code.",
+            image: "https://images.unsplash.com/photo-1623479322729-28b25c16b011?q=80&w=2070&auto=format&fit=crop"
+        },
+        {
+            title: "Automated Defense Sweeps",
+            desc: "Security scans natively wired into our pipeline. Code cannot be merged until multi-layered automated static analyses prove zero vulnerabilities.",
+            image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
+        }
+    ],
+    techStack: ["Terraform", "GitHub Actions", "Docker", "Jenkins", "Ansible", "AWS Config"]
+};
+
+---
+
+<Layout title="DevOps Engineering | SynForge">
+    <ServiceDetail client:load {...data} />
+</Layout>
