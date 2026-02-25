@@ -4,32 +4,28 @@ import { ArrowLeft, Linkedin, Twitter, Github, ChevronRight } from 'lucide-react
 
 const team = [
     {
-        name: "Elias Vance",
-        role: "Founder & Chief Architect",
-        bio: "Former Lead Infrastructure Engineer at multiple Fortune 500s. Specializes in designing planet-scale distributed systems and massive microservice orchestrations.",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=100&w=1000&auto=format&fit=crop",
-        skills: ["System Architecture", "Go", "Kubernetes", "Rust"]
+        name: "Umesh",
+        role: "Founder & Chief Technology Officer",
+        bio: "Visionary founder and technical leader. Drives architectural decisions and functional implementation across the entire SynVoke ecosystem, bridging complex backend systems with seamless frontend experiences.",
+        image: "/images/umesh-profile-red-zoomed.png",
+        objectPosition: "object-center",
+        skills: ["System Architecture", "Full Stack", "React", "Node.js"]
     },
     {
-        name: "Serena Lin",
-        role: "Head of Design & UX",
-        bio: "Award-winning creative director known for bridging the gap between ruthless minimalist aesthetics and highly complex data-heavy interfaces.",
+        name: "Manoj Kumar",
+        role: "Co-Founder & Chief Business Officer",
+        bio: "Strategic mastermind shaping the future of SynVoke. Leads business development, driving sustainable growth, forging critical industry partnerships, and expanding global market reach.",
+        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=100&w=1000&auto=format&fit=crop",
+        objectPosition: "object-center",
+        skills: ["Business Strategy", "Partnerships", "Growth Strategy", "Leadership"]
+    },
+    {
+        name: "Viswagna Brahma",
+        role: "Principal Software Engineer",
+        bio: "Versatile systems engineer building robust and scalable solutions. Responsible for the flawless execution of complex features, ensuring low-latency operations and resilient codebases.",
         image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=100&w=1000&auto=format&fit=crop",
-        skills: ["Design Systems", "Figma", "Framer", "Motion UI"]
-    },
-    {
-        name: "David Chen",
-        role: "Principal Frontend Engineer",
-        bio: "React and Three.js specialist. Responsible for the insane animation fluidity and absolute zero-latency rendering pipelines across all SynForge products.",
-        image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=100&w=1000&auto=format&fit=crop",
-        skills: ["React", "WebGL", "TypeScript", "Performance"]
-    },
-    {
-        name: "Maya Patel",
-        role: "Head of DevOps",
-        bio: "Obsessed with automation. Maps out immutable CI/CD pipelines ensuring deployments are friction-free, perfectly secure, and incredibly fast.",
-        image: "https://images.unsplash.com/photo-1531123897727-8f129e1bf08c?q=100&w=1000&auto=format&fit=crop",
-        skills: ["Terraform", "AWS", "Docker", "Security"]
+        objectPosition: "object-center",
+        skills: ["React", "TypeScript", "Backend APIs", "Performance tuning"]
     }
 ];
 
@@ -50,7 +46,7 @@ export default function CommunitySection() {
                     Back to Story
                 </a>
                 <div className="text-white font-mono text-xs uppercase tracking-widest opacity-50">
-                    SynForge / Global Team
+                    SynVoke Studio / Global Team
                 </div>
             </nav>
 
@@ -71,8 +67,8 @@ export default function CommunitySection() {
             </header>
 
             {/* Deep Team Grid */}
-            <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
+            <div className="relative z-20 max-w-[85rem] mx-auto px-4 sm:px-6">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16">
                     {team.map((member, idx) => (
                         <motion.div
                             key={idx}
@@ -88,7 +84,7 @@ export default function CommunitySection() {
                             <div className="flex flex-col sm:flex-row gap-8 mb-8 relative z-10">
                                 {/* Intense Profile Image */}
                                 <div className="w-32 h-32 sm:w-40 sm:h-40 shrink-0 rounded-[1.5rem] overflow-hidden border-2 border-white/10 bg-gray-900 group-hover:border-indigo-500/50 transition-colors duration-500">
-                                    <img src={member.image} alt={member.name} className="w-full h-full object-cover filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100" />
+                                    <img src={member.image} alt={member.name} className={`w-full h-full object-cover ${member.objectPosition || 'object-center'} filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100`} />
                                 </div>
 
                                 <div className="flex flex-col justify-center">

@@ -2,10 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Contact from '../components/Contact';
 import StorySection from '../components/StorySection';
+import Navbar from '../components/Navbar';
 import '../styles/global.css';
 ---
 
-<Layout title="Our Story | SynForge">
+<Layout title="Our Story | SynVoke Studio">
+    <Navbar client:load />
     <main class="pt-0">
         <StorySection client:load />
     </main>

@@ -42,7 +42,7 @@ export const SplashScreen = () => {
                             initial={{ scale: 0.8, opacity: 0, rotateX: 20 }}
                             animate={{ scale: 1, opacity: 1, rotateX: 0 }}
                             transition={{ duration: 1.2, ease: "easeOut" }}
-                            className="w-32 h-32 mb-8 relative"
+                            className="w-24 h-24 md:w-32 md:h-32 mb-8 relative"
                         >
                             {/* Animated SVG Logomark - Light Theme Optimized */}
                             <div className="absolute inset-0 bg-indigo-500/20 blur-3xl rounded-full" />
@@ -77,23 +77,39 @@ export const SplashScreen = () => {
                             </svg>
                         </motion.div>
 
-                        <div className="overflow-hidden h-16 flex items-center justify-center">
+                        <div className="overflow-visible flex items-center justify-center relative min-h-[5rem]">
                             <motion.h1
-                                initial={{ y: 100 }}
-                                animate={{ y: 0 }}
-                                transition={{ duration: 0.8, delay: 0.5, ease: [0.76, 0, 0.24, 1] }}
-                                className="text-4xl md:text-5xl font-display font-bold text-gray-900 tracking-tight text-center"
+                                initial="hidden" animate="visible"
+                                variants={{
+                                    hidden: { opacity: 1 },
+                                    visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.3 } }
+                                }}
+                                className="text-5xl md:text-7xl font-display font-bold text-gray-900 tracking-tight text-center flex"
                             >
-                                SYNFORGE
+                                {['S', 'y', 'n', 'V', 'o', 'k', 'e'].map((char, idx) => (
+                                    <motion.span
+                                        key={idx}
+                                        variants={{
+                                            hidden: { y: -80, opacity: 0, scale: 1.5, filter: 'blur(10px)' },
+                                            visible: {
+                                                y: 0, opacity: 1, scale: 1, filter: 'blur(0px)',
+                                                transition: { type: "spring", damping: 14, stiffness: 120 }
+                                            }
+                                        }}
+                                        className="inline-block"
+                                    >
+                                        {char}
+                                    </motion.span>
+                                ))}
                             </motion.h1>
                         </div>
 
-                        <div className="overflow-hidden h-8 mt-2 flex items-center justify-center">
+                        <div className="overflow-hidden h-8 mt-4 flex items-center justify-center">
                             <motion.p
-                                initial={{ y: 50 }}
-                                animate={{ y: 0 }}
-                                transition={{ duration: 0.8, delay: 0.7, ease: [0.76, 0, 0.24, 1] }}
-                                className="text-indigo-600 font-mono font-medium tracking-[0.2em] uppercase text-sm"
+                                initial={{ y: 50, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ duration: 0.8, delay: 1.2, ease: [0.76, 0, 0.24, 1] }}
+                                className="text-indigo-600 font-mono font-medium tracking-[0.25em] uppercase text-sm md:text-base"
                             >
                                 Digital Architecture Studio
                             </motion.p>

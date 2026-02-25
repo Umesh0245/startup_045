@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowLeft, ArrowUpRight, Cpu, Code2, ShieldCheck, Zap, Server, Award } from 'lucide-react';
+import { motion, useScroll, useTransform, type Variants } from 'framer-motion';
+import { ArrowLeft, ArrowUpRight, Cpu, Code2, ShieldCheck, Zap, Server, Award, Plus, Sparkles } from 'lucide-react';
 
 export default function StorySection() {
     const containerRef = useRef(null);
@@ -9,287 +9,327 @@ export default function StorySection() {
         offset: ["start start", "end end"]
     });
 
-    const yParallax = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+    const yParallax = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
     const textParallax = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
-    const opacityHero = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+    const scaleImage = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+    const opacityFade = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+
+    // Animation variants
+    const fadeUp: Variants = {
+        hidden: { opacity: 0, y: 40 },
+        visible: (i: number) => ({
+            opacity: 1,
+            y: 0,
+            transition: {
+                delay: i * 0.1,
+                duration: 0.8,
+                ease: [0.16, 1, 0.3, 1]
+            }
+        })
+    };
+
+    const principles = [
+        {
+            icon: <ShieldCheck className="w-8 h-8 text-emerald-400" />,
+            title: "Absolute Security",
+            desc: "Zero-trust architecture from day one. Military-grade encryption, automated pentesting, and immutable transaction logs protecting every layer."
+        },
+        {
+            icon: <Zap className="w-8 h-8 text-yellow-400" />,
+            title: "Zero Latency",
+            desc: "Global edge point distribution and V8 isolate execution. We eliminate wait times to guarantee software that reacts instantly to human intent."
+        },
+        {
+            icon: <Cpu className="w-8 h-8 text-indigo-400" />,
+            title: "Hardware Symbiosis",
+            desc: "We don't just write code; we respect the silicon. Memory-safe languages and strict resource allocation mean your app flies even on older devices."
+        },
+        {
+            icon: <Code2 className="w-8 h-8 text-pink-400" />,
+            title: "Artisanal Logic",
+            desc: "No bloated templates. No unnecessary abstractions. Every line of code is handwritten, rigidly tested, and mathematically optimized."
+        }
+    ];
 
     return (
-        <div ref={containerRef} className="bg-slate-50 min-h-[250vh] text-gray-900 selection:bg-indigo-200 font-sans relative overflow-hidden">
-            {/* Elegant Navigation */}
-            <nav className="fixed top-0 w-full z-50 px-6 py-6 md:px-12 flex justify-between items-center bg-white/70 backdrop-blur-xl border-b border-gray-200/50 transition-all">
-                <a href="/" className="inline-flex items-center gap-2 text-gray-500 hover:text-indigo-600 transition-colors text-xs font-bold tracking-widest uppercase">
-                    <ArrowLeft className="w-4 h-4" />
-                    Back to Studio
-                </a>
-                <div className="flex gap-6 items-center">
-                    <a href="#manifesto" className="text-xs font-bold tracking-widest text-gray-900 uppercase hover:text-indigo-600 transition-colors hidden md:block">Manifesto</a>
-                    <a href="#principles" className="text-xs font-bold tracking-widest text-gray-900 uppercase hover:text-indigo-600 transition-colors hidden md:block">Principles</a>
-                    <a href="/community" className="text-xs font-bold tracking-widest text-white bg-gray-900 px-4 py-2 rounded-full uppercase hover:bg-indigo-600 transition-colors">The Team</a>
-                </div>
-            </nav>
+        <div ref={containerRef} className="bg-white text-gray-900 selection:bg-indigo-500/30 font-sans relative overflow-hidden transition-colors duration-1000">
+            {/* Ambient Backgrounds - Light Mode */}
+            <div className="fixed inset-0 pointer-events-none z-0">
+                <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-indigo-500/10 rounded-full blur-[120px]" />
+                <div className="absolute top-[40%] right-[-10%] w-[60%] h-[60%] bg-purple-500/10 rounded-full blur-[150px]" />
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000006_1px,transparent_1px),linear-gradient(to_bottom,#00000006_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_40%,#000_20%,transparent_100%)]" />
+            </div>
 
-            {/* Immersive Surprise Hero: Multi-Layered Tech Grid */}
-            <div className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden z-10 pt-32 pb-20 px-4 mt-20 md:mt-0">
+            {/* Stunning Hero Section */}
+            <div className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-4 md:px-12 z-10 w-full">
+                <div className="w-full max-w-7xl mx-auto flex flex-col items-center text-center">
 
-                {/* Core animated background grid */}
-                <div className="absolute inset-0 z-0">
                     <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 0.4 }}
-                        transition={{ duration: 2 }}
-                        className="w-full h-full bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:5rem_5rem] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_30%,transparent_100%)]"
-                    />
-                </div>
-
-                <div className="text-center max-w-6xl mx-auto relative z-10 w-full">
-                    {/* Floating Tech Badges */}
-                    <div className="flex justify-center gap-4 mb-8">
-                        <motion.div
-                            initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
-                            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-gray-200 text-gray-900 tracking-widest text-[10px] font-bold uppercase shadow-sm"
-                        >
-                            <Award className="w-3.5 h-3.5 text-indigo-600" /> The Original
-                        </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
-                            className="hidden md:inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-600 border border-indigo-500 text-white tracking-widest text-[10px] font-bold uppercase shadow-lg shadow-indigo-600/30"
-                        >
-                            <Server className="w-3.5 h-3.5" /> High-Performance Systems
-                        </motion.div>
-                    </div>
+                        custom={0} initial="hidden" animate="visible" variants={fadeUp}
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/5 border border-black/10 backdrop-blur-md text-gray-600 tracking-widest text-[10px] font-bold uppercase shadow-sm mb-10"
+                    >
+                        <Sparkles className="w-3.5 h-3.5 text-indigo-500" /> SynVoke Studio Origins
+                    </motion.div>
 
                     <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                        className="text-6xl md:text-8xl lg:text-[9rem] font-display font-bold tracking-tighter leading-[0.85] text-gray-950 mb-12"
+                        initial="hidden" animate="visible"
+                        variants={{
+                            hidden: { opacity: 0 },
+                            visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } }
+                        }}
+                        className="text-6xl md:text-[8rem] lg:text-[10rem] font-display font-bold tracking-tighter leading-[0.9] text-gray-900 mb-8"
                     >
-                        Absolute <br className="hidden md:block" />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 italic">
-                            Architecture.
-                        </span>
+                        <motion.span variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } } }} className="inline-block mr-3 md:mr-6">The</motion.span>
+                        <motion.span variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } } }} className="inline-block mr-3 md:mr-6">Art</motion.span>
+                        <motion.span variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } } }} className="inline-block">of</motion.span>
+                        <br />
+                        <motion.span
+                            variants={{ hidden: { opacity: 0, y: 40, filter: 'blur(10px)', scale: 0.95 }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', scale: 1, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } } }}
+                            className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-600 to-gray-400 italic block mt-2 pb-6 pr-6 drop-shadow-sm"
+                        >
+                            Engineering.
+                        </motion.span>
                     </motion.h1>
 
-                    {/* Massive Interlocking Bento Hero Graphic */}
-                    <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-auto md:h-[400px] w-full mt-10">
-                        {/* Large Image Block */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95, x: -30 }}
-                            animate={{ opacity: 1, scale: 1, x: 0 }}
-                            transition={{ duration: 0.8, delay: 0.3 }}
-                            className="md:col-span-2 md:row-span-2 rounded-[2rem] overflow-hidden relative shadow-2xl border border-white/50"
-                        >
-                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=100&w=2000&auto=format&fit=crop" alt="Servers" className="w-full h-full object-cover filter contrast-125" />
-                            <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent text-left">
-                                <span className="text-white text-xs font-mono tracking-widest uppercase">Sys_Core_01</span>
+                    <motion.p
+                        custom={2} initial="hidden" animate="visible" variants={fadeUp}
+                        className="text-lg md:text-2xl text-gray-500 max-w-3xl mx-auto font-light leading-relaxed mb-20"
+                    >
+                        We reject the ordinary. We build highly performant, mathematically precise, incredibly beautiful software architectures that define the future.
+                    </motion.p>
+
+                    {/* Breathtaking Image Reveal with HUD Overlay */}
+                    <motion.div
+                        custom={3} initial="hidden" animate="visible" variants={fadeUp}
+                        className="w-full aspect-[21/9] md:aspect-[3/1] relative rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(79,70,229,0.15)] bg-gray-900 group"
+                    >
+                        {/* Base Image */}
+                        <motion.img
+                            style={{ scale: scaleImage }}
+                            src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=100&w=2670&auto=format&fit=crop"
+                            className="w-full h-full object-cover filter contrast-125 saturate-[0.8] mix-blend-multiply group-hover:mix-blend-normal transition-all duration-1000 origin-center"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-transparent to-transparent opacity-80" />
+
+                        {/* Interactive Tech HUD - Only visible on hover */}
+                        <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-black/60 backdrop-blur-[2px] flex items-center justify-center overflow-hidden">
+                            {/* Scanning Grid Line */}
+                            <div className="absolute top-0 left-0 w-full h-[2px] bg-indigo-500 shadow-[0_0_20px_rgba(79,70,229,1)] animate-[scan_3s_ease-in-out_infinite]" />
+
+                            {/* Tactical Reticles */}
+                            <div className="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-indigo-500/50 transition-all duration-700 group-hover:translate-x-2 group-hover:translate-y-2 delay-100" />
+                            <div className="absolute top-8 right-8 w-12 h-12 border-t-2 border-r-2 border-indigo-500/50 transition-all duration-700 group-hover:-translate-x-2 group-hover:translate-y-2 delay-100" />
+                            <div className="absolute bottom-8 right-8 w-12 h-12 border-b-2 border-r-2 border-indigo-500/50 transition-all duration-700 group-hover:-translate-x-2 group-hover:-translate-y-2 delay-100" />
+                            <div className="absolute bottom-10 left-8 w-12 h-12 border-b-2 border-l-2 border-indigo-500/50 transition-all duration-700 group-hover:translate-x-2 group-hover:-translate-y-2 delay-100" />
+
+                            {/* Terminal Boot Sequence */}
+                            <div className="bg-black/90 border border-indigo-500/30 p-6 rounded-lg font-mono text-xs md:text-sm text-indigo-400 w-full max-w-lg mx-6 transform translate-y-10 group-hover:translate-y-0 transition-all duration-[800ms] ease-out shadow-[0_0_50px_rgba(79,70,229,0.2)]">
+                                <div className="flex gap-2 mb-4 border-b border-white/10 pb-3">
+                                    <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                                    <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                                    <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                                </div>
+                                <div className="space-y-3 font-medium">
+                                    <p className="flex justify-between items-center group-hover:opacity-100 opacity-0 transition-opacity duration-300 delay-[500ms]">
+                                        <span className="text-white">&gt; INITIALIZING SYNFORGE ENGINE...</span>
+                                        <span className="text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded">[OK]</span>
+                                    </p>
+                                    <p className="flex justify-between items-center group-hover:opacity-100 opacity-0 transition-opacity duration-300 delay-[900ms]">
+                                        <span className="text-white">&gt; COMPILING RUST BINARIES...</span>
+                                        <span className="text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded">[0.04ms]</span>
+                                    </p>
+                                    <p className="flex justify-between items-center group-hover:opacity-100 opacity-0 transition-opacity duration-300 delay-[1300ms]">
+                                        <span className="text-white">&gt; SECURING ZERO-TRUST BOUNDARY...</span>
+                                        <span className="text-indigo-400 bg-indigo-400/10 px-2 py-0.5 rounded">[LOCKED]</span>
+                                    </p>
+                                    <p className="flex items-center gap-2 group-hover:opacity-100 opacity-0 transition-opacity duration-300 delay-[1700ms] pt-2">
+                                        <span className="text-emerald-400 font-bold">&gt; ARCHITECTURE SYNCHRONIZED.</span>
+                                        <span className="text-indigo-400 bg-indigo-400 flex items-center justify-center w-2 h-4 animate-pulse" />
+                                    </p>
+                                </div>
                             </div>
-                        </motion.div>
+                        </div>
 
-                        {/* Top Right Code Block */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95, y: -30 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                            className="md:col-span-2 md:row-span-1 rounded-[2rem] bg-gray-950 border border-gray-800 p-6 text-left shadow-2xl overflow-hidden relative flex flex-col justify-center"
-                        >
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/20 rounded-full blur-[40px] pointer-events-none" />
-                            <p className="text-indigo-400 font-mono text-sm mb-2 opacity-80">export interface DistributedCore {'{'}</p>
-                            <p className="pl-6 text-pink-400 font-mono text-xs opacity-90 mb-1">latency: '0ms';</p>
-                            <p className="pl-6 text-emerald-400 font-mono text-xs opacity-90 mb-1">scaling: 'infinite';</p>
-                            <p className="pl-6 text-purple-400 font-mono text-xs opacity-90">fault_tolerance: true;</p>
-                            <p className="text-indigo-400 font-mono text-sm mt-2 opacity-80">{'}'}</p>
-                        </motion.div>
+                        {/* Standard Base Coordinates */}
+                        <div className="absolute bottom-10 left-10 flex gap-4 items-end z-20 transition-opacity duration-500 group-hover:opacity-0 hidden md:flex">
+                            <div className="text-xs font-mono text-white/50 uppercase tracking-widest">
+                                Location <br /><span className="text-white mt-1 block">Global Network</span>
+                            </div>
+                            <div className="text-xs font-mono text-white/50 uppercase tracking-widest pl-8 border-l border-white/20">
+                                Foundation <br /><span className="text-white mt-1 block">2026</span>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+            </div>
 
-                        {/* Bottom Metric Block */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95, y: 30 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.5 }}
-                            className="md:col-span-1 md:row-span-1 rounded-[2rem] bg-white border border-gray-200 p-6 shadow-xl flex flex-col items-center justify-center text-center group"
-                        >
-                            <ShieldCheck className="w-8 h-8 text-emerald-500 mb-3 group-hover:scale-110 transition-transform" />
-                            <h4 className="text-3xl font-display font-bold text-gray-900">100%</h4>
-                            <p className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mt-1">Uptime SLA</p>
-                        </motion.div>
+            {/* Editorial Manifesto Section - Dropping into Darkness */}
+            <div id="manifesto" className="relative z-20 py-24 bg-[#030303] text-gray-100 shadow-[0_-40px_100px_rgba(0,0,0,0.8)]">
+                <div className="max-w-6xl mx-auto px-6 md:px-12">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
 
-                        {/* Bottom Image Block */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95, x: 30 }}
-                            animate={{ opacity: 1, scale: 1, x: 0 }}
-                            transition={{ duration: 0.8, delay: 0.6 }}
-                            className="md:col-span-1 md:row-span-1 rounded-[2rem] overflow-hidden relative shadow-xl"
-                        >
-                            <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?q=100&w=1000&auto=format&fit=crop" alt="Design" className="w-full h-full object-cover filter brightness-[1.1]" />
-                        </motion.div>
+                        <div className="lg:col-span-5">
+                            <motion.div
+                                initial={{ opacity: 0, x: -40 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, margin: "-100px" }}
+                                transition={{ duration: 0.8, ease: "easeOut" }}
+                                className="sticky top-40"
+                            >
+                                <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-white leading-[1.05] tracking-tight mb-8">
+                                    Where Masterpieces <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-600 block mt-2">Are Built.</span>
+                                </h2>
+                                <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full mb-8 shadow-[0_0_20px_rgba(79,70,229,0.5)]" />
+                                <p className="text-gray-400 font-light leading-relaxed max-w-sm hidden lg:block text-lg">
+                                    SynVoke Studio is not a typical agency. It is a highly specialized engineering forge where visionary founders and enterprise leaders bring their most complex ideas to be materialized into flawless digital reality.
+                                </p>
+                            </motion.div>
+                        </div>
+
+                        <div className="lg:col-span-7 prose prose-lg prose-invert text-gray-400 font-light leading-relaxed">
+                            <motion.div
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-100px" }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                            >
+                                <p className="text-2xl md:text-3xl text-gray-200 mb-10 leading-snug">
+                                    We don't just write code; we orchestrate digital legacies. The most ambitious projects demand profound mastery over architecture, scale, and human psychology.
+                                </p>
+                                <p className="mb-8">
+                                    While others assemble fragile, pre-packaged templates and prioritize deployment speed over architectural substance, we forge bespoke, high-performance systems from the absolute ground up. We believe that true, category-defining products aren't merely built—they are painstakingly crafted.
+                                </p>
+                                <p className="mb-12">
+                                    <strong className="text-white">SynVoke Studio is the crucible where category leaders emerge.</strong> From zero-latency fintech exchanges to massive spatial computing interfaces, we combine military-grade backends with breathtakingly smooth frontends. This is where the impossible is shipped daily, and where your magnum opus comes to life.
+                                </p>
+
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-16 relative z-10">
+                                    <div className="bg-white/5 border border-white/20 rounded-[2rem] p-8 backdrop-blur-md relative overflow-hidden group hover:border-indigo-400 hover:shadow-[0_0_40px_rgba(79,70,229,0.25)] transition-all duration-500">
+                                        <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-[40px] group-hover:bg-indigo-500/20 transition-all duration-500" />
+                                        <Code2 className="w-8 h-8 text-indigo-400 mb-6 group-hover:scale-110 transition-transform duration-500" />
+                                        <h3 className="text-xl font-bold font-display text-white mb-3">Bespoke Engineering.</h3>
+                                        <p className="text-sm text-gray-400 font-light m-0 leading-relaxed">
+                                            Every architecture is handcrafted specifically for your scale, completely defying the limitations of generic frameworks and fragile templates.
+                                        </p>
+                                    </div>
+                                    <div className="bg-white/5 border border-white/20 rounded-[2rem] p-8 backdrop-blur-md relative overflow-hidden group hover:border-pink-400 hover:shadow-[0_0_40px_rgba(219,39,119,0.25)] transition-all duration-500">
+                                        <div className="absolute bottom-0 left-0 w-32 h-32 bg-pink-500/10 rounded-full blur-[40px] group-hover:bg-pink-500/20 transition-all duration-500" />
+                                        <Sparkles className="w-8 h-8 text-pink-400 mb-6 group-hover:scale-110 transition-transform duration-500" />
+                                        <h3 className="text-xl font-bold font-display text-white mb-3">Market Dominance.</h3>
+                                        <p className="text-sm text-gray-400 font-light m-0 leading-relaxed">
+                                            We build products that are so undeniably fast, secure, and visually stunning that they immediately outclass entire industries of competitors.
+                                        </p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            {/* Extensive Narrative Scrolling Content */}
-            <div className="relative z-20 bg-white border-t border-gray-100 shadow-[0_-30px_60px_rgba(0,0,0,0.03)] pb-40">
-                <div className="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-40">
+            {/* Principles Premium Grid */}
+            <div id="principles" className="py-24 relative border-t border-white/5 bg-[#030303]">
+                <div className="max-w-7xl mx-auto px-6 md:px-12">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-24"
+                    >
+                        <h2 className="text-SM font-mono tracking-[0.3em] font-bold uppercase text-indigo-500 mb-4">The SynVoke Studio Standard</h2>
+                        <h3 className="text-5xl md:text-7xl font-display font-bold text-white">Core Dictates.</h3>
+                    </motion.div>
 
-                    {/* Massive Graphic Break */}
-                    <div className="relative w-full aspect-[21/9] rounded-[2.5rem] overflow-hidden mb-32 shadow-2xl bg-gray-900 -mt-40 z-30 border-8 border-white group">
-                        <motion.img
-                            style={{ y: yParallax }}
-                            src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop"
-                            alt="Motherboard High Res"
-                            className="absolute inset-0 w-full h-[150%] object-cover opacity-60 mix-blend-screen scale-110 group-hover:opacity-100 transition-opacity duration-1000"
-                        />
-                        <div className="absolute inset-x-0 bottom-0 p-10 bg-gradient-to-t from-gray-950 to-transparent">
-                            <span className="text-white font-mono text-sm tracking-widest uppercase">sys_core_architecture_v4</span>
-                        </div>
-                    </div>
-
-                    {/* Manifesto / Extensive Deep Explanation Section */}
-                    <div id="manifesto" className="max-w-5xl mx-auto mb-32 md:mb-48">
-                        <motion.h2
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.8 }}
-                            className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-gray-900 leading-[1.1] tracking-tight mb-16 text-center"
-                        >
-                            We build software like <span className="text-indigo-600 italic">physical architecture.</span>
-                        </motion.h2>
-
-                        {/* Multi-column complex content read */}
-                        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20">
-
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                        {principles.map((p, idx) => (
                             <motion.div
-                                initial={{ opacity: 0, x: -30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.8 }}
-                                className="md:col-span-5"
+                                key={idx}
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.7, delay: idx * 0.1 }}
+                                className="group relative p-[1px] rounded-[2.5rem] bg-gradient-to-b from-white/30 via-white/5 to-transparent hover:from-indigo-400 hover:via-purple-500/50 hover:to-transparent transition-all duration-700 shadow-[0_0_30px_rgba(255,255,255,0.03)] hover:shadow-[0_0_50px_rgba(79,70,229,0.3)]"
                             >
-                                <h3 className="text-3xl font-bold font-display mb-6 border-b border-gray-200 pb-6">The Flaw in the Modern Web</h3>
-                                <p className="text-xl text-gray-600 font-light leading-relaxed mb-6">
-                                    The internet has been overrun by fragile, pre-packaged templates. Agencies assemble components without understanding the underlying math. They prioritize deployment speed over architectural substance.
-                                </p>
-                                <p className="text-xl text-gray-600 font-light leading-relaxed">
-                                    This results in platforms that inevitably fracture when subjected to actual global scale. We fundamentally reject this entire approach. We are purists.
-                                </p>
-                            </motion.div>
-
-                            <motion.div
-                                initial={{ opacity: 0, x: 30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.8, delay: 0.2 }}
-                                className="md:col-span-7 bg-slate-50 p-10 md:p-12 rounded-[2rem] border border-gray-100 shadow-sm"
-                            >
-                                <h3 className="text-3xl font-bold font-display mb-8">The SynForge Solution</h3>
-
-                                <div className="space-y-8">
-                                    <div className="flex gap-6">
-                                        <div className="shrink-0 w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center"><Server className="w-6 h-6" /></div>
-                                        <div>
-                                            <h4 className="font-bold text-xl mb-2">Deep Systems Design</h4>
-                                            <p className="text-gray-500 leading-relaxed font-light">We originate at the database layer. Schema design, edge-computed routing, and immensely scalable microservices form the absolute bedrock of what we deliver.</p>
+                                <div className="bg-[#080808] w-full h-full rounded-[2.4rem] p-10 md:p-14 relative overflow-hidden border border-white/5 group-hover:border-transparent transition-colors duration-500">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/0 via-transparent to-indigo-500/0 group-hover:from-indigo-500/20 transition-colors duration-700" />
+                                    <div className="relative z-10">
+                                        <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                                            {p.icon}
                                         </div>
+                                        <h4 className="text-3xl font-display font-bold text-white mb-4">{p.title}</h4>
+                                        <p className="text-gray-400 text-lg font-light leading-relaxed">{p.desc}</p>
                                     </div>
-                                    <div className="flex gap-6">
-                                        <div className="shrink-0 w-12 h-12 rounded-xl bg-pink-100 text-pink-500 flex items-center justify-center"><Code2 className="w-6 h-6" /></div>
-                                        <div>
-                                            <h4 className="font-bold text-xl mb-2">Artisanal Code Tying</h4>
-                                            <p className="text-gray-500 leading-relaxed font-light">Every single line of code is handwritten, rigorously peer-reviewed, strictly type-checked, and immensely optimized for performance metrics.</p>
-                                        </div>
-                                    </div>
+                                    <Plus className="absolute top-10 right-10 w-6 h-6 text-white/10 group-hover:text-white/30 group-hover:rotate-90 transition-all duration-500" />
                                 </div>
                             </motion.div>
-
-                        </div>
+                        ))}
                     </div>
-
-                    {/* Principles Bento Grid */}
-                    <div id="principles" className="mb-32 md:mb-48">
-                        <div className="text-center mb-16">
-                            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900">Our Core Dictates</h2>
-                            <p className="text-gray-500 mt-4 text-xl">The unbending rules by which we engineer.</p>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
-
-                            <motion.div
-                                initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
-                                className="md:col-span-2 bg-gray-900 border border-gray-800 rounded-[2rem] p-10 text-white relative overflow-hidden group shadow-xl"
-                            >
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/20 rounded-full blur-[80px] group-hover:bg-emerald-500/30 transition-colors" />
-                                <ShieldCheck className="w-10 h-10 text-emerald-400 mb-6" />
-                                <h3 className="text-3xl font-display font-bold mb-4">Unbreachable Security</h3>
-                                <p className="text-gray-400 text-lg font-light max-w-lg">Military-grade encryption, automated penetration testing, and absolute data integrity validation built into every data transaction we process.</p>
-                            </motion.div>
-
-                            <motion.div
-                                initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}
-                                className="bg-white border border-gray-200 rounded-[2rem] p-10 shadow-lg hover:shadow-xl transition-shadow group"
-                            >
-                                <Zap className="w-10 h-10 text-yellow-500 mb-6" />
-                                <h3 className="text-2xl font-display font-bold mb-4">Zero Latency</h3>
-                                <p className="text-gray-500 font-light">Global edge distribution guarantees software that reacts instantaneously.</p>
-                            </motion.div>
-
-                            <motion.div
-                                initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }}
-                                className="bg-indigo-600 border border-indigo-500 rounded-[2rem] p-10 text-white shadow-xl hover:bg-indigo-700 transition-colors group relative overflow-hidden"
-                            >
-                                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/20 blur-[50px] mix-blend-overlay" />
-                                <Cpu className="w-10 h-10 text-indigo-100 mb-6" />
-                                <h3 className="text-2xl font-display font-bold mb-4">Hardware Symbiosis</h3>
-                                <p className="text-indigo-100 font-light max-w-sm">We code explicitly respecting the exact hardware limits of the end-user device.</p>
-                            </motion.div>
-
-                            <motion.div
-                                initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.3 }}
-                                className="md:col-span-2 bg-slate-50 border border-gray-200 rounded-[2rem] p-10 relative overflow-hidden group shadow-lg"
-                            >
-                                <div className="flex flex-col md:flex-row gap-8 items-center">
-                                    <div className="flex-1">
-                                        <h3 className="text-3xl font-display font-bold text-gray-900 mb-4">Mathematical UI</h3>
-                                        <p className="text-gray-600 text-lg font-light leading-relaxed">Design is not just visual; it is structural. We enforce strict geometric harmony, ensuring flawless responsiveness from gigantic 4k displays down to the simplest mobile viewports.</p>
-                                    </div>
-                                    <div className="w-48 h-48 bg-white border border-gray-200 rounded-2xl shadow-sm flex items-center justify-center text-gray-300 group-hover:scale-105 transition-transform">
-                                        <svg viewBox="0 0 100 100" className="w-24 h-24 fill-current">
-                                            <rect x="10" y="10" width="80" height="80" rx="10" fill="none" stroke="currentColor" strokeWidth="4" />
-                                            <line x1="10" y1="50" x2="90" y2="50" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
-                                            <line x1="50" y1="10" x2="50" y2="90" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        </div>
-                    </div>
-
-                    {/* Final CTA / Manifesto Closing linking to Community */}
-                    <div className="flex flex-col items-center justify-center text-center">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                            className="bg-gray-900 p-10 md:p-16 rounded-[3rem] shadow-2xl max-w-5xl w-full text-white relative overflow-hidden"
-                        >
-                            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/20 rounded-full blur-[100px] pointer-events-none" />
-                            <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 tracking-tight relative z-10">
-                                Meet the Architects.
-                            </h2>
-                            <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto font-light relative z-10">
-                                Discover the world-class systems engineers, award-winning designers, and operational experts who power SynForge.
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
-                                <a href="/community" className="inline-flex items-center justify-center gap-3 bg-white text-gray-900 hover:bg-indigo-50 hover:scale-105 transition-transform px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase shadow-xl">
-                                    View Our Team
-                                </a>
-                                <a href="/#contact" className="inline-flex items-center justify-center gap-3 bg-transparent border border-gray-700 text-white hover:border-gray-500 px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-colors">
-                                    Start a Project <ArrowUpRight className="w-4 h-4" />
-                                </a>
-                            </div>
-                        </motion.div>
-                    </div>
-
                 </div>
+            </div>
+
+            {/* Live Telemetry / Density Section */}
+            <div className="py-16 md:py-24 bg-[#050505] relative overflow-hidden border-t border-b border-white/5">
+                <div className="absolute inset-0 z-0">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:2rem_2rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_10%,transparent_100%)] opacity-30" />
+                </div>
+
+                <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                        {[
+                            { stat: "99.999%", label: "Uptime SLA", glow: "text-emerald-400" },
+                            { stat: "< 50ms", label: "Global Latency", glow: "text-indigo-400" },
+                            { stat: "Zero", label: "Known Breaches", glow: "text-pink-400" },
+                            { stat: "100%", label: "Type Safe", glow: "text-white" }
+                        ].map((m, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.5, delay: i * 0.1 }}
+                                className="flex flex-col items-center justify-center p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group"
+                            >
+                                <h4 className={`text-4xl md:text-5xl font-display font-bold ${m.glow} mb-2`}>{m.stat}</h4>
+                                <p className="text-gray-500 font-mono text-xs uppercase tracking-widest group-hover:text-gray-300 transition-colors">{m.label}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Immersive CTA Footer */}
+            <div className="py-24 md:py-32 relative overflow-hidden flex justify-center bg-[#030303]">
+                <div className="absolute inset-0 z-0">
+                    <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=100&w=2000&auto=format&fit=crop" className="w-full h-full object-cover opacity-30 filter grayscale mix-blend-luminosity" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#030303]/80 to-[#030303]" />
+                </div>
+
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95, y: 50 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="relative z-10 text-center max-w-4xl mx-auto px-6 border border-white/20 bg-black/50 backdrop-blur-3xl p-16 md:p-24 rounded-[3rem] shadow-[0_0_50px_rgba(0,0,0,0.8)] hover:border-indigo-500/50 hover:shadow-[0_0_80px_rgba(79,70,229,0.2)] transition-all duration-700"
+                >
+                    <div className="w-16 h-16 mx-auto bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mb-8 shadow-lg shadow-indigo-500/30">
+                        <Award className="w-8 h-8 text-white" />
+                    </div>
+                    <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6 tracking-tight">
+                        Meet the Architects.
+                    </h2>
+                    <p className="text-xl text-gray-400 font-light mb-12 max-w-2xl mx-auto leading-relaxed">
+                        Discover the world-class systems engineers, award-winning designers, and operational experts who power SynVoke Studio.
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                        <a href="/community" className="inline-flex items-center justify-center gap-3 bg-white text-gray-900 hover:bg-gray-200 px-10 py-5 rounded-full font-bold text-xs tracking-widest uppercase transition-colors">
+                            View Our Team
+                        </a>
+                        <a href="/#contact" className="inline-flex items-center justify-center gap-3 bg-white/5 border border-white/10 text-white hover:bg-white/10 px-10 py-5 rounded-full font-bold text-xs tracking-widest uppercase transition-colors">
+                            Start a Project <ArrowUpRight className="w-4 h-4" />
+                        </a>
+                    </div>
+                </motion.div>
             </div>
         </div>
     );

@@ -15,8 +15,8 @@ export default function Contact() {
                         </p>
 
                         <div className="space-y-4">
-                            <a href="mailto:hello@synforge.com" className="block text-2xl font-medium text-gray-900 hover:text-indigo-600 transition-colors">
-                                hello@synforge.com
+                            <a href="mailto:hello@synvokestudio.com" className="block text-2xl md:text-3xl lg:text-4xl font-display font-medium text-gray-900 hover:text-indigo-600 transition-colors">
+                                hello@synvokestudio.com
                             </a>
                             <p className="text-gray-500 text-lg">+1 (555) 123-4567</p>
                             <p className="text-gray-500 text-lg">San Francisco, CA</p>
@@ -73,8 +73,8 @@ export default function Contact() {
                     </div>
                 </div>
 
-                <div className="mt-24 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-                    <p>&copy; {new Date().getFullYear()} SynForge. All rights reserved.</p>
+                <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium text-gray-500">
+                    <p>&copy; {new Date().getFullYear()} SynVoke Studio. All rights reserved.</p>
                     <div className="flex gap-6">
                         <a href="#" className="hover:text-indigo-600 transition-colors">Privacy Policy</a>
                         <a href="#" className="hover:text-indigo-600 transition-colors">Terms of Service</a>

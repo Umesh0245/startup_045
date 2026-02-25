@@ -6,31 +6,31 @@ import '../../styles/global.css';
 const data = {
     title: "Enterprise Core Security.",
     category: "Cyber Defense",
-    description: "Multi-layered vulnerability testing and rigorous protocol integrations intentionally designed to defend critical scale resources from catastrophic threat vectors.",
+    description: "Multi-layered vulnerability testing, AES-256 end-to-end encryption, and rigorous OAuth2/JWT protocol integrations to protect your most critical business and user data.",
     theme: "pink",
-    heroImage: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=100&w=3840&auto=format&fit=crop",
     methodologies: [
         {
-            title: "Zero-Trust Architecture",
-            desc: "Implicitly assuming that every network interaction is hostile. No machine, API, or service is inherently trusted without active cryptographical validation at every step.",
-            image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2070&auto=format&fit=crop"
+            title: "Zero-Trust Mesh",
+            desc: "Implementing rigorous internal network isolation. Every micro-node verifies identity before exchanging packets, rendering unauthorized lateral movements mathematically impossible.",
+            image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=100&w=2500&auto=format&fit=crop"
         },
         {
-            title: "AES-256 In-Transit Encryption",
-            desc: "All global traffic and internal pod communication is encrypted beyond military specifications. Complete TLS termination managed at hardened edge gateways.",
-            image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
+            title: "Penetration Resistance",
+            desc: "Continuous proactive red-teaming against your systems using cutting-edge exploit methodologies. We expose zero-day logic flaws before threat actors do.",
+            image: "https://images.unsplash.com/photo-1614064641913-6b22eb8e7ed9?q=100&w=2500&auto=format&fit=crop"
         },
         {
-            title: "JWT / OAuth2 Strict Governance",
-            desc: "Decoupled authentication logic preventing state vulnerability. Fast-expiring tokens combined with strict role-based access control (RBAC).",
-            image: "https://images.unsplash.com/photo-1614064641913-6b22eb8e7ed9?q=80&w=2070&auto=format&fit=crop"
+            title: "Cryptographic Vaults",
+            desc: "Storing sensitive user metrics using immutable HMAC signing and heavily salted Argon2 algorithms. Breaches yield absolutely nothing but meaningless noise.",
+            image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=100&w=2500&auto=format&fit=crop"
         }
     ],
-    techStack: ["OAuth2.0", "Auth0", "AWS KMS", "Cloudflare WAF", "JWT", "Bcrypt"]
+    techStack: ["Argon2", "OAuth 2.0", "JWT", "Vault", "Cloudflare Shield", "OpenID"]
 };
 
 ---
 
-<Layout title="Core Security | SynForge">
+<Layout title="Core Security | SynVoke Studio">
     <ServiceDetail client:load {...data} />
 </Layout>

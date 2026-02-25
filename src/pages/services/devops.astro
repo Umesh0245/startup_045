@@ -5,32 +5,32 @@ import '../../styles/global.css';
 
 const data = {
     title: "DevOps & CI/CD.",
-    category: "Infrastructure Deployment",
-    description: "Designing extreme automated pipelines ensuring frictionless, infinitely repeatable, and highly stable code deployment cycles simultaneously globally.",
+    category: "Infrastructure",
+    description: "Extreme automated pipelines ensuring frictionless, infinitely repeatable, and highly secure deployment cycles globally.",
     theme: "purple",
-    heroImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1667375252877-3e1a0b3f885f?q=100&w=3840&auto=format&fit=crop",
     methodologies: [
         {
-            title: "Zero-Downtime Releases",
-            desc: "Blue-green deployment strategies ensuring no user ever sees maintenance mode. Live traffic is simply rerouted to the new cluster instantly.",
-            image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2070&auto=format&fit=crop"
+            title: "Zero-Downtime Pipelines",
+            desc: "Self-healing deployment nodes using advanced blue/green and canary release strategies. We guarantee code reaches production flawlessly without dropping a single packet.",
+            image: "https://images.unsplash.com/photo-1507721999584-59e44f3c7131?q=100&w=2500&auto=format&fit=crop"
         },
         {
-            title: "Infrastructure as Code (IaC)",
-            desc: "Every single cloud asset is written as immutable Terraform templates. When scaling to a new continent, we don't click buttons—we run code.",
-            image: "https://images.unsplash.com/photo-1623479322729-28b25c16b011?q=80&w=2070&auto=format&fit=crop"
+            title: "Infrastructure as Code",
+            desc: "Every component is defined programmatically via Terraform and Pulumi. Your entire scaling infrastructure can be rebuilt or mirrored on demand in under 60 seconds.",
+            image: "https://images.unsplash.com/photo-1607706189992-eaa520b2d42e?q=100&w=2500&auto=format&fit=crop"
         },
         {
-            title: "Automated Defense Sweeps",
-            desc: "Security scans natively wired into our pipeline. Code cannot be merged until multi-layered automated static analyses prove zero vulnerabilities.",
-            image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
+            title: "Deep Observability",
+            desc: "Custom telemetry integrations mapping every internal metric. If a millisecond irregularity occurs, our systems auto-scale and alert long before user impact.",
+            image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=100&w=2500&auto=format&fit=crop"
         }
     ],
-    techStack: ["Terraform", "GitHub Actions", "Docker", "Jenkins", "Ansible", "AWS Config"]
+    techStack: ["GitHub Actions", "Terraform", "AWS", "Datadog", "Prometheus", "Vercel", "Pulumi"]
 };
 
 ---
 
-<Layout title="DevOps Engineering | SynForge">
+<Layout title="DevOps Engineering | SynVoke Studio">
     <ServiceDetail client:load {...data} />
 </Layout>

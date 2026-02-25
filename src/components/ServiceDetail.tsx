@@ -123,70 +123,95 @@ export default function ServiceDetail({ title, category, description, theme, her
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-                    {methodologies.map((method: any, idx: number) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.7, delay: idx * 0.15, ease: "easeOut" }}
-                            className="group relative"
-                        >
-                            <div className="w-full aspect-[4/3] rounded-3xl overflow-hidden bg-[#0d1117] border border-gray-800 mb-8 relative shadow-xl">
-                                <img src={method.image} className="w-full h-full object-cover opacity-50 grayscale contrast-125 group-hover:grayscale-0 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700" alt={method.title} />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117] to-transparent opacity-80" />
+                {/* Astonishing Architectural Spine Timeline */}
+                <div className="relative max-w-6xl mx-auto mt-20">
+                    {/* The Connecting Spine */}
+                    <div className={`absolute top-0 bottom-0 left-[1.5rem] md:left-1/2 w-[1px] ${glow} transform md:-translate-x-1/2 hidden sm:block`} />
 
-                                {/* UI Floating Element Overlay */}
-                                <div className={`absolute bottom-6 left-6 right-6 p-4 rounded-2xl backdrop-blur-md bg-white/5 border border-white/10 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 shadow-2xl`}>
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                                        <span className="text-xs font-mono text-white tracking-widest uppercase">{method.title} System</span>
+                    {methodologies.map((method: any, idx: number) => {
+                        const isEven = idx % 2 === 0;
+                        return (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-100px" }}
+                                transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                                className={`relative flex flex-col md:flex-row items-center gap-12 lg:gap-24 mb-32 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} group`}
+                            >
+                                {/* Center Node on Spine */}
+                                <div className={`absolute left-[1.5rem] md:left-1/2 w-4 h-4 rounded-full bg-[#030712] border-2 ${border} transform -translate-x-1/2 hidden sm:flex items-center justify-center z-10 transition-transform duration-500 group-hover:scale-150 group-hover:${bgAccent}`}>
+                                    <div className={`w-1 h-1 rounded-full ${glow} animate-ping`} />
+                                </div>
+
+                                {/* Deep Content Block */}
+                                <div className={`flex-1 w-full pl-16 sm:pl-0 md:w-1/2 ${isEven ? 'md:text-right' : 'md:text-left'}`}>
+                                    <div className={`inline-flex items-center gap-3 px-4 py-1.5 rounded-full ${bgAccent} border ${border} ${text} text-[10px] font-bold tracking-widest uppercase mb-6 shadow-sm`}>
+                                        <span className="w-1.5 h-1.5 rounded-full bg-current" /> Phase <span className="font-mono">0{idx + 1}</span>
+                                    </div>
+                                    <h3 className="text-3xl md:text-5xl font-display font-medium text-white mb-6 leading-[1.15]">{method.title}</h3>
+                                    <p className="text-gray-400 text-lg md:text-xl font-light leading-relaxed">
+                                        {method.desc}
+                                    </p>
+                                </div>
+
+                                {/* Massive Visual Block */}
+                                <div className="flex-1 w-full md:w-1/2 relative">
+                                    <div className={`w-full aspect-[4/3] rounded-[2rem] overflow-hidden bg-gray-900 border border-white/5 relative shadow-2xl group-hover:border-${theme}-500/30 transition-colors duration-700`}>
+                                        <div className={`absolute inset-0 ${glow} opacity-0 group-hover:opacity-30 transition-opacity duration-1000 z-10 mix-blend-color`} />
+                                        <img src={method.image} className="w-full h-full object-cover filter contrast-125 brightness-[0.7] group-hover:brightness-[1.1] group-hover:scale-105 transition-all duration-[1.5s] ease-[0.16,1,0.3,1]" alt={method.title} />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-transparent opacity-90 pointer-events-none z-10" />
+
+                                        {/* Precision Target Overlay */}
+                                        <div className="absolute bottom-6 left-6 right-6 z-20 flex justify-between items-end opacity-0 group-hover:opacity-100 transition-opacity duration-700 translate-y-4 group-hover:translate-y-0">
+                                            <div className="font-mono text-[10px] text-white/70 uppercase tracking-widest backdrop-blur-md bg-black/40 border border-white/10 px-4 py-2 rounded-xl">
+                                                Active Node // <span className={text}>{method.title.substring(0, 8)}...</span>
+                                            </div>
+                                            <div className={`w-10 h-10 rounded-full border border-white/20 flex items-center justify-center backdrop-blur-md`}>
+                                                <div className={`w-2 h-2 rounded-full ${bgAccent}`} />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div className="pr-6">
-                                <div className="flex items-center gap-4 mb-4">
-                                    <h3 className="text-2xl font-bold text-white flex-1">{method.title}</h3>
-                                    <span className={`text-4xl font-mono opacity-20 font-bold ${text}`}>0{idx + 1}</span>
-                                </div>
-                                <p className="text-gray-400 leading-relaxed font-light text-lg">{method.desc}</p>
-                            </div>
-                        </motion.div>
-                    ))}
+                            </motion.div>
+                        );
+                    })}
                 </div>
             </div>
 
             {/* Astonishing Tech Stack visualization */}
-            <div className="relative z-20 py-32 bg-[#0a0d14] border-y border-white/5 overflow-hidden">
-                <div className={`absolute top-0 right-1/4 w-[500px] h-[500px] ${glow} rounded-full blur-[150px] pointer-events-none opacity-20`} />
-                <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-16 relative z-10">
-                    <div className="w-full md:w-1/3">
-                        <div className={`w-12 h-12 rounded-xl ${bgAccent} border ${border} flex items-center justify-center mb-6`}>
-                            <Terminal className={`w-6 h-6 ${text}`} />
+            <div className={`relative z-20 py-32 bg-[#050914] overflow-hidden`}>
+                <div className="absolute inset-0 border-y border-white/5">
+                    <div className={`absolute inset-0 bg-gradient-to-b from-[#030712] via-transparent to-[#030712] z-10`} />
+                    <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] ${glow} rounded-full blur-[150px] pointer-events-none opacity-20`} />
+                </div>
+
+                <div className="max-w-7xl mx-auto px-4 relative z-20">
+                    <div className="text-center max-w-3xl mx-auto mb-20">
+                        <div className={`w-16 h-16 mx-auto rounded-2xl ${bgAccent} border ${border} flex items-center justify-center mb-8 shadow-2xl shadow-${theme}-500/20`}>
+                            <Terminal className={`w-8 h-8 ${text}`} />
                         </div>
-                        <h3 className="text-3xl md:text-5xl font-display font-medium text-white mb-6">Stack Layers</h3>
-                        <p className="text-gray-400 text-lg font-light leading-relaxed">
-                            The precise matrix of battle-tested technologies our engineers utilize to guarantee peak performance and unbreachable security infrastructures.
+                        <h3 className="text-4xl md:text-6xl font-display font-medium text-white mb-6">Engineered Layers</h3>
+                        <p className="text-gray-400 text-xl font-light leading-relaxed">
+                            The precise matrix of battle-tested technologies our engineers utilize to guarantee peak performance.
                         </p>
                     </div>
-                    <div className="w-full md:w-2/3">
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                            {techStack.map((tech: string, idx: number) => (
-                                <motion.div
-                                    key={idx}
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.4, delay: idx * 0.05 }}
-                                    className="px-6 py-4 rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all shadow-lg backdrop-blur-sm group flex items-center justify-between"
-                                >
-                                    <span className="text-gray-200 font-mono text-sm tracking-wide group-hover:text-white transition-colors">{tech}</span>
-                                    <ChevronRight className="w-4 h-4 text-gray-600 group-hover:text-white transition-colors" />
-                                </motion.div>
-                            ))}
-                        </div>
+
+                    <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+                        {techStack.map((tech: string, idx: number) => (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: idx * 0.05, type: "spring", stiffness: 200, damping: 20 }}
+                                className={`px-8 py-4 md:py-5 rounded-full bg-white/5 border border-white/10 hover:border-${theme}-500/50 hover:bg-white/10 transition-all shadow-xl backdrop-blur-md group relative overflow-hidden flex items-center gap-4 cursor-pointer`}
+                            >
+                                <div className={`absolute inset-0 ${bgAccent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                                <div className={`w-2 h-2 rounded-full ${glow} group-hover:animate-ping relative z-10`} />
+                                <span className="text-gray-300 font-mono text-sm md:text-base tracking-widest uppercase group-hover:text-white transition-colors relative z-10">{tech}</span>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </div>

@@ -26,7 +26,7 @@ export default function AboutSection() {
                             viewport={{ once: true }}
                             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 tracking-widest text-[10px] font-bold uppercase mb-8 shadow-sm"
                         >
-                            <Sparkles className="w-3.5 h-3.5" /> Inside SynForge
+                            <Sparkles className="w-3.5 h-3.5" /> Inside SynVoke Studio
                         </motion.div>
 
                         <motion.h2
@@ -97,18 +97,17 @@ export default function AboutSection() {
 
                     {/* Right: Immersive Premium Display */}
                     <div className="flex-1 w-full relative h-[600px] flex items-center justify-center">
-                        {/* Parallax Image Structure */}
                         <motion.div
                             initial={{ opacity: 0, rotateZ: 5, scale: 0.9, y: 40 }}
                             whileInView={{ opacity: 1, rotateZ: 2, scale: 1, y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 1, type: "spring", bounce: 0.4 }}
-                            className="absolute w-full max-w-lg aspect-[4/5] bg-gray-100 rounded-[2rem] overflow-hidden shadow-2xl z-10 border-8 border-white"
+                            className="absolute w-full max-w-lg aspect-[4/5] bg-gray-100 rounded-[2rem] overflow-hidden shadow-2xl z-10 border-8 border-white group"
                         >
                             <img
-                                src="https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=2070&auto=format&fit=crop"
-                                className="w-full h-full object-cover filter brightness-[1.1] hover:scale-105 transition-transform duration-1000"
-                                alt="Studio Office"
+                                src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
+                                className="w-full h-full object-cover filter brightness-[1.05] contrast-105 group-hover:scale-105 transition-all duration-1000"
+                                alt="Premium Tech Studio"
                             />
                         </motion.div>
 
