@@ -267,69 +267,71 @@ export default function StorySection() {
                 </div>
             </div>
 
-            {/* Live Telemetry / Density Section */}
-            <div className="py-16 md:py-24 bg-[#050505] relative overflow-hidden border-t border-b border-white/5">
-                <div className="absolute inset-0 z-0">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:2rem_2rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_10%,transparent_100%)] opacity-30" />
+            {/* Our Engineers Section -> The definitive team representation */}
+            <div className="py-24 md:py-32 relative overflow-hidden bg-[#030303]">
+                <div className="absolute inset-0 z-0 pointer-events-none">
+                    <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=100&w=2000&auto=format&fit=crop" className="w-full h-full object-cover opacity-20 filter grayscale mix-blend-luminosity" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#030303]/90 to-[#030303]" />
                 </div>
 
-                <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95, y: 50 }}
+                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="mb-20"
+                    >
+                        <div className="w-16 h-16 mx-auto bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mb-8 shadow-lg shadow-indigo-500/30">
+                            <Code2 className="w-8 h-8 text-white" />
+                        </div>
+                        <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6 tracking-tight">
+                            Built by Engineers.
+                        </h2>
+                        <p className="text-xl text-gray-400 font-light max-w-3xl mx-auto leading-relaxed">
+                            No typical founders. No bloated management. SynVoke Studio is an elite collective of pure systems engineers, technical leads, and dedicated builders orchestrating the platform of the future.
+                        </p>
+                    </motion.div>
+
+                    {/* Team Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                         {[
-                            { stat: "99.999%", label: "Uptime SLA", glow: "text-emerald-400" },
-                            { stat: "< 50ms", label: "Global Latency", glow: "text-indigo-400" },
-                            { stat: "Zero", label: "Known Breaches", glow: "text-pink-400" },
-                            { stat: "100%", label: "Type Safe", glow: "text-white" }
-                        ].map((m, i) => (
+                            { name: "Umesh", role: "Java Full Stack Developer", desc: "Expert in end-to-end design, system development, and deep architectural writing.", color: "indigo" },
+                            { name: "Vamshi Krishna", role: "Senior Technical Lead", desc: "Spearheading complex engineering initiatives and ensuring absolute code quality.", color: "emerald" },
+                            { name: "Viswagna Brahma", role: "Senior Full Stack Dev", desc: "Architecting seamless, high-performance interfaces and robust server environments.", color: "purple" },
+                            { name: "Manoj Mallireddy", role: "DevOps Engineer", desc: "Deploying bulletproof infrastructure pipelines to guarantee zero latency and 99.999% uptime.", color: "pink" },
+                            { name: "Manoj Kumar", role: "Business Development", desc: "Expanding operational footprint and executing strategic enterprise partnerships.", color: "blue" }
+                        ].map((member, i) => (
                             <motion.div
                                 key={i}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 0.5, delay: i * 0.1 }}
-                                className="flex flex-col items-center justify-center p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group"
+                                transition={{ duration: 0.6, delay: i * 0.1 }}
+                                className="bg-white/5 border border-white/10 p-8 rounded-[2rem] text-left hover:bg-white/10 hover:border-white/20 transition-all duration-300 relative overflow-hidden group"
                             >
-                                <h4 className={`text-4xl md:text-5xl font-display font-bold ${m.glow} mb-2`}>{m.stat}</h4>
-                                <p className="text-gray-500 font-mono text-xs uppercase tracking-widest group-hover:text-gray-300 transition-colors">{m.label}</p>
+                                <div className={`absolute top-0 right-0 w-32 h-32 bg-${member.color}-500/10 rounded-full blur-[40px] group-hover:bg-${member.color}-500/20 transition-all duration-500`} />
+
+                                <h3 className="text-2xl font-display font-bold text-white mb-2">{member.name}</h3>
+                                <p className={`text-${member.color}-400 font-mono text-xs uppercase tracking-widest mb-6`}>{member.role}</p>
+                                <p className="text-gray-400 font-light text-sm leading-relaxed">
+                                    {member.desc}
+                                </p>
                             </motion.div>
                         ))}
                     </div>
-                </div>
-            </div>
 
-            {/* Immersive CTA Footer */}
-            <div className="py-24 md:py-32 relative overflow-hidden flex justify-center bg-[#030303]">
-                <div className="absolute inset-0 z-0">
-                    <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=100&w=2000&auto=format&fit=crop" className="w-full h-full object-cover opacity-30 filter grayscale mix-blend-luminosity" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#030303]/80 to-[#030303]" />
-                </div>
-
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95, y: 50 }}
-                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="relative z-10 text-center max-w-4xl mx-auto px-6 border border-white/20 bg-black/50 backdrop-blur-3xl p-16 md:p-24 rounded-[3rem] shadow-[0_0_50px_rgba(0,0,0,0.8)] hover:border-indigo-500/50 hover:shadow-[0_0_80px_rgba(79,70,229,0.2)] transition-all duration-700"
-                >
-                    <div className="w-16 h-16 mx-auto bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mb-8 shadow-lg shadow-indigo-500/30">
-                        <Award className="w-8 h-8 text-white" />
-                    </div>
-                    <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6 tracking-tight">
-                        Meet the Architects.
-                    </h2>
-                    <p className="text-xl text-gray-400 font-light mb-12 max-w-2xl mx-auto leading-relaxed">
-                        Discover the world-class systems engineers, award-winning designers, and operational experts who power SynVoke Studio.
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                        <a href="/community" className="inline-flex items-center justify-center gap-3 bg-white text-gray-900 hover:bg-gray-200 px-10 py-5 rounded-full font-bold text-xs tracking-widest uppercase transition-colors">
-                            View Our Team
-                        </a>
-                        <a href="/#contact" className="inline-flex items-center justify-center gap-3 bg-white/5 border border-white/10 text-white hover:bg-white/10 px-10 py-5 rounded-full font-bold text-xs tracking-widest uppercase transition-colors">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 0.8 }}
+                        className="mt-20 flex justify-center"
+                    >
+                        <a href="/#contact" className="inline-flex items-center justify-center gap-3 bg-white text-gray-900 border border-white/10 hover:bg-gray-200 px-10 py-5 rounded-full font-bold text-xs tracking-widest uppercase transition-colors">
                             Start a Project <ArrowUpRight className="w-4 h-4" />
                         </a>
-                    </div>
-                </motion.div>
+                    </motion.div>
+                </div>
             </div>
         </div>
     );
