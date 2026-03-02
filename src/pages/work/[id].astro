@@ -1,0 +1,143 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { projects } from "../../data/projects";
+import { ArrowLeft, ExternalLink } from "lucide-react";
+
+export function getStaticPaths() {
+    return projects.map((project) => ({
+        params: { id: project.id },
+        props: { project },
+    }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={`${project.title} - Premium Experience`}>
+    <main class="min-h-screen bg-white">
+        <!-- Minimalist Hero Navbar Area -->
+        <nav
+            class="absolute top-0 w-full p-6 z-50 flex justify-between items-center"
+        >
+            <a
+                href="/#work"
+                class="inline-flex items-center gap-2 text-white font-medium hover:text-indigo-200 transition-colors backdrop-blur-md bg-white/10 px-4 py-2 rounded-full border border-white/20"
+            >
+                <ArrowLeft className="w-4 h-4" /> Back to Directory
+            </a>
+
+            {
+                project.websiteLink !== "#" && (
+                    <a
+                        href={project.websiteLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 text-gray-900 font-semibold bg-white px-5 py-2.5 rounded-full shadow-lg hover:bg-gray-50 transition-colors"
+                    >
+                        Visit Project <ExternalLink className="w-4 h-4" />
+                    </a>
+                )
+            }
+        </nav>
+
+        <!-- Dynamic Hero Header -->
+        <header
+            class="relative w-full h-[60vh] md:h-[70vh] flex items-end pb-20 justify-center overflow-hidden bg-gray-900 border-b border-gray-200"
+        >
+            {/* Cinematic Image Background */}
+            <div class="absolute inset-0 z-0">
+                <img
+                    src={project.image}
+                    alt={project.title}
+                    class="w-full h-full object-cover opacity-60 mix-blend-overlay"
+                />
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent"
+                >
+                </div>
+            </div>
+
+            <div
+                class="container relative z-10 px-4 md:px-6 text-center max-w-4xl mx-auto"
+            >
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-xs font-bold tracking-widest uppercase mb-6 shadow-sm backdrop-blur-md"
+                >
+                    {project.category}
+                </div>
+                <h1
+                    class="text-4xl md:text-6xl lg:text-7xl font-display font-medium text-white tracking-tight leading-none mb-6"
+                >
+                    {project.title}
+                </h1>
+
+                <div class="flex items-center justify-center gap-4 mt-8">
+                    <a
+                        href={project.websiteLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-3 bg-white text-gray-950 px-8 py-4 rounded-full font-bold shadow-xl hover:bg-gray-100 transition-transform active:scale-95 text-lg"
+                    >
+                        Visit Live Platform <ExternalLink className="w-5 h-5" />
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Detailed Content Section -->
+        <section class="py-24 bg-white relative z-20">
+            <div class="container px-4 md:px-6 mx-auto max-w-4xl">
+                <div class="prose prose-lg md:prose-xl prose-gray max-w-none">
+                    <h2
+                        class="text-3xl font-display font-bold text-gray-900 mb-8 border-b border-gray-100 pb-4"
+                    >
+                        Project Overview
+                    </h2>
+                    <p
+                        class="text-gray-600 leading-relaxed text-lg md:text-xl font-medium tracking-tight mb-12"
+                    >
+                        {project.desc}
+                    </p>
+
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16 pt-16 border-t border-gray-100"
+                    >
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">
+                                Core Objectives
+                            </h3>
+                            <ul class="space-y-3 text-gray-600">
+                                <li>Architect limitless scalability</li>
+                                <li>Ensure aesthetic minimal luxury</li>
+                                <li>Optimize for speed and precision</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">
+                                Technologies Used
+                            </h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1 bg-gray-100 text-gray-700 text-sm font-semibold rounded-lg"
+                                    >React</span
+                                >
+                                <span
+                                    class="px-3 py-1 bg-gray-100 text-gray-700 text-sm font-semibold rounded-lg"
+                                    >Framer Motion</span
+                                >
+                                <span
+                                    class="px-3 py-1 bg-gray-100 text-gray-700 text-sm font-semibold rounded-lg"
+                                    >Tailwind CSS</span
+                                >
+                                <span
+                                    class="px-3 py-1 bg-gray-100 text-gray-700 text-sm font-semibold rounded-lg"
+                                    >Node.js</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>
