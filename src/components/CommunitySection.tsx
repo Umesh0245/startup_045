@@ -35,7 +35,7 @@ const team = [
         experience: "8+ years engineering fluid edge-networks and real-time frontend applications. Pioneer in implementing WebSockets and Server-Sent Events for massive dashboards.",
         workflow: "Iterates rapidly on the edge. Focuses on minimizing the distance between the user's intent and the server's response through aggressive caching and state optimization.",
         ideas: "Pushes the boundary of 'Instantaneous UI'. If a state change takes more than 50 milliseconds, it is fundamentally flawed and must be rewritten.",
-        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&auto=format&fit=crop&q=80",
+        image: "/images/viswagna.jpg",
         objectPosition: "object-center",
         skills: ["TypeScript", "Advanced React", "API Design", "Database Modeling"]
     },
