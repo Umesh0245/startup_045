@@ -47,7 +47,7 @@ const team = [
         experience: "7+ years managing massive Kubernetes clusters and globally distributed databases. Has securely automated deployments spanning hundreds of microservices instantly.",
         workflow: "Infrastructure as Code is religion. Absolutely everything is scripted, immutable, and strictly version-controlled, allowing entire data centers to be spun up in seconds.",
         ideas: "Focuses on 'Self-Healing Architecture'. A system that alerts a human when it breaks is obsolete; true platforms automatically detect anomalies and route traffic instantly.",
-        image: "/images/manoj-hd.png",
+        image: "/images/manoj-hd.jpg",
         objectPosition: "object-top",
         skills: ["AWS / CloudFlare", "CI / CD Pipelines", "Kubernetes", "Infrastructure as Code"]
     },
