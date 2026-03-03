@@ -319,34 +319,47 @@ export default function StorySection() {
                         </p>
                     </motion.div>
 
-                    {/* Team Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                        {[
-                            { name: "Umesh", role: "Java Full Stack Developer", desc: "Expert in end-to-end design, system development, and deep architectural writing.", color: "indigo" },
-                            { name: "Vamshi Krishna", role: "Senior Technical Lead", desc: "Spearheading complex engineering initiatives and ensuring absolute code quality.", color: "emerald" },
-                            { name: "Viswagna Brahma", role: "Senior Full Stack Dev", desc: "Architecting seamless, high-performance interfaces and robust server environments.", color: "purple" },
-                            { name: "Manoj Mallireddy", role: "DevOps Engineer", desc: "Deploying bulletproof infrastructure pipelines to guarantee zero latency and 99.999% uptime.", color: "pink" },
-                            { name: "Manoj Kumar", role: "Business Development", desc: "Expanding operational footprint and executing strategic enterprise partnerships.", color: "blue" }
-                        ].map((member, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 0.6, delay: i * 0.1 }}
-                                className="bg-white/5 border border-white/10 p-8 rounded-[2rem] text-left hover:bg-white/10 hover:border-white/20 transition-all duration-300 relative overflow-hidden group"
-                            >
-                                <div className={`absolute top-0 right-0 w-32 h-32 bg-${member.color}-500/10 rounded-full blur-[40px] group-hover:bg-${member.color}-500/20 transition-all duration-500`} />
+                    {/* Massive Navigation Link to Dedicated Team Page */}
+                    <div className="max-w-4xl mx-auto mt-10">
+                        <motion.a
+                            href="/community"
+                            initial={{ opacity: 0, scale: 0.95, y: 30 }}
+                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
+                            className="block relative p-[1px] rounded-[3rem] bg-gradient-to-r from-indigo-500/30 via-purple-500/30 to-pink-500/30 group hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500 transition-all duration-700 shadow-[0_0_50px_rgba(79,70,229,0.1)] hover:shadow-[0_0_80px_rgba(79,70,229,0.4)]"
+                        >
+                            <div className="bg-[#050505] rounded-[2.9rem] p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10 relative overflow-hidden">
+                                {/* Ambient Hover Glow */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/0 to-purple-500/0 group-hover:from-indigo-500/10 group-hover:to-purple-500/10 transition-colors duration-700 pointer-events-none" />
 
-                                <h3 className="text-2xl font-display font-bold text-white mb-2">{member.name}</h3>
-                                <p className={`text-${member.color}-400 font-mono text-xs uppercase tracking-widest mb-6`}>{member.role}</p>
-                                <p className="text-gray-400 font-light text-sm leading-relaxed">
-                                    {member.desc}
-                                </p>
-                            </motion.div>
-                        ))}
+                                {/* Geometric background lines */}
+                                <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:1rem_1rem] pointer-events-none" />
+
+                                <div className="text-left relative z-10 flex-1">
+                                    <div className="flex items-center gap-4 mb-4">
+                                        <span className="flex h-3 w-3 relative">
+                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                            <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                                        </span>
+                                        <p className="text-xs font-mono tracking-widest uppercase text-emerald-400 font-bold">5 Active Engineers</p>
+                                    </div>
+                                    <h3 className="text-4xl md:text-5xl font-display font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-300 group-hover:to-purple-300 transition-all duration-500">
+                                        Meet The Engineering<br />Collective.
+                                    </h3>
+                                    <p className="text-gray-400 font-light text-lg">
+                                        Dive into the deep technical profiles, experience, and architectural philosophies of our core team.
+                                    </p>
+                                </div>
+
+                                <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-white text-white group-hover:text-gray-900 transition-all duration-500 shadow-2xl relative z-10">
+                                    <ArrowUpRight className="w-8 h-8 md:w-10 md:h-10 group-hover:scale-125 group-hover:rotate-12 transition-transform duration-500" />
+                                </div>
+                            </div>
+                        </motion.a>
                     </div>
-
                     <motion.div
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
