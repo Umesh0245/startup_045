@@ -189,20 +189,21 @@ export default function CommunitySection() {
                             {/* Close Button */}
                             <button
                                 onClick={() => setSelectedId(null)}
-                                className="absolute top-4 right-4 md:top-8 md:right-8 w-12 h-12 rounded-full bg-black/50 border border-white/10 hover:bg-white/10 flex items-center justify-center text-white z-20 transition-colors backdrop-blur-md"
+                                className="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 rounded-full bg-black/50 border border-white/10 hover:bg-white/10 flex items-center justify-center text-white z-20 transition-colors backdrop-blur-md"
                             >
                                 <X className="w-5 h-5" />
                             </button>
 
                             {/* Deep Detail Image Side */}
-                            <div className="w-full md:w-5/12 relative h-[300px] md:h-auto bg-black shrink-0">
+                            <div className="w-full md:w-5/12 relative h-[300px] md:h-auto shrink-0 border-r border-white/5">
                                 <motion.img
                                     layoutId={`image-${selectedMember.id}`}
                                     src={selectedMember.image}
                                     alt={selectedMember.name}
-                                    className={`absolute inset-0 w-full h-full object-cover ${selectedMember.objectPosition} opacity-90`}
+                                    className={`absolute inset-0 w-full h-full object-cover ${selectedMember.objectPosition}`}
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent md:bg-gradient-to-r md:from-transparent md:via-[#050505]/40 md:to-[#050505]" />
+                                {/* Mobile-only gradient for text visibility */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent md:hidden" />
 
                                 {/* Mobile Title overlay */}
                                 <div className="absolute bottom-6 left-6 right-6 text-left md:hidden z-10">
@@ -212,41 +213,41 @@ export default function CommunitySection() {
                             </div>
 
                             {/* Complete Bio Data Side */}
-                            <div className="w-full md:w-7/12 p-6 md:p-16 flex flex-col relative overflow-y-auto custom-scrollbar bg-[#050505]">
-                                <div className="hidden md:block mb-12">
-                                    <motion.h2 layoutId={`name-${selectedMember.id}`} className="text-5xl font-display font-bold text-white mb-4">{selectedMember.name}</motion.h2>
+                            <div className="w-full md:w-7/12 p-6 md:p-12 flex flex-col relative overflow-y-auto custom-scrollbar bg-[#050505]">
+                                <div className="hidden md:block mb-8">
+                                    <motion.h2 layoutId={`name-${selectedMember.id}`} className="text-5xl font-display font-bold text-white mb-3">{selectedMember.name}</motion.h2>
                                     <div className="inline-block px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-mono text-xs tracking-widest uppercase">
                                         {selectedMember.role}
                                     </div>
                                 </div>
 
-                                <div className="space-y-10 pr-2 pb-10">
-                                    <div className="bg-white/5 border border-white/5 p-6 rounded-3xl relative overflow-hidden group hover:border-indigo-500/30 transition-colors">
+                                <div className="space-y-6 pr-2 pb-8">
+                                    <div className="bg-white/[0.02] border border-white/5 p-6 rounded-[1.5rem] relative overflow-hidden group hover:border-indigo-500/30 transition-colors">
                                         <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity" />
-                                        <h4 className="flex items-center gap-3 text-lg font-display font-bold text-white mb-4 relative z-10">
+                                        <h4 className="flex items-center gap-3 text-lg font-display font-bold text-white mb-3 relative z-10">
                                             <Activity className="w-5 h-5 text-indigo-500" /> Work Experience
                                         </h4>
-                                        <p className="text-gray-400 font-light leading-relaxed text-[15px] md:text-lg relative z-10">
+                                        <p className="text-gray-400 font-light leading-relaxed text-[15px] relative z-10">
                                             {selectedMember.experience}
                                         </p>
                                     </div>
 
-                                    <div className="bg-white/5 border border-white/5 p-6 rounded-3xl relative overflow-hidden group hover:border-purple-500/30 transition-colors">
+                                    <div className="bg-white/[0.02] border border-white/5 p-6 rounded-[1.5rem] relative overflow-hidden group hover:border-purple-500/30 transition-colors">
                                         <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity" />
-                                        <h4 className="flex items-center gap-3 text-lg font-display font-bold text-white mb-4 relative z-10">
+                                        <h4 className="flex items-center gap-3 text-lg font-display font-bold text-white mb-3 relative z-10">
                                             <Layers className="w-5 h-5 text-purple-500" /> Operational Workflow
                                         </h4>
-                                        <p className="text-gray-400 font-light leading-relaxed text-[15px] md:text-lg relative z-10">
+                                        <p className="text-gray-400 font-light leading-relaxed text-[15px] relative z-10">
                                             {selectedMember.workflow}
                                         </p>
                                     </div>
 
-                                    <div className="bg-white/5 border border-white/5 p-6 rounded-3xl relative overflow-hidden group hover:border-emerald-500/30 transition-colors">
+                                    <div className="bg-white/[0.02] border border-white/5 p-6 rounded-[1.5rem] relative overflow-hidden group hover:border-emerald-500/30 transition-colors">
                                         <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity" />
-                                        <h4 className="flex items-center gap-3 text-lg font-display font-bold text-white mb-4 relative z-10">
+                                        <h4 className="flex items-center gap-3 text-lg font-display font-bold text-white mb-3 relative z-10">
                                             <Cpu className="w-5 h-5 text-emerald-500" /> Engineering Ideas
                                         </h4>
-                                        <p className="text-gray-400 font-light leading-relaxed text-[15px] md:text-lg relative z-10">
+                                        <p className="text-gray-400 font-light leading-relaxed text-[15px] relative z-10">
                                             {selectedMember.ideas}
                                         </p>
                                     </div>
