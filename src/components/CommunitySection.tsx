@@ -35,7 +35,7 @@ const team = [
         experience: "8+ years engineering fluid edge-networks and real-time frontend applications. Pioneer in implementing WebSockets and Server-Sent Events for massive dashboards.",
         workflow: "Iterates rapidly on the edge. Focuses on minimizing the distance between the user's intent and the server's response through aggressive caching and state optimization.",
         ideas: "Pushes the boundary of 'Instantaneous UI'. If a state change takes more than 50 milliseconds, it is fundamentally flawed and must be rewritten.",
-        image: "/images/viswagna.jpg",
+        image: "/images/viswagna-hd.jpg",
         objectPosition: "object-center",
         skills: ["TypeScript", "Advanced React", "API Design", "Database Modeling"]
     },
@@ -47,7 +47,7 @@ const team = [
         experience: "7+ years managing massive Kubernetes clusters and globally distributed databases. Has securely automated deployments spanning hundreds of microservices instantly.",
         workflow: "Infrastructure as Code is religion. Absolutely everything is scripted, immutable, and strictly version-controlled, allowing entire data centers to be spun up in seconds.",
         ideas: "Focuses on 'Self-Healing Architecture'. A system that alerts a human when it breaks is obsolete; true platforms automatically detect anomalies and route traffic instantly.",
-        image: "/images/manoj.jpg",
+        image: "/images/manoj-hd.png",
         objectPosition: "object-top",
         skills: ["AWS / CloudFlare", "CI / CD Pipelines", "Kubernetes", "Infrastructure as Code"]
     },
