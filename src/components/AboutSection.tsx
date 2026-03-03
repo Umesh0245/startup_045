@@ -102,12 +102,12 @@ export default function AboutSection() {
                             whileInView={{ opacity: 1, rotateZ: 2, scale: 1, y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 1, type: "spring", bounce: 0.4 }}
-                            className="absolute w-full max-w-lg aspect-[4/5] bg-gray-100 rounded-[2rem] overflow-hidden shadow-2xl z-10 border-8 border-white group"
+                            className="absolute w-full max-w-lg aspect-[4/5] bg-gray-900 rounded-[2rem] overflow-hidden shadow-2xl z-10 border-8 border-white group"
                         >
                             <img
-                                src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
-                                className="w-full h-full object-cover filter brightness-[1.05] contrast-105 group-hover:scale-105 transition-all duration-1000"
-                                alt="Premium Tech Studio"
+                                src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=2088&auto=format&fit=crop"
+                                className="w-full h-full object-cover filter brightness-110 contrast-125 saturate-50 group-hover:scale-105 transition-all duration-1000"
+                                alt="Premium Tech Systems Architecture"
                             />
                         </motion.div>
 
