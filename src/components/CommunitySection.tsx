@@ -5,7 +5,7 @@ import { ArrowLeft, ChevronRight, Code2, X, Activity, Cpu, Layers } from 'lucide
 const team = [
     {
         id: "umesh",
-        name: "Umesh",
+        name: "Umesh S",
         role: "Java Full Stack Developer",
         bio: "Elite system designer bridging the gap between deep backend architecture and seamless frontend execution. Capable of designing, developing, and writing complex logic sequences from scratch.",
         experience: "10+ years architecting enterprise-grade Java ecosystems and modern React frontends. Specialized in high-throughput distributed systems that handle immense active connection volumes effortlessly.",
@@ -17,7 +17,7 @@ const team = [
     },
     {
         id: "vamshi",
-        name: "Vamshi Krishna",
+        name: "MVR Vamshi",
         role: "Senior Technical Lead",
         bio: "The architectural spearhead for all complex engineering initiatives. Ensures absolute code quality, mentors the technical staff, and designs the blueprints for zero-latency platforms.",
         experience: "12+ years of leading massive engineering teams across fintech and cloud-infrastructure domains. Directly responsible for scaling systems to millions of concurrent active connections.",
@@ -41,13 +41,13 @@ const team = [
     },
     {
         id: "manoj-m",
-        name: "Manoj Mallireddy",
+        name: "Manoj M",
         role: "DevOps Engineer",
         bio: "Deploying bulletproof infrastructure pipelines to guarantee zero latency and 99.999% uptime. Master of the cloud ecosystem and continuous integration/continuous deployment architectures.",
         experience: "7+ years managing massive Kubernetes clusters and globally distributed databases. Has securely automated deployments spanning hundreds of microservices instantly.",
         workflow: "Infrastructure as Code is religion. Absolutely everything is scripted, immutable, and strictly version-controlled, allowing entire data centers to be spun up in seconds.",
         ideas: "Focuses on 'Self-Healing Architecture'. A system that alerts a human when it breaks is obsolete; true platforms automatically detect anomalies and route traffic instantly.",
-        image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&auto=format&fit=crop&q=80",
+        image: "/images/manoj.jpg",
         objectPosition: "object-top",
         skills: ["AWS / CloudFlare", "CI / CD Pipelines", "Kubernetes", "Infrastructure as Code"]
     },
