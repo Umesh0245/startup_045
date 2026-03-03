@@ -1,86 +1,87 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowLeft, Linkedin, Twitter, Github, ChevronRight, Code2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowLeft, ChevronRight, Code2, X, Activity, Cpu, Layers } from 'lucide-react';
 
 const team = [
     {
+        id: "umesh",
         name: "Umesh",
         role: "Java Full Stack Developer",
         bio: "Elite system designer bridging the gap between deep backend architecture and seamless frontend execution. Capable of designing, developing, and writing complex logic sequences from scratch.",
+        experience: "10+ years architecting enterprise-grade Java ecosystems and modern React frontends. Specialized in high-throughput distributed systems that handle immense active connection volumes effortlessly.",
+        workflow: "Begins with rigorous mathematical modeling of data structures, followed by strictly typed backend implementation, and concludes with pixel-perfect, hyper-fluid frontend delivery.",
+        ideas: "Believes that software should be treated as functional art. Champions the integration of memory-safe logic with absolutely stunning, zero-latency user interfaces.",
         image: "/images/umesh-profile-red-zoomed.png",
         objectPosition: "object-center",
         skills: ["Java Backend", "React Ecosystem", "System Design", "UI/UX Architecture"]
     },
     {
+        id: "vamshi",
         name: "Vamshi Krishna",
         role: "Senior Technical Lead",
         bio: "The architectural spearhead for all complex engineering initiatives. Ensures absolute code quality, mentors the technical staff, and designs the blueprints for zero-latency platforms.",
+        experience: "12+ years of leading massive engineering teams across fintech and cloud-infrastructure domains. Directly responsible for scaling systems to millions of concurrent active connections.",
+        workflow: "Employs a 'Zero-Trust, Zero-Debt' methodology. Every architectural decision is heavily debated, vetted, and stress-tested before a single line of code is committed.",
+        ideas: "Advocates for 'Invisible Infrastructure'—the idea that the best platforms are so incredibly fast and stable that the user forgets they are interacting with software.",
         image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80",
         objectPosition: "object-center",
         skills: ["Technical Blueprinting", "Code Auditing", "Team Leadership", "Microservices"]
     },
     {
+        id: "viswagna",
         name: "Viswagna Brahma",
         role: "Senior Full Stack Developer",
         bio: "Architecting seamless, high-performance interfaces and robust server environments. Specializes in forging flawless, end-to-end data pipelines for enterprise-scale applications.",
+        experience: "8+ years engineering fluid edge-networks and real-time frontend applications. Pioneer in implementing WebSockets and Server-Sent Events for massive dashboards.",
+        workflow: "Iterates rapidly on the edge. Focuses on minimizing the distance between the user's intent and the server's response through aggressive caching and state optimization.",
+        ideas: "Pushes the boundary of 'Instantaneous UI'. If a state change takes more than 50 milliseconds, it is fundamentally flawed and must be rewritten.",
         image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&auto=format&fit=crop&q=80",
         objectPosition: "object-center",
         skills: ["TypeScript", "Advanced React", "API Design", "Database Modeling"]
     },
     {
+        id: "manoj-m",
         name: "Manoj Mallireddy",
         role: "DevOps Engineer",
         bio: "Deploying bulletproof infrastructure pipelines to guarantee zero latency and 99.999% uptime. Master of the cloud ecosystem and continuous integration/continuous deployment architectures.",
+        experience: "7+ years managing massive Kubernetes clusters and globally distributed databases. Has securely automated deployments spanning hundreds of microservices instantly.",
+        workflow: "Infrastructure as Code is religion. Absolutely everything is scripted, immutable, and strictly version-controlled, allowing entire data centers to be spun up in seconds.",
+        ideas: "Focuses on 'Self-Healing Architecture'. A system that alerts a human when it breaks is obsolete; true platforms automatically detect anomalies and route traffic instantly.",
         image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&auto=format&fit=crop&q=80",
         objectPosition: "object-top",
         skills: ["AWS / CloudFlare", "CI / CD Pipelines", "Kubernetes", "Infrastructure as Code"]
     },
     {
+        id: "manoj-k",
         name: "Manoj Kumar",
         role: "Business Development Executive",
         bio: "Expanding the operational footprint and executing strategic enterprise partnerships. Drives SynVoke Studio's market presence by translating technical excellence into business dominance.",
+        experience: "9+ years of aggressive expansion strategy in the B2B SaaS sector. Has successfully negotiated multi-million dollar infrastructure contracts with Fortune 500 entities.",
+        workflow: "Relentless market mapping combined with deep technical translations. Bridges the gap between pure engineering specs and overwhelming corporate value propositions.",
+        ideas: "Believes that 'Technology is fundamentally useless if it doesn't exponentially multiply leverage.' Focuses purely on integrating our stack into high-impact industries.",
         image: "https://images.unsplash.com/photo-1557862921-37829c790f19?w=800&auto=format&fit=crop&q=80",
         objectPosition: "object-center",
         skills: ["Enterprise Sales", "Strategic Partnerships", "Market Expansion", "Client Relations"]
     }
 ];
 
-// Reusable card animation wrapper
-const CardWrapper = ({ children, index }: { children: React.ReactNode, index: number }) => {
-    return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.8, rotateX: 20, y: 100 }}
-            whileInView={{ opacity: 1, scale: 1, rotateX: 0, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{
-                duration: 0.8,
-                delay: index * 0.15,
-                type: "spring",
-                bounce: 0.4
-            }}
-            className="group relative perspective-1000 h-full"
-        >
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-[2.2rem] blur opacity-0 group-hover:opacity-30 transition duration-1000 group-hover:duration-200 pointer-events-none" />
-            <div className="bg-[#080808] border border-white/5 rounded-[2rem] p-8 h-full flex flex-col relative overflow-hidden transform-gpu transition-all duration-700 hover:-translate-y-4 hover:border-indigo-500/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.8)] z-10">
-                {children}
-            </div>
-        </motion.div>
-    );
-};
-
 export default function CommunitySection() {
+    const [selectedId, setSelectedId] = useState<string | null>(null);
+
+    const selectedMember = selectedId ? team.find(member => member.id === selectedId) : null;
+
     return (
-        <main className="min-h-screen bg-[#030303] text-white selection:bg-indigo-500/30 overflow-hidden font-sans pb-32">
+        <main className="min-h-screen bg-[#030303] text-white selection:bg-indigo-500/30 overflow-x-hidden font-sans pb-32 relative">
 
             {/* Cinematic Background Lines */}
-            <div className="fixed inset-0 pointer-events-none">
+            <div className="fixed inset-0 pointer-events-none z-0">
                 <div className="absolute top-1/4 left-1/4 w-[800px] h-[800px] bg-indigo-600/10 rounded-full blur-[150px]" />
                 <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[150px]" />
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_40%,#000_20%,transparent_100%)]" />
             </div>
 
             {/* Navigation Bar */}
-            <nav className="relative z-50 w-full px-6 py-8 max-w-7xl mx-auto flex items-center justify-between">
+            <nav className="relative z-10 w-full px-6 py-8 max-w-7xl mx-auto flex items-center justify-between">
                 <a href="/our-story" className="inline-flex items-center gap-3 text-gray-400 hover:text-white transition-all group tracking-widest text-xs font-bold uppercase">
                     <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:-translate-x-1 group-hover:border-white/30 transition-all">
                         <ArrowLeft className="w-3.5 h-3.5" />
@@ -125,80 +126,150 @@ export default function CommunitySection() {
                 </motion.div>
             </header>
 
-            {/* Deep Team Grid */}
-            <div className="relative z-20 max-w-7xl mx-auto px-4 md:px-8">
-                {/* 2 items in first row to look balanced */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                    {team.slice(0, 2).map((member, idx) => (
-                        <CardWrapper key={idx} index={idx}>
-                            <div className="flex flex-col gap-6 relative z-10 h-full">
-                                <div className="flex gap-6 items-center border-b border-white/10 pb-8">
-                                    <div className="w-24 h-24 sm:w-32 sm:h-32 shrink-0 rounded-full overflow-hidden border-2 border-white/10 relative group-hover:border-indigo-400 transition-colors duration-500">
-                                        <div className="absolute inset-0 bg-indigo-500/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-500 z-10" />
-                                        <img src={member.image} alt={member.name} className={`w-full h-full object-cover ${member.objectPosition} filter grayscale contrast-125 group-hover:grayscale-0 group-hover:contrast-100 transition-all duration-700 scale-110 group-hover:scale-100`} />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-3xl font-display font-bold text-white mb-2">{member.name}</h3>
-                                        <h4 className="inline-block px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-mono text-xs tracking-wider uppercase">{member.role}</h4>
-                                    </div>
-                                </div>
+            {/* Deep Team Grid - Clickable */}
+            <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {team.map((member, idx) => (
+                        <motion.div
+                            key={member.id}
+                            layoutId={`card-container-${member.id}`}
+                            initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.6, delay: idx * 0.1, type: "spring", bounce: 0.3 }}
+                            onClick={() => setSelectedId(member.id)}
+                            className="bg-[#080808] border border-white/5 rounded-[2rem] p-8 cursor-pointer hover:border-indigo-500/50 hover:shadow-[0_20px_40px_rgba(0,0,0,0.8)] transition-all duration-500 group relative overflow-hidden h-full flex flex-col"
+                        >
+                            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/0 via-transparent to-indigo-500/0 group-hover:from-indigo-500/10 transition-colors duration-500" />
 
-                                <p className="text-gray-400 text-lg leading-relaxed font-light flex-1 pt-4">
-                                    {member.bio}
-                                </p>
-
-                                <div className="mt-8 pt-6 border-t border-white/5">
-                                    <div className="text-[10px] uppercase tracking-widest font-bold text-gray-600 mb-4 block group-hover:text-indigo-500/50 transition-colors">Core Capabilities</div>
-                                    <div className="flex flex-wrap gap-2">
-                                        {member.skills.map((skill, i) => (
-                                            <span key={i} className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-300 text-xs font-mono group-hover:bg-indigo-500/10 group-hover:border-indigo-500/30 transition-colors">
-                                                {skill}
-                                            </span>
-                                        ))}
-                                    </div>
+                            <div className="flex gap-5 border-b border-white/10 pb-6 items-center mb-6 relative z-10">
+                                <motion.div layoutId={`image-${member.id}`} className="w-20 h-20 shrink-0 rounded-[1.2rem] overflow-hidden border border-white/10 bg-gray-900">
+                                    <img src={member.image} alt={member.name} className={`w-full h-full object-cover ${member.objectPosition} filter grayscale group-hover:grayscale-0 transition-all duration-700`} />
+                                </motion.div>
+                                <div>
+                                    <motion.h3 layoutId={`name-${member.id}`} className="text-2xl font-display font-bold text-white mb-2">{member.name}</motion.h3>
+                                    <h4 className="text-indigo-400 font-mono text-[10px] tracking-widest uppercase">{member.role}</h4>
                                 </div>
                             </div>
-                        </CardWrapper>
-                    ))}
-                </div>
 
-                {/* 3 items in second row */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {team.slice(2, 5).map((member, idx) => (
-                        <CardWrapper key={idx + 2} index={idx + 2}>
-                            <div className="flex flex-col gap-6 relative z-10 h-full">
-                                <div className="flex flex-col gap-5 border-b border-white/10 pb-6 items-center text-center">
-                                    <div className="w-28 h-28 shrink-0 rounded-3xl overflow-hidden border border-white/10 relative group-hover:border-purple-400 group-hover:rounded-[2rem] transition-all duration-700 shadow-2xl">
-                                        <div className="absolute inset-0 bg-purple-500/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-500 z-10" />
-                                        <img src={member.image} alt={member.name} className={`w-full h-full object-cover ${member.objectPosition} filter grayscale contrast-125 group-hover:grayscale-0 group-hover:contrast-100 transition-all duration-700 scale-110 group-hover:scale-100`} />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-2xl font-display font-bold text-white mb-2">{member.name}</h3>
-                                        <h4 className="text-purple-400 font-mono text-xs tracking-widest uppercase">{member.role}</h4>
-                                    </div>
-                                </div>
+                            <p className="text-gray-400 text-sm leading-relaxed font-light mb-auto relative z-10">
+                                {member.bio}
+                            </p>
 
-                                <p className="text-gray-400 text-base leading-relaxed font-light flex-1 pt-2">
-                                    {member.bio}
-                                </p>
-
-                                <div className="mt-6 pt-6 border-t border-white/5">
-                                    <div className="flex flex-wrap gap-2 justify-center">
-                                        {member.skills.slice(0, 3).map((skill, i) => (
-                                            <span key={i} className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-300 text-xs font-mono group-hover:border-purple-500/30 transition-colors">
-                                                {skill}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
+                            <div className="mt-8 pt-6 border-t border-white/5 flex flex-wrap gap-2 relative z-10">
+                                {member.skills.slice(0, 2).map((skill, i) => (
+                                    <span key={i} className="px-2 py-1 rounded bg-white/5 text-gray-400 text-[10px] font-mono whitespace-nowrap">
+                                        {skill}
+                                    </span>
+                                ))}
+                                <span className="px-3 py-1.5 rounded bg-indigo-500/10 text-indigo-400 text-[10px] font-mono group-hover:bg-indigo-500 group-hover:text-white transition-colors ml-auto flex items-center gap-1 font-bold">
+                                    Deep Dive <ChevronRight className="w-3 h-3" />
+                                </span>
                             </div>
-                        </CardWrapper>
+                        </motion.div>
                     ))}
                 </div>
             </div>
 
+            {/* "Air Component" Modal Overlay */}
+            <AnimatePresence>
+                {selectedId && selectedMember && (
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setSelectedId(null)}
+                            className="absolute inset-0 bg-black/80 backdrop-blur-xl cursor-crosshair"
+                        />
+                        <motion.div
+                            layoutId={`card-container-${selectedMember.id}`}
+                            className="relative w-full max-w-6xl max-h-[90vh] bg-[#050505] border border-indigo-500/30 rounded-[2rem] md:rounded-[3rem] shadow-[0_0_100px_rgba(79,70,229,0.3)] overflow-hidden z-10 flex flex-col md:flex-row my-auto"
+                        >
+                            {/* Close Button */}
+                            <button
+                                onClick={() => setSelectedId(null)}
+                                className="absolute top-4 right-4 md:top-8 md:right-8 w-12 h-12 rounded-full bg-black/50 border border-white/10 hover:bg-white/10 flex items-center justify-center text-white z-20 transition-colors backdrop-blur-md"
+                            >
+                                <X className="w-5 h-5" />
+                            </button>
+
+                            {/* Deep Detail Image Side */}
+                            <div className="w-full md:w-5/12 relative h-[300px] md:h-auto bg-black shrink-0">
+                                <motion.img
+                                    layoutId={`image-${selectedMember.id}`}
+                                    src={selectedMember.image}
+                                    alt={selectedMember.name}
+                                    className={`absolute inset-0 w-full h-full object-cover ${selectedMember.objectPosition} opacity-90`}
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent md:bg-gradient-to-r md:from-transparent md:via-[#050505]/40 md:to-[#050505]" />
+
+                                {/* Mobile Title overlay */}
+                                <div className="absolute bottom-6 left-6 right-6 text-left md:hidden z-10">
+                                    <motion.h2 layoutId={`name-${selectedMember.id}`} className="text-4xl font-display font-bold text-white mb-2 drop-shadow-lg">{selectedMember.name}</motion.h2>
+                                    <div className="text-indigo-400 font-mono text-xs uppercase tracking-widest drop-shadow-md">{selectedMember.role}</div>
+                                </div>
+                            </div>
+
+                            {/* Complete Bio Data Side */}
+                            <div className="w-full md:w-7/12 p-6 md:p-16 flex flex-col relative overflow-y-auto custom-scrollbar bg-[#050505]">
+                                <div className="hidden md:block mb-12">
+                                    <motion.h2 layoutId={`name-${selectedMember.id}`} className="text-5xl font-display font-bold text-white mb-4">{selectedMember.name}</motion.h2>
+                                    <div className="inline-block px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-mono text-xs tracking-widest uppercase">
+                                        {selectedMember.role}
+                                    </div>
+                                </div>
+
+                                <div className="space-y-10 pr-2 pb-10">
+                                    <div className="bg-white/5 border border-white/5 p-6 rounded-3xl relative overflow-hidden group hover:border-indigo-500/30 transition-colors">
+                                        <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity" />
+                                        <h4 className="flex items-center gap-3 text-lg font-display font-bold text-white mb-4 relative z-10">
+                                            <Activity className="w-5 h-5 text-indigo-500" /> Work Experience
+                                        </h4>
+                                        <p className="text-gray-400 font-light leading-relaxed text-[15px] md:text-lg relative z-10">
+                                            {selectedMember.experience}
+                                        </p>
+                                    </div>
+
+                                    <div className="bg-white/5 border border-white/5 p-6 rounded-3xl relative overflow-hidden group hover:border-purple-500/30 transition-colors">
+                                        <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity" />
+                                        <h4 className="flex items-center gap-3 text-lg font-display font-bold text-white mb-4 relative z-10">
+                                            <Layers className="w-5 h-5 text-purple-500" /> Operational Workflow
+                                        </h4>
+                                        <p className="text-gray-400 font-light leading-relaxed text-[15px] md:text-lg relative z-10">
+                                            {selectedMember.workflow}
+                                        </p>
+                                    </div>
+
+                                    <div className="bg-white/5 border border-white/5 p-6 rounded-3xl relative overflow-hidden group hover:border-emerald-500/30 transition-colors">
+                                        <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity" />
+                                        <h4 className="flex items-center gap-3 text-lg font-display font-bold text-white mb-4 relative z-10">
+                                            <Cpu className="w-5 h-5 text-emerald-500" /> Engineering Ideas
+                                        </h4>
+                                        <p className="text-gray-400 font-light leading-relaxed text-[15px] md:text-lg relative z-10">
+                                            {selectedMember.ideas}
+                                        </p>
+                                    </div>
+
+                                    <div className="pt-8 border-t border-white/5">
+                                        <div className="text-[10px] uppercase tracking-widest font-bold text-gray-500 mb-4 block">Mastered Technologies</div>
+                                        <div className="flex flex-wrap gap-3">
+                                            {selectedMember.skills.map((skill, i) => (
+                                                <span key={i} className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 text-xs font-mono">
+                                                    {skill}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
+
             {/* Hiring / Join Banner */}
-            <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 pt-32">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-32 pb-16">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -207,7 +278,7 @@ export default function CommunitySection() {
                     className="bg-gradient-to-br from-indigo-950 via-gray-900 to-black border border-indigo-500/20 rounded-[3rem] p-12 md:p-20 text-center shadow-[0_0_100px_rgba(79,70,229,0.1)] hover:border-indigo-500/40 transition-colors duration-500 group"
                 >
                     <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 text-white group-hover:text-indigo-300 transition-colors">Join the Architecture.</h2>
-                    <p className="text-indigo-200/60 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto">We are actively searching for top 1% engineering and design talent to push our robust infrastructure further.</p>
+                    <p className="text-indigo-200/60 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto">We are actively searching for top 1% engineering talent.</p>
 
                     <button className="bg-white text-gray-950 px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest inline-flex items-center gap-3 hover:scale-105 shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all shrink-0">
                         View Open Roles <ChevronRight className="w-5 h-5" />
@@ -215,6 +286,18 @@ export default function CommunitySection() {
                 </motion.div>
             </div>
 
+            <style>{`
+                .custom-scrollbar::-webkit-scrollbar {
+                    width: 6px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb {
+                    background-color: rgba(255,255,255,0.1);
+                    border-radius: 20px;
+                }
+            `}</style>
         </main>
     )
 }

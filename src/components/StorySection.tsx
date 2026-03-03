@@ -98,66 +98,92 @@ export default function StorySection() {
                         We reject the ordinary. We build highly performant, mathematically precise, incredibly beautiful software architectures that define the future.
                     </motion.p>
 
-                    {/* Breathtaking Image Reveal with HUD Overlay */}
+                    {/* Profound Abstract Animation: The Digital Nucleus */}
                     <motion.div
                         custom={3} initial="hidden" animate="visible" variants={fadeUp}
-                        className="w-full aspect-[21/9] md:aspect-[3/1] relative rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(79,70,229,0.15)] bg-gray-900 group"
+                        className="w-full aspect-[21/9] md:aspect-[2.5/1] relative rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(79,70,229,0.15)] bg-[#050505] group"
                     >
-                        {/* Base Image */}
-                        <motion.img
-                            style={{ scale: scaleImage }}
-                            src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=100&w=2670&auto=format&fit=crop"
-                            className="w-full h-full object-cover filter contrast-125 saturate-[0.8] mix-blend-multiply group-hover:mix-blend-normal transition-all duration-1000 origin-center"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-transparent to-transparent opacity-80" />
+                        {/* Deep Background Gradient */}
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(79,70,229,0.2)_0%,transparent_60%)] group-hover:bg-[radial-gradient(circle_at_center,rgba(79,70,229,0.3)_0%,transparent_70%)] transition-all duration-1000" />
 
-                        {/* Interactive Tech HUD - Only visible on hover */}
-                        <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-black/60 backdrop-blur-[2px] flex items-center justify-center overflow-hidden">
-                            {/* Scanning Grid Line */}
-                            <div className="absolute top-0 left-0 w-full h-[2px] bg-indigo-500 shadow-[0_0_20px_rgba(79,70,229,1)] animate-[scan_3s_ease-in-out_infinite]" />
+                        {/* Grid overlay */}
+                        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-20" />
 
-                            {/* Tactical Reticles */}
-                            <div className="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-indigo-500/50 transition-all duration-700 group-hover:translate-x-2 group-hover:translate-y-2 delay-100" />
-                            <div className="absolute top-8 right-8 w-12 h-12 border-t-2 border-r-2 border-indigo-500/50 transition-all duration-700 group-hover:-translate-x-2 group-hover:translate-y-2 delay-100" />
-                            <div className="absolute bottom-8 right-8 w-12 h-12 border-b-2 border-r-2 border-indigo-500/50 transition-all duration-700 group-hover:-translate-x-2 group-hover:-translate-y-2 delay-100" />
-                            <div className="absolute bottom-10 left-8 w-12 h-12 border-b-2 border-l-2 border-indigo-500/50 transition-all duration-700 group-hover:translate-x-2 group-hover:-translate-y-2 delay-100" />
+                        {/* Translating Code into Structure Architecture */}
+                        <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+                            {/* Animated connection data streams */}
+                            <div className="absolute top-1/2 left-0 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/30 to-indigo-400 group-hover:shadow-[0_0_20px_#818cf8] transition-all duration-1000">
+                                <motion.div
+                                    animate={{ left: ["0%", "100%"] }}
+                                    transition={{ duration: 1.5, ease: "linear", repeat: Infinity }}
+                                    className="absolute top-[-2px] w-12 h-[5px] bg-gradient-to-r from-transparent to-indigo-400 shadow-[0_0_15px_#818cf8] rounded-full blur-[1px]"
+                                />
+                            </div>
 
-                            {/* Terminal Boot Sequence */}
-                            <div className="bg-black/90 border border-indigo-500/30 p-6 rounded-lg font-mono text-xs md:text-sm text-indigo-400 w-full max-w-lg mx-6 transform translate-y-10 group-hover:translate-y-0 transition-all duration-[800ms] ease-out shadow-[0_0_50px_rgba(79,70,229,0.2)]">
-                                <div className="flex gap-2 mb-4 border-b border-white/10 pb-3">
-                                    <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                                    <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                                    <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                                </div>
-                                <div className="space-y-3 font-medium">
-                                    <p className="flex justify-between items-center group-hover:opacity-100 opacity-0 transition-opacity duration-300 delay-[500ms]">
-                                        <span className="text-white">&gt; INITIALIZING SYNFORGE ENGINE...</span>
-                                        <span className="text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded">[OK]</span>
-                                    </p>
-                                    <p className="flex justify-between items-center group-hover:opacity-100 opacity-0 transition-opacity duration-300 delay-[900ms]">
-                                        <span className="text-white">&gt; COMPILING RUST BINARIES...</span>
-                                        <span className="text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded">[0.04ms]</span>
-                                    </p>
-                                    <p className="flex justify-between items-center group-hover:opacity-100 opacity-0 transition-opacity duration-300 delay-[1300ms]">
-                                        <span className="text-white">&gt; SECURING ZERO-TRUST BOUNDARY...</span>
-                                        <span className="text-indigo-400 bg-indigo-400/10 px-2 py-0.5 rounded">[LOCKED]</span>
-                                    </p>
-                                    <p className="flex items-center gap-2 group-hover:opacity-100 opacity-0 transition-opacity duration-300 delay-[1700ms] pt-2">
-                                        <span className="text-emerald-400 font-bold">&gt; ARCHITECTURE SYNCHRONIZED.</span>
-                                        <span className="text-indigo-400 bg-indigo-400 flex items-center justify-center w-2 h-4 animate-pulse" />
-                                    </p>
+                            <div className="absolute top-1/2 right-0 w-1/2 h-[1px] bg-gradient-to-l from-transparent via-purple-500/30 to-purple-400 group-hover:shadow-[0_0_20px_#c084fc] transition-all duration-1000">
+                                <motion.div
+                                    animate={{ right: ["0%", "100%"] }}
+                                    transition={{ duration: 2.2, ease: "linear", repeat: Infinity }}
+                                    className="absolute top-[-2px] w-12 h-[5px] bg-gradient-to-l from-transparent to-purple-400 shadow-[0_0_15px_#c084fc] rounded-full blur-[1px]"
+                                />
+                            </div>
+
+                            {/* Vertical data streams */}
+                            <div className="absolute top-0 left-1/2 w-[1px] h-1/2 bg-gradient-to-b from-transparent via-indigo-500/30 to-indigo-400 opacity-50 hidden md:block group-hover:opacity-100 transition-opacity">
+                                <motion.div
+                                    animate={{ top: ["0%", "100%"] }}
+                                    transition={{ duration: 1.8, ease: "linear", repeat: Infinity }}
+                                    className="absolute left-[-2px] h-12 w-[5px] bg-gradient-to-b from-transparent to-indigo-400 shadow-[0_0_15px_#818cf8] rounded-full blur-[1px]"
+                                />
+                            </div>
+                            <div className="absolute bottom-0 left-1/2 w-[1px] h-1/2 bg-gradient-to-t from-transparent via-pink-500/30 to-pink-400 opacity-50 hidden md:block group-hover:opacity-100 transition-opacity">
+                                <motion.div
+                                    animate={{ bottom: ["0%", "100%"] }}
+                                    transition={{ duration: 2, ease: "linear", repeat: Infinity }}
+                                    className="absolute left-[-2px] h-12 w-[5px] bg-gradient-to-t from-transparent to-pink-400 shadow-[0_0_15px_#ec4899] rounded-full blur-[1px]"
+                                />
+                            </div>
+
+                            {/* The Nucleus Core */}
+                            <div className="relative z-10 flex items-center justify-center w-32 h-32 md:w-56 md:h-56">
+                                {/* Orbital rings */}
+                                <motion.div
+                                    animate={{ rotate: 360 }}
+                                    transition={{ duration: 20, ease: "linear", repeat: Infinity }}
+                                    className="absolute inset-0 border-2 border-dashed border-indigo-500/30 rounded-full group-hover:border-indigo-400/80 group-hover:scale-110 transition-all duration-700 shadow-[inset_0_0_20px_rgba(79,70,229,0.2)]"
+                                />
+                                <motion.div
+                                    animate={{ rotate: -360 }}
+                                    transition={{ duration: 15, ease: "linear", repeat: Infinity }}
+                                    className="absolute inset-4 md:inset-8 border border-purple-500/40 rounded-full group-hover:border-purple-400/80 group-hover:scale-105 transition-all duration-700"
+                                />
+                                <motion.div
+                                    animate={{ rotate: 180, scale: [0.9, 1.1, 0.9] }}
+                                    transition={{ duration: 8, ease: "easeInOut", repeat: Infinity }}
+                                    className="absolute inset-8 md:inset-12 border-4 border-dotted border-pink-500/30 rounded-full"
+                                />
+
+                                {/* Pulsing Central Engine */}
+                                <div className="absolute inset-10 md:inset-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full shadow-[0_0_80px_rgba(79,70,229,0.4)] flex items-center justify-center group-hover:shadow-[0_0_120px_rgba(79,70,229,0.8)] group-hover:scale-110 transition-all duration-700">
+                                    <div className="absolute inset-0 bg-white/20 rounded-full animate-ping opacity-20" />
+                                    <Code2 className="w-8 h-8 md:w-12 md:h-12 text-white relative z-10" />
                                 </div>
                             </div>
                         </div>
 
-                        {/* Standard Base Coordinates */}
-                        <div className="absolute bottom-10 left-10 flex gap-4 items-end z-20 transition-opacity duration-500 group-hover:opacity-0 hidden md:flex">
-                            <div className="text-xs font-mono text-white/50 uppercase tracking-widest">
-                                Location <br /><span className="text-white mt-1 block">Global Network</span>
-                            </div>
-                            <div className="text-xs font-mono text-white/50 uppercase tracking-widest pl-8 border-l border-white/20">
-                                Foundation <br /><span className="text-white mt-1 block">2026</span>
-                            </div>
+                        {/* Meaningful Text Overlay */}
+                        <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12 z-20 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none group-hover:via-black/20 transition-all duration-700">
+                            <motion.div
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.8 }}
+                                className="max-w-2xl backdrop-blur-sm bg-black/20 p-6 rounded-2xl border border-white/10"
+                            >
+                                <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-3 tracking-tight">The Neural Abstract.</h3>
+                                <p className="text-indigo-200/80 font-mono text-xs md:text-sm leading-relaxed tracking-wider border-l-2 border-indigo-500/50 pl-4 py-1">
+                                    At SynVoke, we don't just write code—we construct living, breathing architectural systems. Raw logic transforms into an unmovable foundation.
+                                </p>
+                            </motion.div>
                         </div>
                     </motion.div>
                 </div>
