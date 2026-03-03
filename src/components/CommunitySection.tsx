@@ -23,7 +23,7 @@ const team = [
         experience: "12+ years of leading massive engineering teams across fintech and cloud-infrastructure domains. Directly responsible for scaling systems to millions of concurrent active connections.",
         workflow: "Employs a 'Zero-Trust, Zero-Debt' methodology. Every architectural decision is heavily debated, vetted, and stress-tested before a single line of code is committed.",
         ideas: "Advocates for 'Invisible Infrastructure'—the idea that the best platforms are so incredibly fast and stable that the user forgets they are interacting with software.",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80",
+        image: "/images/vamshi.jpg",
         objectPosition: "object-center",
         skills: ["Technical Blueprinting", "Code Auditing", "Team Leadership", "Microservices"]
     },
