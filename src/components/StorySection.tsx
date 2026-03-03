@@ -98,90 +98,78 @@ export default function StorySection() {
                         We reject the ordinary. We build highly performant, mathematically precise, incredibly beautiful software architectures that define the future.
                     </motion.p>
 
-                    {/* Profound Abstract Animation: The Digital Nucleus */}
+                    {/* Profound Abstract Animation: Telemetry Topology */}
                     <motion.div
                         custom={3} initial="hidden" animate="visible" variants={fadeUp}
-                        className="w-full aspect-[21/9] md:aspect-[2.5/1] relative rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(79,70,229,0.15)] bg-[#050505] group"
+                        className="w-full aspect-[21/9] md:aspect-[2.5/1] relative rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(79,70,229,0.1)] bg-[#050505] group"
                     >
-                        {/* Deep Background Gradient */}
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(79,70,229,0.2)_0%,transparent_60%)] group-hover:bg-[radial-gradient(circle_at_center,rgba(79,70,229,0.3)_0%,transparent_70%)] transition-all duration-1000" />
+                        {/* Architectural Static Grid */}
+                        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none" />
 
-                        {/* Grid overlay */}
-                        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-20" />
-
-                        {/* Translating Code into Structure Architecture */}
+                        {/* Topographic Data Flow */}
                         <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-                            {/* Animated connection data streams */}
-                            <div className="absolute top-1/2 left-0 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/30 to-indigo-400 group-hover:shadow-[0_0_20px_#818cf8] transition-all duration-1000">
-                                <motion.div
-                                    animate={{ left: ["0%", "100%"] }}
-                                    transition={{ duration: 1.5, ease: "linear", repeat: Infinity }}
-                                    className="absolute top-[-2px] w-12 h-[5px] bg-gradient-to-r from-transparent to-indigo-400 shadow-[0_0_15px_#818cf8] rounded-full blur-[1px]"
-                                />
-                            </div>
+                            {/* Horizontal Backbone */}
+                            <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/5" />
+                            <motion.div animate={{ left: ["-10%", "110%"] }} transition={{ duration: 3, ease: "linear", repeat: Infinity }} className="absolute top-[calc(50%-1.5px)] w-24 h-[3px] bg-gradient-to-r from-transparent via-indigo-500 to-transparent shadow-[0_0_10px_#818cf8]" />
+                            <motion.div animate={{ left: ["110%", "-10%"] }} transition={{ duration: 4, ease: "linear", repeat: Infinity, delay: 1 }} className="absolute top-[calc(50%-1.5px)] w-32 h-[3px] bg-gradient-to-r from-transparent via-purple-500 to-transparent shadow-[0_0_10px_#c084fc]" />
 
-                            <div className="absolute top-1/2 right-0 w-1/2 h-[1px] bg-gradient-to-l from-transparent via-purple-500/30 to-purple-400 group-hover:shadow-[0_0_20px_#c084fc] transition-all duration-1000">
-                                <motion.div
-                                    animate={{ right: ["0%", "100%"] }}
-                                    transition={{ duration: 2.2, ease: "linear", repeat: Infinity }}
-                                    className="absolute top-[-2px] w-12 h-[5px] bg-gradient-to-l from-transparent to-purple-400 shadow-[0_0_15px_#c084fc] rounded-full blur-[1px]"
-                                />
-                            </div>
+                            {/* Hexagonal/Square Master Node */}
+                            <div className="relative z-10">
+                                {/* Outer bounding box */}
+                                <div className="absolute inset-[-40px] border border-white/5 rounded-2xl group-hover:border-indigo-500/20 transition-colors duration-700 bg-[#080808]/50 backdrop-blur-md" />
 
-                            {/* Vertical data streams */}
-                            <div className="absolute top-0 left-1/2 w-[1px] h-1/2 bg-gradient-to-b from-transparent via-indigo-500/30 to-indigo-400 opacity-50 hidden md:block group-hover:opacity-100 transition-opacity">
-                                <motion.div
-                                    animate={{ top: ["0%", "100%"] }}
-                                    transition={{ duration: 1.8, ease: "linear", repeat: Infinity }}
-                                    className="absolute left-[-2px] h-12 w-[5px] bg-gradient-to-b from-transparent to-indigo-400 shadow-[0_0_15px_#818cf8] rounded-full blur-[1px]"
-                                />
-                            </div>
-                            <div className="absolute bottom-0 left-1/2 w-[1px] h-1/2 bg-gradient-to-t from-transparent via-pink-500/30 to-pink-400 opacity-50 hidden md:block group-hover:opacity-100 transition-opacity">
-                                <motion.div
-                                    animate={{ bottom: ["0%", "100%"] }}
-                                    transition={{ duration: 2, ease: "linear", repeat: Infinity }}
-                                    className="absolute left-[-2px] h-12 w-[5px] bg-gradient-to-t from-transparent to-pink-400 shadow-[0_0_15px_#ec4899] rounded-full blur-[1px]"
-                                />
-                            </div>
+                                {/* Core Processing Unit Wrapper */}
+                                <div className="relative w-24 h-24 md:w-32 md:h-32 bg-gray-950 border border-white/10 rounded-xl flex items-center justify-center shadow-2xl overflow-hidden group-hover:border-indigo-500/50 transition-colors duration-500">
+                                    <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 blur-xl group-hover:opacity-100 transition-opacity duration-500 opacity-0" />
 
-                            {/* The Nucleus Core */}
-                            <div className="relative z-10 flex items-center justify-center w-32 h-32 md:w-56 md:h-56">
-                                {/* Orbital rings */}
-                                <motion.div
-                                    animate={{ rotate: 360 }}
-                                    transition={{ duration: 20, ease: "linear", repeat: Infinity }}
-                                    className="absolute inset-0 border-2 border-dashed border-indigo-500/30 rounded-full group-hover:border-indigo-400/80 group-hover:scale-110 transition-all duration-700 shadow-[inset_0_0_20px_rgba(79,70,229,0.2)]"
-                                />
-                                <motion.div
-                                    animate={{ rotate: -360 }}
-                                    transition={{ duration: 15, ease: "linear", repeat: Infinity }}
-                                    className="absolute inset-4 md:inset-8 border border-purple-500/40 rounded-full group-hover:border-purple-400/80 group-hover:scale-105 transition-all duration-700"
-                                />
-                                <motion.div
-                                    animate={{ rotate: 180, scale: [0.9, 1.1, 0.9] }}
-                                    transition={{ duration: 8, ease: "easeInOut", repeat: Infinity }}
-                                    className="absolute inset-8 md:inset-12 border-4 border-dotted border-pink-500/30 rounded-full"
-                                />
+                                    <div className="w-12 h-12 border border-indigo-500/30 rounded flex items-center justify-center relative bg-[#050505]">
+                                        <div className="absolute inset-0 bg-indigo-500/10 animate-pulse" />
+                                        <Code2 className="w-5 h-5 text-indigo-400 relative z-10" />
+                                    </div>
 
-                                {/* Pulsing Central Engine */}
-                                <div className="absolute inset-10 md:inset-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full shadow-[0_0_80px_rgba(79,70,229,0.4)] flex items-center justify-center group-hover:shadow-[0_0_120px_rgba(79,70,229,0.8)] group-hover:scale-110 transition-all duration-700">
-                                    <div className="absolute inset-0 bg-white/20 rounded-full animate-ping opacity-20" />
-                                    <Code2 className="w-8 h-8 md:w-12 md:h-12 text-white relative z-10" />
+                                    {/* Abstract read/write indicators */}
+                                    <div className="absolute bottom-3 left-3 flex gap-1">
+                                        <div className="w-1 h-3 bg-indigo-500/30 rounded-sm overflow-hidden"><motion.div animate={{ y: ["100%", "0%", "100%"] }} transition={{ duration: 0.5, repeat: Infinity, ease: "linear" }} className="w-full h-full bg-indigo-400" /></div>
+                                        <div className="w-1 h-3 bg-indigo-500/30 rounded-sm overflow-hidden"><motion.div animate={{ y: ["100%", "0%", "100%"] }} transition={{ duration: 0.8, repeat: Infinity, ease: "linear", delay: 0.2 }} className="w-full h-full bg-indigo-400" /></div>
+                                        <div className="w-1 h-3 bg-indigo-500/30 rounded-sm overflow-hidden"><motion.div animate={{ y: ["100%", "0%", "100%"] }} transition={{ duration: 0.6, repeat: Infinity, ease: "linear", delay: 0.1 }} className="w-full h-full bg-indigo-400" /></div>
+                                    </div>
                                 </div>
+
+                                {/* Branching vertical routing paths */}
+                                <div className="absolute top-full left-1/2 w-[1px] h-32 bg-white/5">
+                                    <motion.div animate={{ top: ["-10%", "110%"] }} transition={{ duration: 2, ease: "linear", repeat: Infinity, delay: 0.5 }} className="absolute left-[-1px] w-[3px] h-8 bg-gradient-to-b from-transparent via-cyan-500 to-transparent shadow-[0_0_10px_#06b6d4]" />
+                                </div>
+                                <div className="absolute bottom-full left-1/2 w-[1px] h-32 bg-white/5">
+                                    <motion.div animate={{ bottom: ["-10%", "110%"] }} transition={{ duration: 1.5, ease: "linear", repeat: Infinity, delay: 0.2 }} className="absolute left-[-1px] w-[3px] h-8 bg-gradient-to-t from-transparent via-pink-500 to-transparent shadow-[0_0_10px_#ec4899]" />
+                                </div>
+                            </div>
+
+                            {/* Surrounding Edge Nodes */}
+                            <div className="absolute top-1/2 left-[15%] w-8 h-8 rounded-lg border border-white/10 bg-gray-900 -translate-y-1/2 shadow-lg flex items-center justify-center group-hover:border-indigo-500/30 transition-colors">
+                                <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-[pulse_2s_infinite]" />
+                            </div>
+                            <div className="absolute top-1/2 right-[15%] w-8 h-8 rounded-lg border border-white/10 bg-gray-900 -translate-y-1/2 shadow-lg flex items-center justify-center group-hover:border-purple-500/30 transition-colors">
+                                <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-[pulse_2.5s_infinite]" />
+                            </div>
+                            <div className="absolute top-[20%] left-1/2 w-8 h-8 rounded-lg border border-white/10 bg-gray-900 -translate-x-1/2 shadow-lg flex items-center justify-center group-hover:border-pink-500/30 transition-colors">
+                                <span className="w-1.5 h-1.5 rounded-full bg-pink-500 animate-[pulse_1.5s_infinite]" />
+                            </div>
+                            <div className="absolute bottom-[20%] left-1/2 w-8 h-8 rounded-lg border border-white/10 bg-gray-900 -translate-x-1/2 shadow-lg flex items-center justify-center group-hover:border-cyan-500/30 transition-colors">
+                                <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-[pulse_3s_infinite]" />
                             </div>
                         </div>
 
                         {/* Meaningful Text Overlay */}
-                        <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12 z-20 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none group-hover:via-black/20 transition-all duration-700">
+                        <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12 z-20 bg-gradient-to-t from-black via-black/10 to-transparent pointer-events-none group-hover:via-black/5 transition-all duration-700">
                             <motion.div
-                                initial={{ opacity: 0, x: -20 }}
+                                initial={{ opacity: 0, x: -10 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.8 }}
-                                className="max-w-2xl backdrop-blur-sm bg-black/20 p-6 rounded-2xl border border-white/10"
+                                className="max-w-xl backdrop-blur-md bg-white/[0.02] p-5 rounded-2xl border border-white/5 border-l-2 border-l-indigo-500 shadow-2xl"
                             >
-                                <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-3 tracking-tight">The Neural Abstract.</h3>
-                                <p className="text-indigo-200/80 font-mono text-xs md:text-sm leading-relaxed tracking-wider border-l-2 border-indigo-500/50 pl-4 py-1">
-                                    At SynVoke, we don't just write code—we construct living, breathing architectural systems. Raw logic transforms into an unmovable foundation.
+                                <h3 className="text-xl md:text-2xl font-mono uppercase tracking-widest font-bold text-white mb-2">Systems Telemetry</h3>
+                                <p className="text-gray-400 font-light text-xs md:text-sm leading-relaxed">
+                                    We enforce strict node arbitration and instant state replication, guaranteeing zero packet delay and flawless synchronization across the distributed computing graph.
                                 </p>
                             </motion.div>
                         </div>
@@ -319,8 +307,8 @@ export default function StorySection() {
                         </p>
                     </motion.div>
 
-                    {/* Massive Navigation Link to Dedicated Team Page */}
-                    <div className="max-w-4xl mx-auto mt-10">
+                    {/* Refined compact Navigation Link to Dedicated Team Page */}
+                    <div className="max-w-3xl mx-auto mt-10">
                         <motion.a
                             href="/community"
                             initial={{ opacity: 0, scale: 0.95, y: 30 }}
@@ -328,34 +316,31 @@ export default function StorySection() {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
-                            className="block relative p-[1px] rounded-[3rem] bg-gradient-to-r from-indigo-500/30 via-purple-500/30 to-pink-500/30 group hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500 transition-all duration-700 shadow-[0_0_50px_rgba(79,70,229,0.1)] hover:shadow-[0_0_80px_rgba(79,70,229,0.4)]"
+                            transition={{ duration: 0.5, type: "spring", bounce: 0.4 }}
+                            className="block relative p-[1px] rounded-[2rem] bg-gradient-to-r from-indigo-500/30 via-purple-500/30 to-pink-500/30 group hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500 transition-all duration-700 shadow-[0_0_30px_rgba(79,70,229,0.1)] hover:shadow-[0_0_50px_rgba(79,70,229,0.3)]"
                         >
-                            <div className="bg-[#050505] rounded-[2.9rem] p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10 relative overflow-hidden">
+                            <div className="bg-[#050505] rounded-[1.95rem] p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
                                 {/* Ambient Hover Glow */}
                                 <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/0 to-purple-500/0 group-hover:from-indigo-500/10 group-hover:to-purple-500/10 transition-colors duration-700 pointer-events-none" />
 
-                                {/* Geometric background lines */}
-                                <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:1rem_1rem] pointer-events-none" />
-
                                 <div className="text-left relative z-10 flex-1">
-                                    <div className="flex items-center gap-4 mb-4">
-                                        <span className="flex h-3 w-3 relative">
+                                    <div className="flex items-center gap-3 mb-3">
+                                        <span className="flex h-2.5 w-2.5 relative">
                                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                            <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
                                         </span>
-                                        <p className="text-xs font-mono tracking-widest uppercase text-emerald-400 font-bold">5 Active Engineers</p>
+                                        <p className="text-[10px] font-mono tracking-widest uppercase text-emerald-400 font-bold">5 Active Engineers</p>
                                     </div>
-                                    <h3 className="text-4xl md:text-5xl font-display font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-300 group-hover:to-purple-300 transition-all duration-500">
-                                        Meet The Engineering<br />Collective.
+                                    <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-300 group-hover:to-purple-300 transition-all duration-500">
+                                        Meet The Collective.
                                     </h3>
-                                    <p className="text-gray-400 font-light text-lg">
-                                        Dive into the deep technical profiles, experience, and architectural philosophies of our core team.
+                                    <p className="text-gray-400 font-light pl-1 border-l-2 border-indigo-500/30 text-sm md:text-base">
+                                        Deep technical profiles and structural philosophies.
                                     </p>
                                 </div>
 
-                                <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-white text-white group-hover:text-gray-900 transition-all duration-500 shadow-2xl relative z-10">
-                                    <ArrowUpRight className="w-8 h-8 md:w-10 md:h-10 group-hover:scale-125 group-hover:rotate-12 transition-transform duration-500" />
+                                <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-white text-white group-hover:text-gray-900 transition-all duration-500 shadow-xl relative z-10">
+                                    <ArrowUpRight className="w-6 h-6 group-hover:scale-125 transition-transform duration-500" />
                                 </div>
                             </div>
                         </motion.a>
