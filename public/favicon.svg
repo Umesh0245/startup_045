@@ -14,25 +14,14 @@
         </filter>
     </defs>
 
-    <!-- Main SynVoke S logo path animated smoothly -->
+    <!-- Main SynVoke S logo path static and clear -->
     <path
         d="M30 20 H70 A20 20 0 0 1 70 60 H30 A20 20 0 0 0 30 100 H70"
         stroke="url(#faviconLogoGradient)"
         stroke-width="16"
         stroke-linecap="round"
         stroke-linejoin="round"
-        stroke-dasharray="200"
-        stroke-dashoffset="200"
         fill="none"
         filter="url(#glow)"
-    >
-        <animate 
-            attributeName="stroke-dashoffset" 
-            values="200;0;0;200;200" 
-            dur="3s" 
-            repeatCount="indefinite"
-            calcMode="spline"
-            keySplines="0.4 0 0.2 1; 1 0 1 1; 0.4 0 0.2 1; 1 0 1 1"
-        />
-    </path>
+    />
 </svg>
