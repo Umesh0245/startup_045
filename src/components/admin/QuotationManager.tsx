@@ -106,17 +106,19 @@ export default function QuotationManager() {
                 `}</style>
 
                 {/* Quotation Header */}
-                <div className="bg-[#050505] text-white p-12 md:p-16 relative">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/20 rounded-full blur-[80px] pointer-events-none"></div>
-                    <div className="flex justify-between items-start relative z-10">
-                        <div>
-                            <h1 className="text-3xl md:text-5xl font-display font-bold tracking-tight mb-2 uppercase">Official Quote</h1>
-                            <div className="text-purple-400 font-mono text-sm tracking-widest uppercase">Ref: {quoteData.quoteNumber}</div>
+                <div className="bg-white text-gray-900 border-b-2 border-purple-100 p-12 md:p-16 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-full blur-[80px] pointer-events-none -translate-y-1/2 translate-x-1/4"></div>
+                    <div className="flex justify-between items-start relative z-10 w-full">
+                        <div className="max-w-[50%]">
+                            <h1 className="text-4xl md:text-5xl font-display font-light tracking-tight mb-2 text-purple-900/40 uppercase">Estimate</h1>
+                            <div className="text-gray-900 font-mono font-bold tracking-widest uppercase">{quoteData.quoteNumber}</div>
                         </div>
-                        <div className="text-right">
-                            <h2 className="text-2xl font-display font-bold tracking-tight">SynVoke</h2>
-                            <p className="text-gray-400 text-xs font-mono uppercase tracking-[0.2em] mt-1">Premium Engineering</p>
-                            <div className="mt-4 text-sm text-gray-400 space-y-1">
+                        <div className="text-right flex flex-col items-end">
+                            <div className="flex items-center gap-2 mb-2">
+                                <span className="text-3xl font-display font-bold text-gray-900">SynVoke</span>
+                            </div>
+                            <p className="text-purple-600 font-mono text-xs uppercase tracking-[0.2em]">Premium Engineering</p>
+                            <div className="mt-6 text-sm text-gray-500 space-y-1">
                                 <p>contact.synvoke@gmail.com</p>
                                 <p>+91 9642469249</p>
                             </div>
