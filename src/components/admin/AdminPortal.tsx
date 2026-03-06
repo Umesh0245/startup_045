@@ -9,9 +9,8 @@ const AnimatedLogo = ({ className = "w-full h-full text-indigo-500" }: { classNa
     <svg viewBox="0 0 100 120" fill="none" className={className}>
         <defs>
             <linearGradient id="adminLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#00F0FF" />
-                <stop offset="50%" stopColor="#7000FF" />
-                <stop offset="100%" stopColor="#FF007A" />
+                <stop offset="0%" stopColor="#4F46E5" />
+                <stop offset="100%" stopColor="#EC4899" />
             </linearGradient>
             <filter id="adminGlow">
                 <feGaussianBlur stdDeviation="3" result="coloredBlur" />
@@ -21,23 +20,13 @@ const AnimatedLogo = ({ className = "w-full h-full text-indigo-500" }: { classNa
                 </feMerge>
             </filter>
         </defs>
-
-        {/* Splash pulse background circle */}
-        <motion.circle cx="50" cy="60" r="15" fill="none" stroke="url(#adminLogoGradient)" strokeWidth="4"
-            initial={{ r: 10, opacity: 0.8, strokeWidth: 8 }}
-            animate={{ r: 45, opacity: 0, strokeWidth: 0 }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
-        />
-
-        <motion.path
+        <path
             d="M30 20 H70 A20 20 0 0 1 70 60 H30 A20 20 0 0 0 30 100 H70"
             stroke="url(#adminLogoGradient)"
-            strokeWidth="12"
+            strokeWidth="16"
             strokeLinecap="round"
+            strokeLinejoin="round"
             filter="url(#adminGlow)"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
         />
     </svg>
 );
@@ -127,43 +116,41 @@ export default function AdminPortal() {
     return (
         <div className="min-h-screen bg-gray-50 admin-portal print:bg-white">
             {/* Sidebar / Topbar Navigation - Hide on Print */}
-            <div className="bg-[#050505] text-white print:hidden sticky top-0 z-50 shadow-2xl">
+            <div className="bg-[#050505] text-white print:hidden sticky top-0 z-50 border-b border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
                 <div className="container mx-auto px-4 md:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
-                    <div className="flex items-center gap-3 w-full md:w-auto overflow-hidden">
-                        <div className="w-10 h-10 rounded-xl bg-[#111] border border-white/5 flex items-center justify-center p-1.5 shadow-[0_0_20px_rgba(112,0,255,0.15)] shrink-0">
+                    <div className="flex items-center gap-4 w-full md:w-auto shrink-0">
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500/10 to-pink-500/10 border border-white/10 flex items-center justify-center p-2.5 shadow-inner shrink-0 leading-none">
                             <AnimatedLogo className="w-full h-full" />
                         </div>
-                        <div className="min-w-0">
-                            <h1 className="font-display font-bold text-xl tracking-tight leading-none truncate">SynVoke Admin</h1>
-                            <span className="text-[10px] text-gray-400 font-mono tracking-[0.2em] uppercase truncate block mt-[2px]">Control Matrix</span>
+                        <div className="flex flex-col flex-1 justify-center translate-y-[2px]">
+                            <h1 className="font-display font-bold text-2xl tracking-tight leading-none text-white whitespace-nowrap">SynVoke Admin</h1>
+                            <span className="text-[10px] text-pink-500 font-mono font-bold tracking-[0.2em] uppercase leading-none mt-1.5 block">Control Matrix</span>
                         </div>
                     </div>
 
-                    <div className="flex-1 flex justify-center w-full md:w-auto overflow-x-auto overflow-y-hidden custom-scrollbar pb-2 md:pb-0">
-                        <div className="flex space-x-1 sm:space-x-4 bg-white/5 p-1 rounded-xl border border-white/10 mx-auto w-max md:mx-0 shrink-0">
-                            <button
-                                onClick={() => setActiveTab('invoices')}
-                                className={`px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition-all ${activeTab === 'invoices' ? 'bg-indigo-500 text-white shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
-                            >
-                                <FileText className="w-4 h-4" /> <span className="hidden sm:inline">Invoices</span>
-                            </button>
-                            <button
-                                onClick={() => setActiveTab('quotations')}
-                                className={`px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition-all ${activeTab === 'quotations' ? 'bg-indigo-500 text-white shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
-                            >
-                                <FileSignature className="w-4 h-4" /> <span className="hidden sm:inline">Quotations</span>
-                            </button>
-                            <button
-                                onClick={() => setActiveTab('jobs')}
-                                className={`px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition-all ${activeTab === 'jobs' ? 'bg-indigo-500 text-white shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
-                            >
-                                <Briefcase className="w-4 h-4" /> <span className="hidden sm:inline">Careers / Jobs</span>
-                            </button>
-                        </div>
+                    <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto hide-scrollbar pb-1 md:pb-0">
+                        <button
+                            onClick={() => setActiveTab('invoices')}
+                            className={`whitespace-nowrap px-5 py-2.5 rounded-xl flex items-center gap-2 text-sm font-bold transition-all ${activeTab === 'invoices' ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/25' : 'text-gray-400 hover:text-white hover:bg-white/5 border border-transparent'}`}
+                        >
+                            <FileText className="w-4 h-4" /> Invoices
+                        </button>
+                        <button
+                            onClick={() => setActiveTab('quotations')}
+                            className={`whitespace-nowrap px-5 py-2.5 rounded-xl flex items-center gap-2 text-sm font-bold transition-all ${activeTab === 'quotations' ? 'bg-pink-600 text-white shadow-lg shadow-pink-500/25' : 'text-gray-400 hover:text-white hover:bg-white/5 border border-transparent'}`}
+                        >
+                            <FileSignature className="w-4 h-4" /> Quotations
+                        </button>
+                        <button
+                            onClick={() => setActiveTab('jobs')}
+                            className={`whitespace-nowrap px-5 py-2.5 rounded-xl flex items-center gap-2 text-sm font-bold transition-all ${activeTab === 'jobs' ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/25' : 'text-gray-400 hover:text-white hover:bg-white/5 border border-transparent'}`}
+                        >
+                            <Briefcase className="w-4 h-4" /> Careers
+                        </button>
                     </div>
 
-                    <button onClick={handleLogout} className="flex items-center justify-center gap-2 text-gray-400 hover:text-white transition-colors bg-white/5 px-4 py-2 rounded-xl text-sm border border-white/5 w-full md:w-auto shrink-0 mt-2 md:mt-0">
-                        <LogOut className="w-4 h-4" /> <span>Logout</span>
+                    <button onClick={handleLogout} className="flex items-center justify-center gap-2 text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-colors bg-white/5 px-5 py-2.5 rounded-xl text-sm font-bold border border-white/5 w-full md:w-auto shrink-0 mt-2 md:mt-0 whitespace-nowrap">
+                        <LogOut className="w-4 h-4" /> Logout
                     </button>
                 </div>
             </div>

@@ -50,69 +50,6 @@ const {
 			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
 			rel="stylesheet"
 		/>
-
-		<!-- Animated Splash Favicon Engine -->
-		<script is:inline>
-			if (typeof window !== "undefined") {
-				let link = document.querySelector("link[rel~='icon']");
-				if (!link) {
-					link = document.createElement("link");
-					link.rel = "icon";
-					document.head.appendChild(link);
-				}
-
-				// Pre-calculate SVG frames to eliminate latency, CPU generation overhead, and glitching
-				const frames = [];
-				const totalFrames = 60; // 60 frames for a smooth 3-second cycle
-				for (let i = 0; i < totalFrames; i++) {
-					const progress = i / totalFrames;
-					// Smooth sine wave from 0 to 200 for draw effect
-					const dashOffset = Math.floor(
-						((Math.sin(progress * Math.PI * 2) + 1) / 2) * 200
-					);
-
-					const svg = `
-					<svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
-						<defs>
-							<linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-								<stop offset="0%" stop-color="#4F46E5" />
-								<stop offset="100%" stop-color="#EC4899" />
-							</linearGradient>
-							<filter id="glow">
-								<feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-								<feMerge>
-									<feMergeNode in="coloredBlur"/>
-									<feMergeNode in="SourceGraphic"/>
-								</feMerge>
-							</filter>
-						</defs>
-						<path 
-							d="M30 20 H70 A20 20 0 0 1 70 60 H30 A20 20 0 0 0 30 100 H70" 
-							stroke="url(#g)" 
-							stroke-width="15" 
-							stroke-linecap="round" 
-							stroke-linejoin="round"
-							fill="none" 
-							filter="url(#glow)"
-							stroke-dasharray="200"
-							stroke-dashoffset="${dashOffset}"
-						/>
-					</svg>
-					`
-						.trim()
-						.replace(/\s+/g, " ");
-
-					frames.push("data:image/svg+xml;base64," + btoa(svg));
-				}
-
-				let currentFrame = 0;
-				// Play the pre-calculated buffer at a buttery smooth 25 FPS (40ms interval)
-				setInterval(() => {
-					link.href = frames[currentFrame];
-					currentFrame = (currentFrame + 1) % totalFrames;
-				}, 40);
-			}
-		</script>
 	</head>
 	<body
 		class="bg-gray-50 text-gray-900 font-sans antialiased overflow-x-hidden"
