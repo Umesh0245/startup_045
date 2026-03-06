@@ -1,36 +1,45 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import ServiceDetail from '../../components/ServiceDetail';
-import '../../styles/global.css';
+import Layout from "../../layouts/Layout.astro";
+import ServiceDetail from "../../components/ServiceDetail";
+import "../../styles/global.css";
 
 const data = {
     title: "DevOps & CI/CD.",
     category: "Infrastructure",
-    description: "Extreme automated pipelines ensuring frictionless, infinitely repeatable, and highly secure deployment cycles globally.",
+    description:
+        "Extreme automated pipelines ensuring frictionless, infinitely repeatable, and highly secure deployment cycles globally.",
     theme: "purple",
-    heroImage: "https://images.unsplash.com/photo-1667375252877-3e1a0b3f885f?q=100&w=3840&auto=format&fit=crop",
+    heroImage:
+        "https://images.unsplash.com/photo-1667375252877-3e1a0b3f885f?q=100&w=3840&auto=format&fit=crop",
     methodologies: [
         {
             title: "Zero-Downtime Pipelines",
             desc: "Self-healing deployment nodes using advanced blue/green and canary release strategies. We guarantee code reaches production flawlessly without dropping a single packet.",
-            image: "https://images.unsplash.com/photo-1507721999584-59e44f3c7131?q=100&w=2500&auto=format&fit=crop"
+            image: "https://images.unsplash.com/photo-1507721999584-59e44f3c7131?q=100&w=2500&auto=format&fit=crop",
         },
         {
             title: "Infrastructure as Code",
             desc: "Every component is defined programmatically via Terraform and Pulumi. Your entire scaling infrastructure can be rebuilt or mirrored on demand in under 60 seconds.",
-            image: "https://images.unsplash.com/photo-1607706189992-eaa520b2d42e?q=100&w=2500&auto=format&fit=crop"
+            image: "https://images.unsplash.com/photo-1607706189992-eaa520b2d42e?q=100&w=2500&auto=format&fit=crop",
         },
         {
             title: "Deep Observability",
             desc: "Custom telemetry integrations mapping every internal metric. If a millisecond irregularity occurs, our systems auto-scale and alert long before user impact.",
-            image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=100&w=2500&auto=format&fit=crop"
-        }
+            image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=100&w=2500&auto=format&fit=crop",
+        },
     ],
-    techStack: ["GitHub Actions", "Terraform", "AWS", "Datadog", "Prometheus", "Vercel", "Pulumi"]
+    techStack: [
+        "GitHub Actions",
+        "Terraform",
+        "AWS",
+        "Datadog",
+        "Prometheus",
+        "Vercel",
+        "Pulumi",
+    ],
 };
-
 ---
 
-<Layout title="DevOps Engineering | SynVoke Studio">
+<Layout title="DevOps Engineering | SynVoke">
     <ServiceDetail client:load {...data} />
 </Layout>

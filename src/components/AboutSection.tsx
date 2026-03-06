@@ -26,7 +26,7 @@ export default function AboutSection() {
                             viewport={{ once: true }}
                             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 tracking-widest text-[10px] font-bold uppercase mb-8 shadow-sm"
                         >
-                            <Sparkles className="w-3.5 h-3.5" /> Inside SynVoke Studio
+                            <Sparkles className="w-3.5 h-3.5" /> Inside SynVoke
                         </motion.div>
 
                         <motion.h2

@@ -51,7 +51,7 @@ export default function Navbar() {
                     </div>
                     <div className="flex flex-col leading-tight">
                         <span className="font-display font-bold text-xl tracking-tight text-gray-900 group-hover:text-indigo-600 transition-colors">
-                            SynVoke Studio
+                            SynVoke
                         </span>
                         <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-gray-500 uppercase mt-[2px]">
                             OFFICIAL

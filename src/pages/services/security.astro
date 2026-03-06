@@ -1,36 +1,44 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import ServiceDetail from '../../components/ServiceDetail';
-import '../../styles/global.css';
+import Layout from "../../layouts/Layout.astro";
+import ServiceDetail from "../../components/ServiceDetail";
+import "../../styles/global.css";
 
 const data = {
     title: "Enterprise Core Security.",
     category: "Cyber Defense",
-    description: "Multi-layered vulnerability testing, AES-256 end-to-end encryption, and rigorous OAuth2/JWT protocol integrations to protect your most critical business and user data.",
+    description:
+        "Multi-layered vulnerability testing, AES-256 end-to-end encryption, and rigorous OAuth2/JWT protocol integrations to protect your most critical business and user data.",
     theme: "pink",
-    heroImage: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=100&w=3840&auto=format&fit=crop",
+    heroImage:
+        "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=100&w=3840&auto=format&fit=crop",
     methodologies: [
         {
             title: "Zero-Trust Mesh",
             desc: "Implementing rigorous internal network isolation. Every micro-node verifies identity before exchanging packets, rendering unauthorized lateral movements mathematically impossible.",
-            image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=100&w=2500&auto=format&fit=crop"
+            image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=100&w=2500&auto=format&fit=crop",
         },
         {
             title: "Penetration Resistance",
             desc: "Continuous proactive red-teaming against your systems using cutting-edge exploit methodologies. We expose zero-day logic flaws before threat actors do.",
-            image: "https://images.unsplash.com/photo-1614064641913-6b22eb8e7ed9?q=100&w=2500&auto=format&fit=crop"
+            image: "https://images.unsplash.com/photo-1614064641913-6b22eb8e7ed9?q=100&w=2500&auto=format&fit=crop",
         },
         {
             title: "Cryptographic Vaults",
             desc: "Storing sensitive user metrics using immutable HMAC signing and heavily salted Argon2 algorithms. Breaches yield absolutely nothing but meaningless noise.",
-            image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=100&w=2500&auto=format&fit=crop"
-        }
+            image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=100&w=2500&auto=format&fit=crop",
+        },
     ],
-    techStack: ["Argon2", "OAuth 2.0", "JWT", "Vault", "Cloudflare Shield", "OpenID"]
+    techStack: [
+        "Argon2",
+        "OAuth 2.0",
+        "JWT",
+        "Vault",
+        "Cloudflare Shield",
+        "OpenID",
+    ],
 };
-
 ---
 
-<Layout title="Core Security | SynVoke Studio">
+<Layout title="Core Security | SynVoke">
     <ServiceDetail client:load {...data} />
 </Layout>

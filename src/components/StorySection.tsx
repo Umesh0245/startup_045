@@ -68,7 +68,7 @@ export default function StorySection() {
                         custom={0} initial="hidden" animate="visible" variants={fadeUp}
                         className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/5 border border-black/10 backdrop-blur-md text-gray-600 tracking-widest text-[10px] font-bold uppercase shadow-sm mb-10"
                     >
-                        <Sparkles className="w-3.5 h-3.5 text-indigo-500" /> SynVoke Studio Origins
+                        <Sparkles className="w-3.5 h-3.5 text-indigo-500" /> SynVoke Origins
                     </motion.div>
 
                     <motion.h1
@@ -195,7 +195,7 @@ export default function StorySection() {
                                 </h2>
                                 <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full mb-8 shadow-[0_0_20px_rgba(79,70,229,0.5)]" />
                                 <p className="text-gray-400 font-light leading-relaxed max-w-sm hidden lg:block text-lg">
-                                    SynVoke Studio is not a typical agency. It is a highly specialized engineering forge where visionary founders and enterprise leaders bring their most complex ideas to be materialized into flawless digital reality.
+                                    SynVoke is not a typical agency. It is a highly specialized engineering forge where visionary founders and enterprise leaders bring their most complex ideas to be materialized into flawless digital reality.
                                 </p>
                             </motion.div>
                         </div>
@@ -214,7 +214,7 @@ export default function StorySection() {
                                     While others assemble fragile, pre-packaged templates and prioritize deployment speed over architectural substance, we forge bespoke, high-performance systems from the absolute ground up. We believe that true, category-defining products aren't merely built—they are painstakingly crafted.
                                 </p>
                                 <p className="mb-12">
-                                    <strong className="text-white">SynVoke Studio is the crucible where category leaders emerge.</strong> From zero-latency fintech exchanges to massive spatial computing interfaces, we combine military-grade backends with breathtakingly smooth frontends. This is where the impossible is shipped daily, and where your magnum opus comes to life.
+                                    <strong className="text-white">SynVoke is the crucible where category leaders emerge.</strong> From zero-latency fintech exchanges to massive spatial computing interfaces, we combine military-grade backends with breathtakingly smooth frontends. This is where the impossible is shipped daily, and where your magnum opus comes to life.
                                 </p>
 
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-16 relative z-10">
@@ -250,7 +250,7 @@ export default function StorySection() {
                         viewport={{ once: true }}
                         className="text-center mb-24"
                     >
-                        <h2 className="text-SM font-mono tracking-[0.3em] font-bold uppercase text-indigo-500 mb-4">The SynVoke Studio Standard</h2>
+                        <h2 className="text-SM font-mono tracking-[0.3em] font-bold uppercase text-indigo-500 mb-4">The SynVoke Standard</h2>
                         <h3 className="text-5xl md:text-7xl font-display font-bold text-white">Core Dictates.</h3>
                     </motion.div>
 
@@ -303,7 +303,7 @@ export default function StorySection() {
                             Built by Engineers.
                         </h2>
                         <p className="text-xl text-gray-400 font-light max-w-3xl mx-auto leading-relaxed">
-                            No typical founders. No bloated management. SynVoke Studio is an elite collective of pure systems engineers, technical leads, and dedicated builders orchestrating the platform of the future.
+                            No typical founders. No bloated management. SynVoke is an elite collective of pure systems engineers, technical leads, and dedicated builders orchestrating the platform of the future.
                         </p>
                     </motion.div>
 

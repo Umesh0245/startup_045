@@ -74,7 +74,7 @@ export default function Contact() {
                 </div>
 
                 <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium text-gray-500">
-                    <p>&copy; {new Date().getFullYear()} SynVoke Studio. All rights reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} SynVoke. All rights reserved.</p>
                     <div className="flex gap-6">
                         <a href="#" className="hover:text-indigo-600 transition-colors">Privacy Policy</a>
                         <a href="#" className="hover:text-indigo-600 transition-colors">Terms of Service</a>

@@ -1,36 +1,39 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero';
-import ThreeCanvas from '../components/ThreeCanvas';
-import Navbar from '../components/Navbar';
-import Portfolio from '../components/Portfolio';
-import Services from '../components/Services';
-import Contact from '../components/Contact';
-import { SplashScreen } from '../components/SplashScreen'; // Import splash screen
-import AboutSection from '../components/AboutSection';
-import SDLCWorkflow from '../components/SDLCWorkflow';
-import '../styles/global.css';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero";
+import ThreeCanvas from "../components/ThreeCanvas";
+import Navbar from "../components/Navbar";
+import Portfolio from "../components/Portfolio";
+import Services from "../components/Services";
+import Contact from "../components/Contact";
+import { SplashScreen } from "../components/SplashScreen"; // Import splash screen
+import AboutSection from "../components/AboutSection";
+import SDLCWorkflow from "../components/SDLCWorkflow";
+import "../styles/global.css";
 
 // Client-side execution for the React components
 ---
 
-<Layout title="SynVoke Studio | Professional Digital Experiences">
-    <SplashScreen client:load /> {/* Show splash screen first */}
+<Layout title="SynVoke | Professional Digital Experiences">
+    <SplashScreen client:load />
+    {/* Show splash screen first */}
 
     {/* Background 3D Scene - subtle and behind */}
     <div class="fixed inset-0 z-0 opacity-100 pointer-events-none">
-        <ThreeCanvas client:load /> 
+        <ThreeCanvas client:load />
     </div>
-    
+
     <div class="relative z-10 w-full flex flex-col min-h-screen">
-        <Navbar client:load /> 
-        
+        <Navbar client:load />
+
         <main className="flex-grow">
             <Hero client:load />
-            
-            <div className="relative bg-white/50 backdrop-blur-3xl shadow-2xl shadow-gray-200/50 rounded-t-[3rem] border-t border-white/50 overflow-hidden mt-[-2rem] z-20">
+
+            <div
+                className="relative bg-white/50 backdrop-blur-3xl shadow-2xl shadow-gray-200/50 rounded-t-[3rem] border-t border-white/50 overflow-hidden mt-[-2rem] z-20"
+            >
                 <Services client:visible />
-                
+
                 <AboutSection client:visible />
                 <SDLCWorkflow client:visible />
 

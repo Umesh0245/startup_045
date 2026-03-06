@@ -1,12 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Contact from '../components/Contact';
-import CommunitySection from '../components/CommunitySection';
-import '../styles/global.css';
+import Layout from "../layouts/Layout.astro";
+import Contact from "../components/Contact";
+import CommunitySection from "../components/CommunitySection";
+import "../styles/global.css";
 ---
 
-<Layout title="The Team | SynVoke Studio">
+<Layout title="The Team | SynVoke">
     <CommunitySection client:load />
-    
+
     <Contact client:visible />
 </Layout>

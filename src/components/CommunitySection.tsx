@@ -55,7 +55,7 @@ const team = [
         id: "manoj-k",
         name: "Manoj Kumar",
         role: "Business Development Executive",
-        bio: "Expanding the operational footprint and executing strategic enterprise partnerships. Drives SynVoke Studio's market presence by translating technical excellence into business dominance.",
+        bio: "Expanding the operational footprint and executing strategic enterprise partnerships. Drives SynVoke's market presence by translating technical excellence into business dominance.",
         experience: "9+ years of aggressive expansion strategy in the B2B SaaS sector. Has successfully negotiated multi-million dollar infrastructure contracts with Fortune 500 entities.",
         workflow: "Relentless market mapping combined with deep technical translations. Bridges the gap between pure engineering specs and overwhelming corporate value propositions.",
         ideas: "Believes that 'Technology is fundamentally useless if it doesn't exponentially multiply leverage.' Focuses purely on integrating our stack into high-impact industries.",
@@ -92,7 +92,7 @@ export default function CommunitySection() {
                     Team
                 </div>
                 <div className="text-white font-mono text-xs uppercase tracking-widest opacity-50 hidden md:block">
-                    SynVoke Studio / The Engineering Collective
+                    SynVoke / The Engineering Collective
                 </div>
             </nav>
 
