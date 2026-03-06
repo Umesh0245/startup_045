@@ -19,7 +19,7 @@ export default function Contact() {
                                 contact.synvoke@gmail.com
                             </a>
                             <p className="text-gray-500 text-lg">+91 9642469249</p>
-                            <p className="text-gray-500 text-lg">San Francisco, CA</p>
+                            <p className="text-gray-500 text-lg">Madhapur, Hyderabad, Telangana - 500081</p>
                         </div>
 
                         <div className="mt-12 flex gap-6">
