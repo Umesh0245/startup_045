@@ -1,8 +1,46 @@
 import React, { useState, useEffect } from 'react';
-import { Lock, FileText, Briefcase, FileSignature, LogOut } from 'lucide-react';
+import { FileText, Briefcase, FileSignature, LogOut } from 'lucide-react';
+import { motion } from 'framer-motion';
 import JobsManager from './JobsManager';
 import InvoiceManager from './InvoiceManager';
 import QuotationManager from './QuotationManager';
+
+const AnimatedLogo = ({ className = "w-full h-full text-indigo-500" }: { className?: string }) => (
+    <svg viewBox="0 0 100 120" fill="none" className={className}>
+        <defs>
+            <linearGradient id="adminLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#00F0FF" />
+                <stop offset="50%" stopColor="#7000FF" />
+                <stop offset="100%" stopColor="#FF007A" />
+            </linearGradient>
+            <filter id="adminGlow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                <feMerge>
+                    <feMergeNode in="coloredBlur" />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+        </defs>
+
+        {/* Splash pulse background circle */}
+        <motion.circle cx="50" cy="60" r="15" fill="none" stroke="url(#adminLogoGradient)" strokeWidth="4"
+            initial={{ r: 10, opacity: 0.8, strokeWidth: 8 }}
+            animate={{ r: 45, opacity: 0, strokeWidth: 0 }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+        />
+
+        <motion.path
+            d="M30 20 H70 A20 20 0 0 1 70 60 H30 A20 20 0 0 0 30 100 H70"
+            stroke="url(#adminLogoGradient)"
+            strokeWidth="12"
+            strokeLinecap="round"
+            filter="url(#adminGlow)"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+        />
+    </svg>
+);
 
 export default function AdminPortal() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -43,8 +81,8 @@ export default function AdminPortal() {
                     <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 blur-[40px] pointer-events-none"></div>
 
                     <div className="flex flex-col items-center mb-8 relative z-10">
-                        <div className="w-16 h-16 rounded-full bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-4">
-                            <Lock className="w-8 h-8 text-indigo-400" />
+                        <div className="w-16 h-16 rounded-full bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-4 p-2 shadow-[0_0_30px_rgba(112,0,255,0.2)]">
+                            <AnimatedLogo className="w-12 h-12" />
                         </div>
                         <h2 className="text-3xl font-display font-bold text-white text-center tracking-tight">SynVoke Command</h2>
                         <p className="text-indigo-400/80 font-mono text-xs uppercase tracking-widest mt-2 block">Restricted Access</p>
@@ -90,40 +128,42 @@ export default function AdminPortal() {
         <div className="min-h-screen bg-gray-50 admin-portal print:bg-white">
             {/* Sidebar / Topbar Navigation - Hide on Print */}
             <div className="bg-[#050505] text-white print:hidden sticky top-0 z-50 shadow-2xl">
-                <div className="container mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded bg-indigo-500 flex items-center justify-center">
-                            <Lock className="w-4 h-4 text-white" />
+                <div className="container mx-auto px-4 md:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div className="flex items-center gap-3 w-full md:w-auto overflow-hidden">
+                        <div className="w-10 h-10 rounded-xl bg-[#111] border border-white/5 flex items-center justify-center p-1.5 shadow-[0_0_20px_rgba(112,0,255,0.15)] shrink-0">
+                            <AnimatedLogo className="w-full h-full" />
                         </div>
-                        <div>
-                            <h1 className="font-display font-bold text-xl tracking-tight leading-none">SynVoke Admin</h1>
-                            <span className="text-[10px] text-gray-400 font-mono tracking-[0.2em] uppercase">Control Matrix</span>
+                        <div className="min-w-0">
+                            <h1 className="font-display font-bold text-xl tracking-tight leading-none truncate">SynVoke Admin</h1>
+                            <span className="text-[10px] text-gray-400 font-mono tracking-[0.2em] uppercase truncate block mt-[2px]">Control Matrix</span>
                         </div>
                     </div>
 
-                    <div className="flex space-x-1 sm:space-x-4 bg-white/5 p-1 rounded-xl border border-white/10">
-                        <button
-                            onClick={() => setActiveTab('invoices')}
-                            className={`px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition-all ${activeTab === 'invoices' ? 'bg-indigo-500 text-white shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
-                        >
-                            <FileText className="w-4 h-4" /> <span className="hidden sm:inline">Invoices</span>
-                        </button>
-                        <button
-                            onClick={() => setActiveTab('quotations')}
-                            className={`px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition-all ${activeTab === 'quotations' ? 'bg-indigo-500 text-white shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
-                        >
-                            <FileSignature className="w-4 h-4" /> <span className="hidden sm:inline">Quotations</span>
-                        </button>
-                        <button
-                            onClick={() => setActiveTab('jobs')}
-                            className={`px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition-all ${activeTab === 'jobs' ? 'bg-indigo-500 text-white shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
-                        >
-                            <Briefcase className="w-4 h-4" /> <span className="hidden sm:inline">Careers / Jobs</span>
-                        </button>
+                    <div className="flex-1 flex justify-center w-full md:w-auto overflow-x-auto overflow-y-hidden custom-scrollbar pb-2 md:pb-0">
+                        <div className="flex space-x-1 sm:space-x-4 bg-white/5 p-1 rounded-xl border border-white/10 mx-auto w-max md:mx-0 shrink-0">
+                            <button
+                                onClick={() => setActiveTab('invoices')}
+                                className={`px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition-all ${activeTab === 'invoices' ? 'bg-indigo-500 text-white shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
+                            >
+                                <FileText className="w-4 h-4" /> <span className="hidden sm:inline">Invoices</span>
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('quotations')}
+                                className={`px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition-all ${activeTab === 'quotations' ? 'bg-indigo-500 text-white shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
+                            >
+                                <FileSignature className="w-4 h-4" /> <span className="hidden sm:inline">Quotations</span>
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('jobs')}
+                                className={`px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition-all ${activeTab === 'jobs' ? 'bg-indigo-500 text-white shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
+                            >
+                                <Briefcase className="w-4 h-4" /> <span className="hidden sm:inline">Careers / Jobs</span>
+                            </button>
+                        </div>
                     </div>
 
-                    <button onClick={handleLogout} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors bg-white/5 px-4 py-2 rounded-xl text-sm border border-white/5">
-                        <LogOut className="w-4 h-4" /> <span className="hidden md:inline">Logout</span>
+                    <button onClick={handleLogout} className="flex items-center justify-center gap-2 text-gray-400 hover:text-white transition-colors bg-white/5 px-4 py-2 rounded-xl text-sm border border-white/5 w-full md:w-auto shrink-0 mt-2 md:mt-0">
+                        <LogOut className="w-4 h-4" /> <span>Logout</span>
                     </button>
                 </div>
             </div>
