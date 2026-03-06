@@ -36,7 +36,7 @@ export default function CareersList() {
     }
 
     return (
-        <section className="py-24 bg-[#050505] relative border-t border-white/5 z-20 overflow-hidden">
+        <section id="open-roles" className="py-24 bg-[#050505] relative border-t border-white/5 z-20 overflow-hidden">
             {/* Ambient Background Grid */}
             <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
             <div className="absolute top-0 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none" />

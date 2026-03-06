@@ -281,9 +281,9 @@ export default function CommunitySection() {
                     <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 text-white group-hover:text-indigo-300 transition-colors">Join the Architecture.</h2>
                     <p className="text-indigo-200/60 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto">We are actively searching for top 1% engineering talent.</p>
 
-                    <button className="bg-white text-gray-950 px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest inline-flex items-center gap-3 hover:scale-105 shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all shrink-0">
+                    <a href="#open-roles" className="bg-white text-gray-950 px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest inline-flex items-center gap-3 hover:scale-105 shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all shrink-0">
                         View Open Roles <ChevronRight className="w-5 h-5" />
-                    </button>
+                    </a>
                 </motion.div>
             </div>
 

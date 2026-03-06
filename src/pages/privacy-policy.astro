@@ -1,0 +1,87 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar";
+import Contact from "../components/Contact";
+import "../styles/global.css";
+---
+
+<Layout title="Privacy Policy | SynVoke">
+    <Navbar client:load />
+
+    <main
+        class="pt-32 pb-24 min-h-[80vh] bg-white text-gray-900 border-b border-gray-100"
+    >
+        <div class="container mx-auto px-4 md:px-8 max-w-4xl pt-16">
+            <h1
+                class="text-4xl md:text-6xl font-display font-bold mb-6 text-gray-900"
+            >
+                Privacy Policy
+            </h1>
+            <p
+                class="text-gray-500 font-mono text-sm tracking-widest uppercase mb-16"
+            >
+                Last Updated: March 2026
+            </p>
+
+            <div class="prose prose-lg prose-indigo max-w-none text-gray-600">
+                <h2 class="text-2xl font-bold text-gray-900 mt-12 mb-4">
+                    1. Information We Collect
+                </h2>
+                <p>
+                    When you contact SynVoke, we may collect business contact
+                    information including your name, email address, phone
+                    number, and any details regarding your engineering needs
+                    that you provide to us through our contact forms or emails.
+                    The Admin Portal uses essential analytics for internal
+                    monitoring, but does not deploy mass tracking pixels.
+                </p>
+
+                <h2 class="text-2xl font-bold text-gray-900 mt-12 mb-4">
+                    2. How We Use Your Information
+                </h2>
+                <p>
+                    The information you provide is strictly used to communicate
+                    with you regarding your project requirements, official
+                    quotations, job applications, billing, and providing the
+                    agreed-upon engineering services. We do not sell your
+                    personal data to third parties.
+                </p>
+
+                <h2 class="text-2xl font-bold text-gray-900 mt-12 mb-4">
+                    3. Data Security and Storage
+                </h2>
+                <p>
+                    We value the trust you place in us to build secure systems.
+                    We implement industry-standard security measures, physical
+                    protections, and backend encryption methodologies to protect
+                    the data you share with us against unauthorized access or
+                    alteration.
+                </p>
+
+                <h2 class="text-2xl font-bold text-gray-900 mt-12 mb-4">
+                    4. Cookies and Technologies
+                </h2>
+                <p>
+                    SynVoke uses limited browser storage (like localStorage)
+                    strictly to ensure functional performance, including
+                    remembering UI selections to provide seamless navigation,
+                    especially within internal portals. We do not use cross-site
+                    tracking cookies.
+                </p>
+
+                <h2 class="text-2xl font-bold text-gray-900 mt-12 mb-4">
+                    5. Contact Us regarding Privacy
+                </h2>
+                <p>
+                    If you have questions about how we handle data, or if you
+                    need us to remove specific contact records, you can reach
+                    out to our privacy compliance team via email at <strong
+                        >contact.synvoke@gmail.com</strong
+                    >.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <Contact client:visible />
+</Layout>

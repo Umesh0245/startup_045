@@ -1,0 +1,97 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar";
+import Contact from "../components/Contact";
+import "../styles/global.css";
+---
+
+<Layout title="Terms of Service | SynVoke">
+    <Navbar client:load />
+
+    <main
+        class="pt-32 pb-24 min-h-[80vh] bg-white text-gray-900 border-b border-gray-100"
+    >
+        <div class="container mx-auto px-4 md:px-8 max-w-4xl pt-16">
+            <h1
+                class="text-4xl md:text-6xl font-display font-bold mb-6 text-gray-900"
+            >
+                Terms of Service
+            </h1>
+            <p
+                class="text-gray-500 font-mono text-sm tracking-widest uppercase mb-16"
+            >
+                Last Updated: March 2026
+            </p>
+
+            <div class="prose prose-lg prose-indigo max-w-none text-gray-600">
+                <h2 class="text-2xl font-bold text-gray-900 mt-12 mb-4">
+                    1. Acceptance of Terms
+                </h2>
+                <p>
+                    By accessing and using SynVoke's services, website, or
+                    enterprise engineering solutions, you agree to be bound by
+                    these Terms of Service. If you do not agree to these terms,
+                    please do not use our services.
+                </p>
+
+                <h2 class="text-2xl font-bold text-gray-900 mt-12 mb-4">
+                    2. Engineering Services
+                </h2>
+                <p>
+                    SynVoke provides premium software engineering, enterprise
+                    architecture, and technical consultation. The specific
+                    scope, deliverables, and timelines for each project will be
+                    documented in a separate Official Quote or Master Services
+                    Agreement (MSA) signed by both parties.
+                </p>
+
+                <h2 class="text-2xl font-bold text-gray-900 mt-12 mb-4">
+                    3. Intellectual Property
+                </h2>
+                <p>
+                    Upon full payment of all invoices related to a specific
+                    project, the intellectual property (IP) rights of the
+                    custom-developed software will be transferred to the client,
+                    unless explicitly stated otherwise in the project's MSA.
+                    SynVoke retains rights to all pre-existing tools, libraries,
+                    and frameworks utilized during development.
+                </p>
+
+                <h2 class="text-2xl font-bold text-gray-900 mt-12 mb-4">
+                    4. Payment Terms
+                </h2>
+                <p>
+                    Invoices are generated according to the milestones specified
+                    in your project agreement. Standard payment terms are Net 14
+                    days from the date of invoice. Late payments may result in a
+                    suspension of services and incur late fees as specified in
+                    our billing agreements.
+                </p>
+
+                <h2 class="text-2xl font-bold text-gray-900 mt-12 mb-4">
+                    5. Confidentiality
+                </h2>
+                <p>
+                    SynVoke agrees to maintain the strictest confidentiality
+                    regarding your business logic, data, and trade secrets. We
+                    are happy to sign standard Non-Disclosure Agreements (NDAs)
+                    prior to discussing any sensitive technical project
+                    constraints.
+                </p>
+
+                <h2 class="text-2xl font-bold text-gray-900 mt-12 mb-4">
+                    6. Limitation of Liability
+                </h2>
+                <p>
+                    While we strive for engineering perfection, SynVoke shall
+                    not be liable for any indirect, incidental, special,
+                    consequential, or punitive damages resulting from your
+                    access to or use of, or inability to access or use, the
+                    services or any content provided.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <Contact client:visible />
+</Layout>
