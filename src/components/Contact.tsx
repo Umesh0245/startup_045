@@ -15,10 +15,10 @@ export default function Contact() {
                         </p>
 
                         <div className="space-y-4">
-                            <a href="mailto:hello@synvokestudio.com" className="block text-2xl md:text-3xl lg:text-4xl font-display font-medium text-gray-900 hover:text-indigo-600 transition-colors">
-                                hello@synvokestudio.com
+                            <a href="mailto:contact.synvoke@gmail.com" className="block text-2xl md:text-3xl lg:text-4xl font-display font-medium text-gray-900 hover:text-indigo-600 transition-colors">
+                                contact.synvoke@gmail.com
                             </a>
-                            <p className="text-gray-500 text-lg">+1 (555) 123-4567</p>
+                            <p className="text-gray-500 text-lg">+91 9642469249</p>
                             <p className="text-gray-500 text-lg">San Francisco, CA</p>
                         </div>
 
@@ -78,6 +78,7 @@ export default function Contact() {
                     <div className="flex gap-6">
                         <a href="#" className="hover:text-indigo-600 transition-colors">Privacy Policy</a>
                         <a href="#" className="hover:text-indigo-600 transition-colors">Terms of Service</a>
+                        <a href="/admin" className="hover:text-indigo-600 transition-colors text-gray-300">Portals</a>
                     </div>
                 </div>
             </div>

@@ -1,12 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Contact from "../components/Contact";
+import Navbar from "../components/Navbar";
 import CommunitySection from "../components/CommunitySection";
+import CareersList from "../components/CareersList";
+import Contact from "../components/Contact";
 import "../styles/global.css";
 ---
 
 <Layout title="The Team | SynVoke">
     <CommunitySection client:load />
+
+    <CareersList client:visible />
 
     <Contact client:visible />
 </Layout>

@@ -1,0 +1,11 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AdminPortal from "../components/admin/AdminPortal";
+---
+
+<Layout title="Admin Portal | SynVoke">
+    <main class="min-h-screen bg-gray-50 font-sans pb-32">
+        {/* Render React Admin Portal client-side */}
+        <AdminPortal client:only="react" />
+    </main>
+</Layout>
