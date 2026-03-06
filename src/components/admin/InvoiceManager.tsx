@@ -14,12 +14,12 @@ export default function InvoiceManager() {
     });
 
     const [items, setItems] = useState([
-        { id: '1', title: 'Enterprise Backend Engineering (Sprint 1)', details: 'Initial deployment sprint for Kubernetes clusters, Redis caching layer, and core API monolith setup.', rate: 15000, quantity: 1 },
-        { id: '2', title: 'Real-time Data Pipeline Setup', details: 'Socket.IO initialization and worker thread deployment for real-time analytics aggregation.', rate: 12500, quantity: 1 },
+        { id: '1', title: 'Enterprise Backend Engineering (Sprint 1)', details: 'Initial deployment sprint for Kubernetes clusters, Redis caching layer, and core API monolith setup.', rate: 15000, quantity: 1, days: 15 },
+        { id: '2', title: 'Real-time Data Pipeline Setup', details: 'Socket.IO initialization and worker thread deployment for real-time analytics aggregation.', rate: 12500, quantity: 1, days: 12 },
     ]);
 
     const handleAddItem = () => {
-        setItems([...items, { id: Date.now().toString(), title: 'New Service Item', details: '', rate: 0, quantity: 1 }]);
+        setItems([...items, { id: Date.now().toString(), title: 'New Service Item', details: '', rate: 0, quantity: 1, days: 1 }]);
     };
 
     const handleItemChange = (id: string, field: string, value: string | number) => {
@@ -174,17 +174,18 @@ export default function InvoiceManager() {
                     <div className="mb-12">
                         {/* Headers */}
                         <div className={`grid grid-cols-12 gap-4 pb-4 border-b-2 text-[10px] font-bold uppercase tracking-widest ${theme === 'light' ? 'border-gray-900 text-gray-500' : 'border-white text-gray-500'}`}>
-                            <div className="col-span-12 md:col-span-7">Description</div>
-                            <div className="col-span-3 md:col-span-2 text-center hidden md:block">Qty</div>
-                            <div className="col-span-5 md:col-span-2 text-right">Rate</div>
-                            <div className="col-span-4 md:col-span-1 text-right">Amount</div>
+                            <div className="col-span-12 md:col-span-5">Description</div>
+                            <div className="col-span-4 md:col-span-2 text-center hidden md:block">Timebox (Days)</div>
+                            <div className="col-span-3 md:col-span-1 text-center hidden md:block">Qty</div>
+                            <div className="col-span-6 md:col-span-2 text-right hidden md:block">Rate</div>
+                            <div className="col-span-6 md:col-span-2 text-right hidden md:block">Amount</div>
                         </div>
 
                         {/* Items Rows */}
                         <div className="py-2">
                             {items.map((item, index) => (
                                 <div key={item.id} className={`grid grid-cols-12 gap-4 py-6 border-b items-start group relative ${t.borderSoft}`}>
-                                    <div className="col-span-12 md:col-span-7 pr-4 space-y-2">
+                                    <div className="col-span-12 md:col-span-5 pr-4 space-y-2">
                                         <input
                                             type="text"
                                             value={item.title}
@@ -200,7 +201,17 @@ export default function InvoiceManager() {
                                             rows={2}
                                         />
                                     </div>
-                                    <div className="col-span-3 md:col-span-2 hidden md:block mt-1">
+                                    <div className="col-span-4 md:col-span-2 hidden md:block mt-1">
+                                        <input
+                                            type="number"
+                                            min="1"
+                                            value={item.days || ''}
+                                            onChange={(e) => handleItemChange(item.id, 'days', parseFloat(e.target.value) || 0)}
+                                            className={`w-full ${t.inputBg} border-none text-center focus:ring-0 p-0 font-mono text-sm ${t.textMuted}`}
+                                            placeholder="Days"
+                                        />
+                                    </div>
+                                    <div className="col-span-3 md:col-span-1 hidden md:block mt-1">
                                         <input
                                             type="number"
                                             min="1"
@@ -209,7 +220,7 @@ export default function InvoiceManager() {
                                             className={`w-full ${t.inputBg} border-none text-center focus:ring-0 p-0 font-mono text-sm ${t.textMuted}`}
                                         />
                                     </div>
-                                    <div className="col-span-5 md:col-span-2 relative mt-1">
+                                    <div className="col-span-6 md:col-span-2 relative mt-1">
                                         <span className={`absolute left-0 top-1/2 -translate-y-1/2 font-mono text-sm ${t.textMuted}`}>₹</span>
                                         <input
                                             type="number"
@@ -218,7 +229,7 @@ export default function InvoiceManager() {
                                             className={`w-full ${t.inputBg} border-none text-right focus:ring-0 p-0 pl-4 font-mono text-sm ${t.textMuted}`}
                                         />
                                     </div>
-                                    <div className={`col-span-4 md:col-span-1 text-right font-mono font-medium flex items-center justify-end gap-2 mt-1 text-sm ${t.textMain}`}>
+                                    <div className={`col-span-6 md:col-span-2 text-right font-mono font-medium flex items-center justify-end gap-2 mt-1 text-sm ${t.textMain}`}>
                                         ₹{(item.rate * item.quantity).toLocaleString()}
                                         <button onClick={() => handleRemoveItem(item.id)} className="text-gray-300 hover:text-red-500 print:hidden absolute -right-8 opacity-0 group-hover:opacity-100 transition-opacity">
                                             <Trash className="w-4 h-4 cursor-pointer" />
