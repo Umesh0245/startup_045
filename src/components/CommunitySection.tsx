@@ -11,8 +11,9 @@ const team = [
         experience: "Extensive background architecting enterprise-grade Java ecosystems and modern React frontends. Specialized in high-throughput distributed systems that handle immense active connection volumes effortlessly.",
         workflow: "Begins with rigorous mathematical modeling of data structures, followed by strictly typed backend implementation, and concludes with pixel-perfect, hyper-fluid frontend delivery.",
         ideas: "Believes that software should be treated as functional art. Champions the integration of memory-safe logic with absolutely stunning, instantaneous user interfaces.",
-        image: "/images/umesh-profile-zoomed.png",
-        objectPosition: "object-center",
+        image: "/images/umesh-minimal.png",
+        objectPosition: "object-top",
+        imageScale: "scale-[1.15] origin-top",
         skills: ["Java Backend", "React Ecosystem", "System Design", "UI/UX Architecture"]
     },
     {
@@ -144,7 +145,7 @@ export default function CommunitySection() {
 
                             <div className="flex gap-5 border-b border-white/10 pb-6 items-center mb-6 relative z-10">
                                 <motion.div layoutId={`image-${member.id}`} className="w-20 h-20 shrink-0 rounded-[1.2rem] overflow-hidden border border-white/10 bg-gray-900 flex items-center justify-center">
-                                    <img src={member.image} alt={member.name} className={`w-full h-full object-cover ${member.objectPosition} filter grayscale group-hover:grayscale-0 transition-all duration-700`} />
+                                    <img src={member.image} alt={member.name} className={`w-full h-full object-cover ${member.objectPosition} filter grayscale group-hover:grayscale-0 transition-all duration-700 ${(member as any).imageScale || ''}`} />
                                 </motion.div>
                                 <div>
                                     <motion.h3 layoutId={`name-${member.id}`} className="text-2xl font-display font-bold text-white mb-2">{member.name}</motion.h3>
@@ -195,12 +196,12 @@ export default function CommunitySection() {
                             </button>
 
                             {/* Deep Detail Image Side */}
-                            <div className="w-full md:w-5/12 relative h-[300px] md:h-auto shrink-0 border-r border-white/5">
+                            <div className="w-full md:w-5/12 relative h-[300px] md:h-auto shrink-0 border-r border-white/5 overflow-hidden">
                                 <motion.img
                                     layoutId={`image-${selectedMember.id}`}
                                     src={selectedMember.image}
                                     alt={selectedMember.name}
-                                    className={`absolute inset-0 w-full h-full object-cover ${selectedMember.objectPosition}`}
+                                    className={`absolute inset-0 w-full h-full object-cover ${selectedMember.objectPosition} ${(selectedMember as any).imageScale || ''}`}
                                 />
                                 {/* Mobile-only gradient for text visibility */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent md:hidden" />
