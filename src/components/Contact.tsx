@@ -23,10 +23,10 @@ export default function Contact() {
                         </div>
 
                         <div className="mt-12 flex gap-6">
-                            <SocialLink href="#" label="Twitter" />
-                            <SocialLink href="#" label="LinkedIn" />
-                            <SocialLink href="#" label="Instagram" />
-                            <SocialLink href="#" label="Dribbble" />
+                            <SocialLink href="/coming-soon" label="Twitter" />
+                            <SocialLink href="/coming-soon" label="LinkedIn" />
+                            <SocialLink href="/coming-soon" label="Instagram" />
+                            <SocialLink href="/coming-soon" label="Dribbble" />
                         </div>
                     </div>
 
