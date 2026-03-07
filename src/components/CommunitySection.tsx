@@ -11,9 +11,9 @@ const team = [
         experience: "Extensive background architecting enterprise-grade Java ecosystems and modern React frontends. Specialized in high-throughput distributed systems that handle immense active connection volumes effortlessly.",
         workflow: "Begins with rigorous mathematical modeling of data structures, followed by strictly typed backend implementation, and concludes with pixel-perfect, hyper-fluid frontend delivery.",
         ideas: "Believes that software should be treated as functional art. Champions the integration of memory-safe logic with absolutely stunning, instantaneous user interfaces.",
-        image: "/images/umesh-minimal.png",
+        image: "/images/umesh-peach.png",
         objectPosition: "object-top",
-        imageScale: "scale-[1.15] origin-top",
+        imageScale: "scale-[2.6] origin-top translate-y-[28%] min-[400px]:translate-y-[20%] md:translate-y-[25%]",
         skills: ["Java Backend", "React Ecosystem", "System Design", "UI/UX Architecture"]
     },
     {
