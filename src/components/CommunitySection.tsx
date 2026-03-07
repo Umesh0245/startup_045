@@ -13,6 +13,7 @@ const team = [
         ideas: "Believes that software should be treated as functional art. Champions the integration of memory-safe logic with absolutely stunning, instantaneous user interfaces.",
         image: "/images/umesh-profile-red-zoomed.png",
         objectPosition: "object-center",
+        imageScale: "scale-[1.4] translate-y-2",
         skills: ["Java Backend", "React Ecosystem", "System Design", "UI/UX Architecture"]
     },
     {
@@ -143,8 +144,8 @@ export default function CommunitySection() {
                             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/0 via-transparent to-indigo-500/0 group-hover:from-indigo-500/10 transition-colors duration-500" />
 
                             <div className="flex gap-5 border-b border-white/10 pb-6 items-center mb-6 relative z-10">
-                                <motion.div layoutId={`image-${member.id}`} className="w-20 h-20 shrink-0 rounded-[1.2rem] overflow-hidden border border-white/10 bg-gray-900">
-                                    <img src={member.image} alt={member.name} className={`w-full h-full object-cover ${member.objectPosition} filter grayscale group-hover:grayscale-0 transition-all duration-700`} />
+                                <motion.div layoutId={`image-${member.id}`} className="w-20 h-20 shrink-0 rounded-[1.2rem] overflow-hidden border border-white/10 bg-gray-900 flex items-center justify-center">
+                                    <img src={member.image} alt={member.name} className={`w-full h-full object-cover ${member.objectPosition} filter grayscale group-hover:grayscale-0 transition-all duration-700 ${member.imageScale || 'scale-100'}`} />
                                 </motion.div>
                                 <div>
                                     <motion.h3 layoutId={`name-${member.id}`} className="text-2xl font-display font-bold text-white mb-2">{member.name}</motion.h3>
@@ -200,7 +201,7 @@ export default function CommunitySection() {
                                     layoutId={`image-${selectedMember.id}`}
                                     src={selectedMember.image}
                                     alt={selectedMember.name}
-                                    className={`absolute inset-0 w-full h-full object-cover ${selectedMember.objectPosition}`}
+                                    className={`absolute inset-0 w-full h-full object-cover ${selectedMember.objectPosition} ${selectedMember.imageScale || 'scale-100'}`}
                                 />
                                 {/* Mobile-only gradient for text visibility */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent md:hidden" />
