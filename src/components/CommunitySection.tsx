@@ -12,8 +12,8 @@ const team = [
         workflow: "Begins with rigorous mathematical modeling of data structures, followed by strictly typed backend implementation, and concludes with pixel-perfect, hyper-fluid frontend delivery.",
         ideas: "Believes that software should be treated as functional art. Champions the integration of memory-safe logic with absolutely stunning, instantaneous user interfaces.",
         image: "/images/umesh-profile-red-zoomed.png",
-        objectPosition: "object-center",
-        imageScale: "scale-[1.4] translate-y-2",
+        objectPosition: "object-top",
+        imageScale: "scale-[1.15] origin-top",
         skills: ["Java Backend", "React Ecosystem", "System Design", "UI/UX Architecture"]
     },
     {
